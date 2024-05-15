@@ -1,5 +1,8 @@
 package br.com.powtec.finance.monolith.controller;
 
+import static org.mockito.ArgumentMatchers.same;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -23,7 +26,6 @@ public class MovimentControllerTest {
 
   @Test // Adjust test to validate required arguments
   public void should_returnBadRequest_when_requiredArgumentsAreMissing() throws Exception {
-    // when(service.search()).thenReturn(null);
     this.restCaller.perform(get("/moviments:search")).andExpect(status().isBadRequest());
     this.restCaller.perform(get("/moviments:search?_limit=0")).andExpect(status().isBadRequest());
     this.restCaller.perform(get("/moviments:search?_offset=0")).andExpect(status().isBadRequest());
@@ -32,5 +34,11 @@ public class MovimentControllerTest {
   @Test
   public void should_returnSuccess_when_requiredArgumentsAreFilled() throws Exception {
     this.restCaller.perform(get("/moviments:search?_offset=0&_limit=0")).andExpect(status().isOk());
+  }
+
+  @Test
+  public void should_callServiceSearch_when_requiredArgumentsAreFilled() throws Exception {
+    this.restCaller.perform(get("/moviments:search?_offset=0&_limit=0")).andExpect(status().isOk());
+    verify(service, atLeast(1)).search(0, 0);
   }
 }
