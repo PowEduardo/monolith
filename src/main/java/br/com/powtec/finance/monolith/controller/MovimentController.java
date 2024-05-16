@@ -18,13 +18,13 @@ public class MovimentController {
 
   /**
    * 
-   * @param limitPerPage Max elements by page
-   * @param pageNumber   Number of page being searched
+   * @param elementsPerPage Max elements per page
+   * @param pageNumber      Number of page being searched
    * @return The correspondent page of elements after search moviments
    */
   @GetMapping("/moviments:search")
-  public ResponseEntity<Page<MovimentDTO>> searchMoviments(@RequestParam(value = "_limit") Integer limitPerPage,
+  public ResponseEntity<Page<MovimentDTO>> searchMoviments(@RequestParam(value = "_limit") Integer elementsPerPage,
       @RequestParam(value = "_offset") Integer pageNumber) {
-    return ResponseEntity.ok().body(service.search(pageNumber, limitPerPage));
+    return ResponseEntity.ok().body(service.search(pageNumber, elementsPerPage));
   }
 }
