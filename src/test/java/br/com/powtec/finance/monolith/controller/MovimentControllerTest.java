@@ -31,12 +31,12 @@ public class MovimentControllerTest {
 
   @Test
   public void should_returnSuccess_when_requiredArgumentsAreFilled() throws Exception {
-    this.restCaller.perform(get("/moviments:search?_offset=0&_limit=0")).andExpect(status().isOk());
+    this.restCaller.perform(get("/moviments:search?_offset=0&_limit=1")).andExpect(status().isOk());
   }
 
   @Test
   public void should_callServiceSearch_when_requiredArgumentsAreFilled() throws Exception {
-    this.restCaller.perform(get("/moviments:search?_offset=0&_limit=0")).andExpect(status().isOk());
-    verify(service, atLeast(1)).search(0, 0);
+    this.restCaller.perform(get("/moviments:search?_offset=0&_limit=1")).andExpect(status().isOk());
+    verify(service, atLeast(1)).search(0, 1);
   }
 }
