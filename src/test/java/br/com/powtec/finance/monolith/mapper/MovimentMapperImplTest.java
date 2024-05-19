@@ -15,6 +15,7 @@ import br.com.powtec.finance.monolith.model.MovimentModel;
 
 @SpringBootTest
 @ActiveProfiles(profiles = "test")
+@SuppressWarnings("unchecked")
 public class MovimentMapperImplTest {
 
   @Autowired
