@@ -10,4 +10,8 @@ public interface MovimentMapper {
   public Page<MovimentDTO> toPageDto(Page<MovimentModel> pageModel);
 
   public MovimentDTO toDto(MovimentModel model);
+
+  public MovimentDTO toDtoOnlyId(MovimentModel model);
+
+  public MovimentModel toModel(MovimentDTO dto);
 }

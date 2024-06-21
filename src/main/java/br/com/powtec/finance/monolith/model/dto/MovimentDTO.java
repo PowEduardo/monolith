@@ -1,5 +1,10 @@
 package br.com.powtec.finance.monolith.model.dto;
 
+import java.sql.Date;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -11,7 +16,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonInclude(Include.NON_NULL)
 public class MovimentDTO {
 
   Long id;
+  Date date;
+  Double value;
+  String type;
 }

@@ -1,4 +1,9 @@
 spring:
+  jpa:
+    show-sql: false
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
   h2:
     console:
       enabled: true
