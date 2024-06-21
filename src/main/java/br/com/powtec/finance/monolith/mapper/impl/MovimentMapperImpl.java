@@ -23,4 +23,20 @@ public class MovimentMapperImpl implements MovimentMapper {
         .build();
   }
 
+  @Override
+  public MovimentDTO toDtoOnlyId(MovimentModel model) {
+    return MovimentDTO.builder()
+        .id(model.getId())
+        .build();
+  }
+
+  @Override
+  public MovimentModel toModel(MovimentDTO dto) {
+    return MovimentModel.builder()
+        .date(dto.getDate())
+        .type(dto.getType())
+        .value(dto.getValue())
+        .build();
+  }
+
 }
