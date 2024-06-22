@@ -1,11 +1,14 @@
 package br.com.powtec.finance.monolith.controller;
 
+import static br.com.powtec.finance.monolith.constants.ValidationMessagesConstants.MINIMUM_ELEMENTS_PER_PAGE;
+import static br.com.powtec.finance.monolith.constants.ValidationMessagesConstants.MINIMUM_PAGE_NUMBER;
+import static br.com.powtec.finance.monolith.util.PageBuilder.pageable;
+
 import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -20,9 +23,6 @@ import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 import br.com.powtec.finance.monolith.model.dto.StockMovimentDTO;
 import br.com.powtec.finance.monolith.service.StockMovimentService;
 import jakarta.validation.constraints.Min;
-import static br.com.powtec.finance.monolith.constants.ValidationMessagesConstants.MINIMUM_ELEMENTS_PER_PAGE;
-import static br.com.powtec.finance.monolith.constants.ValidationMessagesConstants.MINIMUM_PAGE_NUMBER;
-import static br.com.powtec.finance.monolith.util.PageBuilder.pageable;
 
 @RestController
 @Validated
