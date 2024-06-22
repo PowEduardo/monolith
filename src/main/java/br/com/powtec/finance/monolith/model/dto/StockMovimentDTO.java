@@ -12,7 +12,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class StockMovimentDTO extends MovimentDTO {
 
-  AssetDTO stock;
+  AssetDTO asset;
   Integer amount;
   StockOperationEnum operation;
 

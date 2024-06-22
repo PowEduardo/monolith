@@ -28,7 +28,7 @@ public class AssetModel {
   private Long id;
   private String ticker;
   private Double value;
-  @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "stock")
+  @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "asset")
   private List<StockMovimentModel> moviments;
   @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "stock")
   private List<StockReturnsMovimentModel> returns;

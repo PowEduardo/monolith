@@ -29,7 +29,11 @@ public class StockReturnsMovimentSpecification {
         List<Predicate> predicates = new ArrayList<>();
         for (String param : parameters.split(",")) {
           String keyValue[] = param.split(":");
-          predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]), keyValue[1])));
+          if (keyValue[0].equalsIgnoreCase("stock")) {
+            predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]).get("id"), keyValue[1])));
+          } else {
+            predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]), keyValue[1])));
+          }
         }
 
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
