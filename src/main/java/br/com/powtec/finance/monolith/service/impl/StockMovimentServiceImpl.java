@@ -12,7 +12,7 @@ import br.com.powtec.finance.monolith.mapper.StockMovimentMapper;
 import br.com.powtec.finance.monolith.model.StockMovimentModel;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 import br.com.powtec.finance.monolith.model.dto.StockMovimentDTO;
-import br.com.powtec.finance.monolith.repository.MovimentRepository;
+import br.com.powtec.finance.monolith.repository.StockMovimentRepository;
 import br.com.powtec.finance.monolith.repository.specification.StockMovimentSpecification;
 import br.com.powtec.finance.monolith.service.StockMovimentService;
 
@@ -20,7 +20,7 @@ import br.com.powtec.finance.monolith.service.StockMovimentService;
 public class StockMovimentServiceImpl implements StockMovimentService {
 
   @Autowired
-  MovimentRepository repository;
+  StockMovimentRepository repository;
 
   @Autowired
   StockMovimentMapper mapper;

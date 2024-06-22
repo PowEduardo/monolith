@@ -1,29 +1,17 @@
 package br.com.powtec.finance.monolith.mapper.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
 import br.com.powtec.finance.monolith.model.MovimentModel;
-import br.com.powtec.finance.monolith.model.StockMovimentModel;
 import br.com.powtec.finance.monolith.model.StockReturnsMovimentModel;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 import br.com.powtec.finance.monolith.model.dto.StockReturnsMovimentDTO;
 
 @Component("returnsMapper")
 public class StockReturnsMovimentMapperImpl extends MovimentMapperImpl {
-
-  @Override
-  public MovimentModel toModel(MovimentDTO dto) {
-    StockReturnsMovimentDTO request = (StockReturnsMovimentDTO) dto;
-    StockReturnsMovimentModel model = new StockReturnsMovimentModel();
-    model.setDate(request.getDate());
-    model.setType(request.getType());
-    model.setValue(request.getValue());
-    model.setTicker(request.getTicker());
-    model.setAmount(request.getAmount());
-    model.setOperation(request.getOperation());
-    model.setUnitValue(request.getUnitValue());
-    return model;
-  }
 
   @Override
   public MovimentDTO toDto(MovimentModel model) {
@@ -41,6 +29,38 @@ public class StockReturnsMovimentMapperImpl extends MovimentMapperImpl {
       throw new RuntimeException("You fucked up");
     }
     return stockDto;
+  }
+
+  @Override
+  public List<MovimentDTO> toDtosList(List<? extends MovimentModel> movimentsModel) {
+    List<MovimentDTO> movimentsDto = new ArrayList<>(movimentsModel.size());
+    for (MovimentModel movimentModel : movimentsModel) {
+      movimentsDto.add(toDto(movimentModel));
+    }
+    return movimentsDto;
+  }
+
+  @Override
+  public MovimentModel toModel(MovimentDTO dto) {
+    StockReturnsMovimentDTO request = (StockReturnsMovimentDTO) dto;
+    StockReturnsMovimentModel model = new StockReturnsMovimentModel();
+    model.setDate(request.getDate());
+    model.setType(request.getType());
+    model.setValue(request.getValue());
+    model.setTicker(request.getTicker());
+    model.setAmount(request.getAmount());
+    model.setOperation(request.getOperation());
+    model.setUnitValue(request.getUnitValue());
+    return model;
+  }
+
+  @Override
+  public List<MovimentModel> toModelsList(List<? extends MovimentDTO> movimentsListDto) {
+    List<MovimentModel> movimentsListModel = new ArrayList<>(movimentsListDto.size());
+    for (MovimentDTO movimentDto : movimentsListDto) {
+      movimentsListModel.add(toModel(movimentDto));
+    }
+    return movimentsListModel;
   }
 
 }

@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import br.com.powtec.finance.monolith.mapper.MovimentMapper;
 import br.com.powtec.finance.monolith.model.MovimentModel;
-import br.com.powtec.finance.monolith.model.StockMovimentModel;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 
 @Component("movimentMapper")
@@ -45,9 +44,15 @@ public class MovimentMapperImpl implements MovimentMapper {
   }
 
   @Override
-  public List<MovimentDTO> toDtosList(List<StockMovimentModel> pageModel) {
+  public List<MovimentDTO> toDtosList(List<? extends MovimentModel> movimentsModel) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'toDtosList'");
+  }
+
+  @Override
+  public List<MovimentModel> toModelsList(List<? extends MovimentDTO> movimentsDto) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'toModelsList'");
   }
 
 }
