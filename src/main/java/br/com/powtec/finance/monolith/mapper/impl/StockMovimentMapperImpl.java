@@ -26,7 +26,7 @@ public class StockMovimentMapperImpl extends MovimentMapperImpl {
       stockDto.setAmount(stockModel.getAmount());
       stockDto.setDate(stockModel.getDate());
       stockDto.setId(stockModel.getId());
-      stockDto.setStock(stockMapper.toDtoOnlyId(stockModel.getStock()));
+      stockDto.setAsset(stockMapper.toDtoOnlyId(stockModel.getAsset()));
       stockDto.setType(stockModel.getType());
       stockDto.setValue(stockModel.getValue());
       stockDto.setOperation(stockModel.getOperation());
@@ -52,7 +52,7 @@ public class StockMovimentMapperImpl extends MovimentMapperImpl {
     model.setDate(request.getDate());
     model.setType(request.getType());
     model.setValue(request.getValue());
-    model.setStock(stockMapper.toModel(request.getStock()));
+    model.setAsset(stockMapper.toModel(request.getAsset()));
     model.setAmount(request.getAmount());
     model.setOperation(request.getOperation());
     return model;

@@ -13,7 +13,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "tb_moviments_stock")
+@Entity(name = "tb_moviments_asset")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -23,7 +23,7 @@ public class StockMovimentModel extends MovimentModel {
   private Integer amount;
   @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
   @JoinColumn(name = "asset_id")
-  private AssetModel stock;
+  private AssetModel asset;
   @Enumerated(EnumType.STRING)
   private StockOperationEnum operation;
 
