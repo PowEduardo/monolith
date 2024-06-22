@@ -16,9 +16,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class StockMovimentModel extends MovimentModel {
 
-  Integer amount;
-  String ticker;
+  private Integer amount;
+  private String ticker;
   @Enumerated(EnumType.STRING)
-  StockOperationEnum operation;
+  private StockOperationEnum operation;
 
 }
