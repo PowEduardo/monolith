@@ -1,0 +1,762 @@
+[
+  {
+    "type": "STOCK",
+    "value": "0",
+    "stock": {
+      "id": 18
+    },
+    "amount": "3",
+    "date": "2022-12-10",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "24.13",
+    "stock": {
+      "id": 18
+    },
+    "amount": "7",
+    "date": "2023-03-03",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "483.98",
+    "stock": {
+      "id": 2
+    },
+    "amount": "34",
+    "date": "2023-03-13",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "477.76",
+    "stock": {
+      "id": 12
+    },
+    "amount": "20",
+    "date": "2023-03-13",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "484.93",
+    "stock": {
+      "id": 10
+    },
+    "amount": "39",
+    "date": "2023-03-13",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "469.24",
+    "stock": {
+      "id": 13
+    },
+    "amount": "12",
+    "date": "2023-03-13",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "489.95",
+    "stock": {
+      "id": 16
+    },
+    "amount": "20",
+    "date": "2023-03-13",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "14.1",
+    "stock": {
+      "id": 2
+    },
+    "amount": "1",
+    "date": "2023-03-28",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "7.39",
+    "stock": {
+      "id": 18
+    },
+    "amount": "2",
+    "date": "2023-04-17",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "7.95",
+    "stock": {
+      "id": 18
+    },
+    "amount": "2",
+    "date": "2023-04-18",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "11.61",
+    "stock": {
+      "id": 8
+    },
+    "amount": "1",
+    "date": "2023-04-24",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "43.07",
+    "stock": {
+      "id": 19
+    },
+    "amount": "1",
+    "date": "2023-04-27",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "105.7",
+    "stock": {
+      "id": 8
+    },
+    "amount": "9",
+    "date": "2023-04-27",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "13.84",
+    "stock": {
+      "id": 10
+    },
+    "amount": "1",
+    "date": "2023-04-27",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "4.11",
+    "stock": {
+      "id": 18
+    },
+    "amount": "1",
+    "date": "2023-04-27",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "4.17",
+    "stock": {
+      "id": 18
+    },
+    "amount": "2",
+    "date": "2023-04-27",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "4.18",
+    "stock": {
+      "id": 18
+    },
+    "amount": "1",
+    "date": "2023-04-27",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "44.52",
+    "stock": {
+      "id": 17
+    },
+    "amount": "50",
+    "date": "2023-05-09",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "527.34",
+    "stock": {
+      "id": 16
+    },
+    "amount": "20",
+    "date": "2023-05-16",
+    "operation": "SELL"
+  },
+  {
+    "type": "STOCK",
+    "value": "10.25",
+    "stock": {
+      "id": 18
+    },
+    "amount": "2",
+    "date": "2023-05-16",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "2.53",
+    "stock": {
+      "id": 17
+    },
+    "amount": "3",
+    "date": "2023-05-16",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "41.78",
+    "stock": {
+      "id": 17
+    },
+    "amount": "48",
+    "date": "2023-05-19",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "125.39",
+    "stock": {
+      "id": 13
+    },
+    "amount": "3",
+    "date": "2023-05-19",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "139.85",
+    "stock": {
+      "id": 10
+    },
+    "amount": "10",
+    "date": "2023-05-19",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "125.15",
+    "stock": {
+      "id": 8
+    },
+    "amount": "10",
+    "date": "2023-05-19",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "32.12",
+    "stock": {
+      "id": 18
+    },
+    "amount": "6",
+    "date": "2023-05-19",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "11.45",
+    "stock": {
+      "id": 18
+    },
+    "amount": "2",
+    "date": "2023-05-25",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "2.62",
+    "stock": {
+      "id": 17
+    },
+    "amount": "3",
+    "date": "2023-05-25",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "23.47",
+    "stock": {
+      "id": 7
+    },
+    "amount": "3",
+    "date": "2023-06-16",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "382.59",
+    "stock": {
+      "id": 7
+    },
+    "amount": "46",
+    "date": "2023-07-28",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "137.11",
+    "stock": {
+      "id": 18
+    },
+    "amount": "22",
+    "date": "2023-07-28",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "8.32",
+    "stock": {
+      "id": 7
+    },
+    "amount": "1",
+    "date": "2023-07-28",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "50.58",
+    "stock": {
+      "id": 19
+    },
+    "amount": "1",
+    "date": "2023-08-16",
+    "operation": "SELL"
+  },
+  {
+    "type": "STOCK",
+    "value": "103.86",
+    "stock": {
+      "id": 8
+    },
+    "amount": "9",
+    "date": "2023-08-16",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "11.54",
+    "stock": {
+      "id": 8
+    },
+    "amount": "1",
+    "date": "2023-08-28",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "46.18",
+    "stock": {
+      "id": 8
+    },
+    "amount": "4",
+    "date": "2023-08-28",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "5.63",
+    "stock": {
+      "id": 18
+    },
+    "amount": "1",
+    "date": "2023-08-28",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "34.1",
+    "stock": {
+      "id": 8
+    },
+    "amount": "3",
+    "date": "2023-11-01",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "205.44",
+    "stock": {
+      "id": 10
+    },
+    "amount": "12",
+    "date": "2023-11-28",
+    "operation": "SELL"
+  },
+  {
+    "type": "STOCK",
+    "value": "156.15",
+    "stock": {
+      "id": 12
+    },
+    "amount": "5",
+    "date": "2023-11-29",
+    "operation": "SELL"
+  },
+  {
+    "type": "STOCK",
+    "value": "206.96",
+    "stock": {
+      "id": 13
+    },
+    "amount": "4",
+    "date": "2023-11-29",
+    "operation": "SELL"
+  },
+  {
+    "type": "STOCK",
+    "value": "262.89",
+    "stock": {
+      "id": 11
+    },
+    "amount": "23",
+    "date": "2023-11-30",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "129.5",
+    "stock": {
+      "id": 1
+    },
+    "amount": "25",
+    "date": "2023-11-30",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "93.94",
+    "stock": {
+      "id": 18
+    },
+    "amount": "14",
+    "date": "2023-11-30",
+    "operation": "SELL"
+  },
+  {
+    "type": "STOCK",
+    "value": "36.53",
+    "stock": {
+      "id": 9
+    },
+    "amount": "1",
+    "date": "2023-11-30",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "45.98",
+    "stock": {
+      "id": 15
+    },
+    "amount": "2",
+    "date": "2024-01-09",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "5.79",
+    "stock": {
+      "id": 1
+    },
+    "amount": "1",
+    "date": "2024-01-12",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "5.9",
+    "stock": {
+      "id": 1
+    },
+    "amount": "1",
+    "date": "2024-01-15",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "39.76",
+    "stock": {
+      "id": 7
+    },
+    "amount": "4",
+    "date": "2024-01-30",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "5.59",
+    "stock": {
+      "id": 1
+    },
+    "amount": "1",
+    "date": "2024-01-30",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "75.1",
+    "stock": {
+      "id": 17
+    },
+    "amount": "104",
+    "date": "2024-01-30",
+    "operation": "SELL"
+  },
+  {
+    "type": "STOCK",
+    "value": "55.8",
+    "stock": {
+      "id": 1
+    },
+    "amount": "10",
+    "date": "2024-01-30",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "66.84",
+    "stock": {
+      "id": 1
+    },
+    "amount": "12",
+    "date": "2024-02-08",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "552",
+    "stock": {
+      "id": 1
+    },
+    "amount": "100",
+    "date": "2024-02-08",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "204.24",
+    "stock": {
+      "id": 1
+    },
+    "amount": "37",
+    "date": "2024-02-08",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "167.92",
+    "stock": {
+      "id": 3
+    },
+    "amount": "17",
+    "date": "2024-02-15",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "16.17",
+    "stock": {
+      "id": 1
+    },
+    "amount": "3",
+    "date": "2024-02-16",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "834.19",
+    "stock": {
+      "id": 3
+    },
+    "amount": "83",
+    "date": "2024-02-29",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "520",
+    "stock": {
+      "id": 1
+    },
+    "amount": "100",
+    "date": "2024-02-29",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "520",
+    "stock": {
+      "id": 5
+    },
+    "amount": "25",
+    "date": "2024-02-29",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "380.78",
+    "stock": {
+      "id": 2
+    },
+    "amount": "25",
+    "date": "2024-02-29",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "581.7",
+    "stock": {
+      "id": 6
+    },
+    "amount": "10",
+    "date": "2024-02-29",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "1378",
+    "stock": {
+      "id": 4
+    },
+    "amount": "100",
+    "date": "2024-03-01",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "339.66",
+    "stock": {
+      "id": 18
+    },
+    "amount": "37",
+    "date": "2024-03-06",
+    "operation": "SELL"
+  },
+  {
+    "type": "STOCK",
+    "value": "328.64",
+    "stock": {
+      "id": 5
+    },
+    "amount": "16",
+    "date": "2024-03-06",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "20.38",
+    "stock": {
+      "id": 3
+    },
+    "amount": "2",
+    "date": "2024-03-28",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "0",
+    "stock": {
+      "id": 6
+    },
+    "amount": "10",
+    "date": "2024-03-28",
+    "operation": "SPLIT"
+  },
+  {
+    "type": "STOCK",
+    "value": "146.04",
+    "stock": {
+      "id": 8
+    },
+    "amount": "13",
+    "date": "2024-06-13",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "1604.29",
+    "stock": {
+      "id": 9
+    },
+    "amount": "49",
+    "date": "2024-06-13",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "14.26",
+    "stock": {
+      "id": 2
+    },
+    "amount": "1",
+    "date": "2024-06-13",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "1981.39",
+    "stock": {
+      "id": 2
+    },
+    "amount": "139",
+    "date": "2024-06-13",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "1385.73",
+    "stock": {
+      "id": 6
+    },
+    "amount": "52",
+    "date": "2024-06-13",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "854.81",
+    "stock": {
+      "id": 5
+    },
+    "amount": "44",
+    "date": "2024-06-13",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "28.11",
+    "stock": {
+      "id": 14
+    },
+    "amount": "10",
+    "date": "2024-06-14",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "320.03",
+    "stock": {
+      "id": 3
+    },
+    "amount": "31",
+    "date": "2024-06-20",
+    "operation": "BUY"
+  },
+  {
+    "type": "STOCK",
+    "value": "10.33",
+    "stock": {
+      "id": 3
+    },
+    "amount": "1",
+    "date": "2024-06-20",
+    "operation": "BUY"
+  }
+]

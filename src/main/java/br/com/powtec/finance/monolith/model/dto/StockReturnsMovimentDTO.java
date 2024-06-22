@@ -13,7 +13,7 @@ import lombok.Setter;
 public class StockReturnsMovimentDTO extends MovimentDTO {
 
   private Integer amount;
-  private String ticker;
+  private AssetDTO stock;
   private StockReturnsOperationEnum operation;
   private Double unitValue;
 

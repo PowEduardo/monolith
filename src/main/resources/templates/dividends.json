@@ -2,7 +2,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "9.66",
-    "ticker": "TIMS3",
+    "stock": {
+      "id": 10
+    },
     "amount": "39",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -11,7 +13,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.65",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -20,7 +24,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "3.15",
-    "ticker": "TIMS3",
+    "stock": {
+      "id": 10
+    },
     "amount": "39",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -29,7 +35,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "6.29",
-    "ticker": "SANB4",
+    "stock": {
+      "id": 2
+    },
     "amount": "35",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -38,7 +46,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "27.45",
-    "ticker": "PETR4",
+    "stock": {
+      "id": 16
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -47,7 +57,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "1.05",
-    "ticker": "PETR4",
+    "stock": {
+      "id": 16
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -56,7 +68,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "17.49",
-    "ticker": "PETR4",
+    "stock": {
+      "id": 16
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -65,7 +79,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.81",
-    "ticker": "PETR4",
+    "stock": {
+      "id": 16
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -74,7 +90,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "5.09",
-    "ticker": "TIMS3",
+    "stock": {
+      "id": 10
+    },
     "amount": "50",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -83,7 +101,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "5.97",
-    "ticker": "VIVT3",
+    "stock": {
+      "id": 13
+    },
     "amount": "12",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -92,7 +112,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.35",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -101,7 +123,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "6.29",
-    "ticker": "SANB4",
+    "stock": {
+      "id": 2
+    },
     "amount": "35",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -110,7 +134,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "4.46",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -119,7 +145,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "4.53",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -128,7 +156,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.25",
-    "ticker": "TAEE4",
+    "stock": {
+      "id": 8
+    },
     "amount": "10",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -137,7 +167,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "1.88",
-    "ticker": "TAEE4",
+    "stock": {
+      "id": 8
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -146,7 +178,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "3.56",
-    "ticker": "TAEE4",
+    "stock": {
+      "id": 8
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -155,7 +189,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "4.46",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -164,7 +200,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.3",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -173,7 +211,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.3",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -182,7 +222,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "1.78",
-    "ticker": "VIVT3",
+    "stock": {
+      "id": 13
+    },
     "amount": "12",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -191,7 +233,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "7.46",
-    "ticker": "TIMS3",
+    "stock": {
+      "id": 10
+    },
     "amount": "50",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -200,7 +244,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.3",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -209,7 +255,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "4.7",
-    "ticker": "SANB4",
+    "stock": {
+      "id": 2
+    },
     "amount": "35",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -218,7 +266,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "1.87",
-    "ticker": "SANB4",
+    "stock": {
+      "id": 2
+    },
     "amount": "35",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -227,7 +277,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "6.78",
-    "ticker": "CPLE6",
+    "stock": {
+      "id": 7
+    },
     "amount": "50",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -236,7 +288,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.3",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -245,7 +299,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.14",
-    "ticker": "TAEE4",
+    "stock": {
+      "id": 8
+    },
     "amount": "37",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -254,7 +310,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "6.1",
-    "ticker": "TAEE4",
+    "stock": {
+      "id": 8
+    },
     "amount": "37",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -263,7 +321,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "9.96",
-    "ticker": "PETR4",
+    "stock": {
+      "id": 16
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -272,7 +332,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "1.03",
-    "ticker": "PETR4",
+    "stock": {
+      "id": 16
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -281,7 +343,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.23",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "15",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -290,7 +354,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "8.16",
-    "ticker": "TAEE4",
+    "stock": {
+      "id": 8
+    },
     "amount": "37",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -299,7 +365,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "8.74",
-    "ticker": "TIMS3",
+    "stock": {
+      "id": 10
+    },
     "amount": "38",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -308,7 +376,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.23",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "15",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -317,7 +387,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.23",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "15",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -326,7 +398,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "16.87",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "15",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -335,7 +409,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "3.15",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "15",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -344,7 +420,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "4.58",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -353,7 +431,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "3.49",
-    "ticker": "BBAS3",
+    "stock": {
+      "id": 6
+    },
     "amount": "10",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -362,7 +442,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.23",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "15",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -371,7 +453,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "1.61",
-    "ticker": "BBDC4",
+    "stock": {
+      "id": 4
+    },
     "amount": "100",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -380,7 +464,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "6.86",
-    "ticker": "TIMS3",
+    "stock": {
+      "id": 10
+    },
     "amount": "38",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -389,7 +475,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "2.67",
-    "ticker": "TIMS3",
+    "stock": {
+      "id": 10
+    },
     "amount": "38",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -398,7 +486,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "4.81",
-    "ticker": "VIVT3",
+    "stock": {
+      "id": 13
+    },
     "amount": "11",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -407,7 +497,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "1.15",
-    "ticker": "VIVT3",
+    "stock": {
+      "id": 13
+    },
     "amount": "15",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -416,7 +508,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "1.54",
-    "ticker": "VIVT3",
+    "stock": {
+      "id": 13
+    },
     "amount": "15",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -425,7 +519,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "2.04",
-    "ticker": "VIVT3",
+    "stock": {
+      "id": 13
+    },
     "amount": "15",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -434,7 +530,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "3.12",
-    "ticker": "VIVT3",
+    "stock": {
+      "id": 13
+    },
     "amount": "15",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -443,7 +541,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "2.46",
-    "ticker": "VIVT3",
+    "stock": {
+      "id": 13
+    },
     "amount": "15",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -452,7 +552,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "1.61",
-    "ticker": "BBDC4",
+    "stock": {
+      "id": 4
+    },
     "amount": "100",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -461,7 +563,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.23",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "15",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -470,7 +574,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.28",
-    "ticker": "CXSE3",
+    "stock": {
+      "id": 11
+    },
     "amount": "23",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -479,7 +585,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "12.66",
-    "ticker": "CXSE3",
+    "stock": {
+      "id": 11
+    },
     "amount": "23",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -488,7 +596,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "32.43",
-    "ticker": "CSMG3",
+    "stock": {
+      "id": 5
+    },
     "amount": "41",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -497,7 +607,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "1.19",
-    "ticker": "CPFE3",
+    "stock": {
+      "id": 9
+    },
     "amount": "1",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -506,7 +618,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "10.75",
-    "ticker": "SANB4",
+    "stock": {
+      "id": 2
+    },
     "amount": "60",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -515,7 +629,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "13.97",
-    "ticker": "TAEE4",
+    "stock": {
+      "id": 8
+    },
     "amount": "37",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -524,7 +640,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "10.81",
-    "ticker": "CSMG3",
+    "stock": {
+      "id": 5
+    },
     "amount": "41",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -533,7 +651,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "5.92",
-    "ticker": "CSMG3",
+    "stock": {
+      "id": 5
+    },
     "amount": "41",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -542,7 +662,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.67",
-    "ticker": "GGBR4",
+    "stock": {
+      "id": 15
+    },
     "amount": "2",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -551,7 +673,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "19.38",
-    "ticker": "GOAU4",
+    "stock": {
+      "id": 3
+    },
     "amount": "102",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -560,7 +684,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "1.61",
-    "ticker": "BBDC4",
+    "stock": {
+      "id": 4
+    },
     "amount": "100",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -569,7 +695,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "0.23",
-    "ticker": "ITUB4",
+    "stock": {
+      "id": 12
+    },
     "amount": "15",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -578,7 +706,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "4.98",
-    "ticker": "BBAS3",
+    "stock": {
+      "id": 6
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -587,7 +717,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "3.29",
-    "ticker": "BBAS3",
+    "stock": {
+      "id": 6
+    },
     "amount": "20",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -596,7 +728,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "4.41",
-    "ticker": "TAEE4",
+    "stock": {
+      "id": 8
+    },
     "amount": "37",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -605,7 +739,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "2.66",
-    "ticker": "SAPR4",
+    "stock": {
+      "id": 1
+    },
     "amount": "25",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -614,7 +750,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "2.46",
-    "ticker": "CPLE6",
+    "stock": {
+      "id": 7
+    },
     "amount": "54",
     "date": "2023-04-18",
     "operation": "DIVIDEND",
@@ -623,7 +761,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "7.43",
-    "ticker": "CPLE6",
+    "stock": {
+      "id": 7
+    },
     "amount": "50",
     "date": "2023-04-18",
     "operation": "JCP",
@@ -632,7 +772,9 @@
   {
     "type": "STOCK_RETURNS",
     "value": "12.5",
-    "ticker": "BBAS3",
+    "stock": {
+      "id": 6
+    },
     "amount": "72",
     "date": "2023-04-18",
     "operation": "JCP",

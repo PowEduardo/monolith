@@ -6,9 +6,10 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: create-drop
+    
 server:
   port: 8080
   servlet:
     encoding:
       charset: UTF-8
-    context-path: /moviments
+    context-path: /

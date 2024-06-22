@@ -15,11 +15,11 @@ import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 import br.com.powtec.finance.monolith.repository.StockReturnsMovimentRepository;
 import br.com.powtec.finance.monolith.repository.specification.StockReturnsMovimentSpecification;
 
-@Service("returnsService")
+@Service("stockReturnsService")
 public class StockReturnsMovimentServiceImpl extends MovimentServiceImpl {
 
   @Autowired
-  @Qualifier("returnsMapper")
+  @Qualifier("stockReturnsMapper")
   private MovimentMapper mapper;
   @Autowired
   private StockReturnsMovimentRepository repository;

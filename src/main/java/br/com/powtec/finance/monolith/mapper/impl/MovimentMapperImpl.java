@@ -3,7 +3,6 @@ package br.com.powtec.finance.monolith.mapper.impl;
 import java.util.List;
 
 import org.springframework.context.annotation.Primary;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import br.com.powtec.finance.monolith.mapper.MovimentMapper;
@@ -13,12 +12,6 @@ import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 @Component("movimentMapper")
 @Primary
 public class MovimentMapperImpl implements MovimentMapper {
-
-  @Override
-  public Page<MovimentDTO> toPageDto(Page<MovimentModel> pageModel) {
-    Page<MovimentDTO> pageResponse = pageModel.map(this::toDto);
-    return pageResponse;
-  }
 
   @Override
   public MovimentDTO toDto(MovimentModel model) {
