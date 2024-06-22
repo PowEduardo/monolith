@@ -25,7 +25,7 @@ public class MovimentMapperImplTest {
   public void should_returnAPageOfMovimentDto_when_toPageDtoIsCalled() {
     Page<MovimentModel> pageModel = mock(Page.class);
     when(pageModel.map(any())).thenReturn(mock(Page.class));
-    assertNotNull(mapper.toPageDto(pageModel));
+    assertNotNull(mapper.toDtosList(pageModel.getContent()));
   }
 
   @Test

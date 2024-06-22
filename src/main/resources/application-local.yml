@@ -13,9 +13,3 @@ spring:
     username: sa
     password:
     driverClassName: org.h2.Driver
-server:
-  port: 8080
-  servlet:
-    encoding:
-      charset: UTF-8
-    context-path: /moviments

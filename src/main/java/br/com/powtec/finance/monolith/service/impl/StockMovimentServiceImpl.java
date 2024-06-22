@@ -3,36 +3,38 @@ package br.com.powtec.finance.monolith.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import br.com.powtec.finance.monolith.mapper.StockMovimentMapper;
+import br.com.powtec.finance.monolith.mapper.MovimentMapper;
 import br.com.powtec.finance.monolith.model.StockMovimentModel;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
-import br.com.powtec.finance.monolith.model.dto.StockMovimentDTO;
 import br.com.powtec.finance.monolith.repository.StockMovimentRepository;
 import br.com.powtec.finance.monolith.repository.specification.StockMovimentSpecification;
-import br.com.powtec.finance.monolith.service.StockMovimentService;
 
-@Service
-public class StockMovimentServiceImpl implements StockMovimentService {
+@Service("stockMovimentService")
+@Transactional
+public class StockMovimentServiceImpl extends MovimentServiceImpl {
 
   @Autowired
   StockMovimentRepository repository;
 
   @Autowired
-  StockMovimentMapper mapper;
+  @Qualifier("stockMovimentMapper")
+  MovimentMapper mapper;
 
   @Override
-  public MovimentDTO create(StockMovimentDTO body) {
+  public MovimentDTO create(MovimentDTO body) {
     return mapper.toDtoOnlyId(repository.save(mapper.toModel(body)));
   }
 
   @Override
-  public void createInBatch(List<StockMovimentDTO> body) {
-    repository.saveAll(mapper.toModelsList(body));
+  public List<MovimentDTO> createInBatch(List<? extends MovimentDTO> body) {
+    return mapper.toDtosList(repository.saveAll(mapper.toModelsList(body)));
   }
 
   @Override
