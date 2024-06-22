@@ -44,9 +44,12 @@ public class StockMovimentMapperImpl implements StockMovimentMapper {
   }
 
   @Override
-  public Page<StockMovimentDTO> toPageDto(Page<MovimentModel> pageModel) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'toPageDto'");
+  public List<MovimentDTO> toDtosList(List<StockMovimentModel> pageModel) {
+    List<MovimentDTO> dtosList = new ArrayList<>(pageModel.size());
+    for (StockMovimentModel model : pageModel) {
+      dtosList.add(toDto(model));
+    }
+    return dtosList;
   }
 
   @Override
