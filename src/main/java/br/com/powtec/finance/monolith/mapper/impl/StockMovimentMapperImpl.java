@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import br.com.powtec.finance.monolith.mapper.MovimentMapper;
@@ -18,6 +18,7 @@ import br.com.powtec.finance.monolith.model.dto.StockMovimentDTO;
 public class StockMovimentMapperImpl implements StockMovimentMapper {
 
   @Autowired
+  @Qualifier("movimentMapper")
   MovimentMapper movimentMapper;
 
   @Override

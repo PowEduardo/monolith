@@ -1,13 +1,18 @@
 package br.com.powtec.finance.monolith.mapper.impl;
 
+import java.util.List;
+
+import org.springframework.context.annotation.Primary;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import br.com.powtec.finance.monolith.mapper.MovimentMapper;
 import br.com.powtec.finance.monolith.model.MovimentModel;
+import br.com.powtec.finance.monolith.model.StockMovimentModel;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 
-@Component
+@Component("movimentMapper")
+@Primary
 public class MovimentMapperImpl implements MovimentMapper {
 
   @Override
@@ -37,6 +42,12 @@ public class MovimentMapperImpl implements MovimentMapper {
         .type(dto.getType())
         .value(dto.getValue())
         .build();
+  }
+
+  @Override
+  public List<MovimentDTO> toDtosList(List<StockMovimentModel> pageModel) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'toDtosList'");
   }
 
 }
