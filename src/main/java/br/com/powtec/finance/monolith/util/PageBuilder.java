@@ -14,7 +14,7 @@ public class PageBuilder {
     if (option == null) {
       return Sort.by(Sort.Direction.DESC, "id");
     } else if (option.contains("-")) {
-      option = option.replace("-", option);
+      option = option.replace("-", "");
       return Sort.by(Sort.Direction.DESC, option);
     } else {
       return Sort.by(Sort.Direction.ASC, option);

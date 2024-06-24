@@ -27,11 +27,12 @@ public class AssetSpecification {
       public Predicate toPredicate(Root<AssetModel> root, CriteriaQuery<?> query,
           CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicates = new ArrayList<>();
-        for (String param : parameters.split(",")) {
-          String keyValue[] = param.split(":");
-          predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]), keyValue[1])));
+        if (parameters != null) {
+          for (String param : parameters.split(",")) {
+            String keyValue[] = param.split(":");
+            predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]), keyValue[1])));
+          }
         }
-
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
       }
 
