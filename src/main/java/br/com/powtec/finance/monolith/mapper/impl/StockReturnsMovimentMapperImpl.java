@@ -20,20 +20,21 @@ public class StockReturnsMovimentMapperImpl extends MovimentMapperImpl {
 
   @Override
   public MovimentDTO toDto(MovimentModel model) {
-    StockReturnsMovimentDTO stockDto = new StockReturnsMovimentDTO();
+    StockReturnsMovimentDTO returnsDto = new StockReturnsMovimentDTO();
     if (model instanceof StockReturnsMovimentModel) {
-      StockReturnsMovimentModel stockModel = (StockReturnsMovimentModel) model;
-      stockDto.setAmount(stockModel.getAmount());
-      stockDto.setDate(stockModel.getDate());
-      stockDto.setId(stockModel.getId());
-      stockDto.setStock(stockMapper.toDtoOnlyId(stockModel.getStock()));
-      stockDto.setType(stockModel.getType());
-      stockDto.setValue(stockModel.getValue());
-      stockDto.setOperation(stockModel.getOperation());
+      StockReturnsMovimentModel returnsModel = (StockReturnsMovimentModel) model;
+      returnsDto.setAmount(returnsModel.getAmount());
+      returnsDto.setDate(returnsModel.getDate());
+      returnsDto.setId(returnsModel.getId());
+      returnsDto.setStock(stockMapper.toDtoOnlyId(returnsModel.getStock()));
+      returnsDto.setType(returnsModel.getType());
+      returnsDto.setValue(returnsModel.getValue());
+      returnsDto.setOperation(returnsModel.getOperation());
+      returnsDto.setUnitValue(returnsModel.getUnitValue());
     } else {
       throw new RuntimeException("You fucked up");
     }
-    return stockDto;
+    return returnsDto;
   }
 
   @Override
