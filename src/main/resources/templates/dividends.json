@@ -17,7 +17,7 @@
       "id": 12
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-05-02",
     "operation": "JCP",
     "unitValue": "0.0325"
   },
@@ -28,7 +28,7 @@
       "id": 10
     },
     "amount": "39",
-    "date": "2023-04-18",
+    "date": "2023-05-09",
     "operation": "JCP",
     "unitValue": "0.0807692307692308"
   },
@@ -39,7 +39,7 @@
       "id": 2
     },
     "amount": "35",
-    "date": "2023-04-18",
+    "date": "2023-05-15",
     "operation": "JCP",
     "unitValue": "0.179714285714286"
   },
@@ -50,7 +50,7 @@
       "id": 16
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-05-19",
     "operation": "DIVIDEND",
     "unitValue": "1.3725"
   },
@@ -61,7 +61,7 @@
       "id": 16
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-05-19",
     "operation": "JCP",
     "unitValue": "0.0525"
   },
@@ -72,7 +72,7 @@
       "id": 16
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-05-19",
     "operation": "DIVIDEND",
     "unitValue": "0.8745"
   },
@@ -83,7 +83,7 @@
       "id": 16
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-05-19",
     "operation": "JCP",
     "unitValue": "0.0405"
   },
@@ -94,7 +94,7 @@
       "id": 10
     },
     "amount": "50",
-    "date": "2023-04-18",
+    "date": "2023-07-12",
     "operation": "JCP",
     "unitValue": "0.1018"
   },
@@ -105,7 +105,7 @@
       "id": 13
     },
     "amount": "12",
-    "date": "2023-04-18",
+    "date": "2023-07-18",
     "operation": "DIVIDEND",
     "unitValue": "0.4975"
   },
@@ -116,7 +116,7 @@
       "id": 12
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-08-01",
     "operation": "JCP",
     "unitValue": "0.0175"
   },
@@ -127,7 +127,7 @@
       "id": 2
     },
     "amount": "35",
-    "date": "2023-04-18",
+    "date": "2023-08-16",
     "operation": "JCP",
     "unitValue": "0.179714285714286"
   },
@@ -138,7 +138,7 @@
       "id": 12
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-08-25",
     "operation": "JCP",
     "unitValue": "0.223"
   },
@@ -149,7 +149,7 @@
       "id": 12
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-08-25",
     "operation": "JCP",
     "unitValue": "0.2265"
   },
@@ -160,7 +160,7 @@
       "id": 8
     },
     "amount": "10",
-    "date": "2023-04-18",
+    "date": "2023-08-29",
     "operation": "DIVIDEND",
     "unitValue": "0.025"
   },
@@ -171,7 +171,7 @@
       "id": 8
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-08-29",
     "operation": "DIVIDEND",
     "unitValue": "0.094"
   },
@@ -182,7 +182,7 @@
       "id": 8
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-08-29",
     "operation": "JCP",
     "unitValue": "0.178"
   },
@@ -193,7 +193,7 @@
       "id": 12
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-08-31",
     "operation": "JCP",
     "unitValue": "0.223"
   },
@@ -204,7 +204,7 @@
       "id": 12
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-09-01",
     "operation": "JCP",
     "unitValue": "0.015"
   },
@@ -215,7 +215,7 @@
       "id": 12
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-10-02",
     "operation": "JCP",
     "unitValue": "0.015"
   },
@@ -226,7 +226,7 @@
       "id": 13
     },
     "amount": "12",
-    "date": "2023-04-18",
+    "date": "2023-10-18",
     "operation": "JCP",
     "unitValue": "0.148333333333333"
   },
@@ -237,7 +237,7 @@
       "id": 10
     },
     "amount": "50",
-    "date": "2023-04-18",
+    "date": "2023-10-23",
     "operation": "JCP",
     "unitValue": "0.1492"
   },
@@ -248,7 +248,7 @@
       "id": 12
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-11-01",
     "operation": "JCP",
     "unitValue": "0.015"
   },
@@ -259,7 +259,7 @@
       "id": 2
     },
     "amount": "35",
-    "date": "2023-04-18",
+    "date": "2023-11-10",
     "operation": "JCP",
     "unitValue": "0.134285714285714"
   },
@@ -270,7 +270,7 @@
       "id": 2
     },
     "amount": "35",
-    "date": "2023-04-18",
+    "date": "2023-11-10",
     "operation": "DIVIDEND",
     "unitValue": "0.0534285714285714"
   },
@@ -281,7 +281,7 @@
       "id": 7
     },
     "amount": "50",
-    "date": "2023-04-18",
+    "date": "2023-11-30",
     "operation": "JCP",
     "unitValue": "0.1356"
   },
@@ -292,7 +292,7 @@
       "id": 12
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-12-01",
     "operation": "JCP",
     "unitValue": "0.015"
   },
@@ -303,7 +303,7 @@
       "id": 8
     },
     "amount": "37",
-    "date": "2023-04-18",
+    "date": "2023-12-15",
     "operation": "DIVIDEND",
     "unitValue": "0.00378378378378378"
   },
@@ -314,7 +314,7 @@
       "id": 8
     },
     "amount": "37",
-    "date": "2023-04-18",
+    "date": "2023-12-15",
     "operation": "JCP",
     "unitValue": "0.164864864864865"
   },
@@ -325,7 +325,7 @@
       "id": 16
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-12-27",
     "operation": "DIVIDEND",
     "unitValue": "0.498"
   },
@@ -336,7 +336,7 @@
       "id": 16
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2023-12-27",
     "operation": "JCP",
     "unitValue": "0.0515"
   },
@@ -347,7 +347,7 @@
       "id": 12
     },
     "amount": "15",
-    "date": "2023-04-18",
+    "date": "2024-01-02",
     "operation": "JCP",
     "unitValue": "0.0153333333333333"
   },
@@ -358,7 +358,7 @@
       "id": 8
     },
     "amount": "37",
-    "date": "2023-04-18",
+    "date": "2024-01-16",
     "operation": "DIVIDEND",
     "unitValue": "0.220540540540541"
   },
@@ -369,7 +369,7 @@
       "id": 10
     },
     "amount": "38",
-    "date": "2023-04-18",
+    "date": "2024-01-23",
     "operation": "JCP",
     "unitValue": "0.23"
   },
@@ -380,7 +380,7 @@
       "id": 12
     },
     "amount": "15",
-    "date": "2023-04-18",
+    "date": "2024-02-01",
     "operation": "JCP",
     "unitValue": "0.0153333333333333"
   },
@@ -391,7 +391,7 @@
       "id": 12
     },
     "amount": "15",
-    "date": "2023-04-18",
+    "date": "2024-03-01",
     "operation": "JCP",
     "unitValue": "0.0153333333333333"
   },
@@ -402,7 +402,7 @@
       "id": 12
     },
     "amount": "15",
-    "date": "2023-04-18",
+    "date": "2024-03-08",
     "operation": "DIVIDEND",
     "unitValue": "1.12466666666667"
   },
@@ -413,7 +413,7 @@
       "id": 12
     },
     "amount": "15",
-    "date": "2023-04-18",
+    "date": "2024-03-08",
     "operation": "JCP",
     "unitValue": "0.21"
   },
@@ -424,7 +424,7 @@
       "id": 12
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2024-03-08",
     "operation": "JCP",
     "unitValue": "0.229"
   },
@@ -435,7 +435,7 @@
       "id": 6
     },
     "amount": "10",
-    "date": "2023-04-18",
+    "date": "2024-03-27",
     "operation": "JCP",
     "unitValue": "0.349"
   },
@@ -446,7 +446,7 @@
       "id": 12
     },
     "amount": "15",
-    "date": "2023-04-18",
+    "date": "2024-04-01",
     "operation": "JCP",
     "unitValue": "0.0153333333333333"
   },
@@ -457,7 +457,7 @@
       "id": 4
     },
     "amount": "100",
-    "date": "2023-04-18",
+    "date": "2024-04-01",
     "operation": "JCP",
     "unitValue": "0.0161"
   },
@@ -468,7 +468,7 @@
       "id": 10
     },
     "amount": "38",
-    "date": "2023-04-18",
+    "date": "2024-04-22",
     "operation": "DIVIDEND",
     "unitValue": "0.180526315789474"
   },
@@ -479,7 +479,7 @@
       "id": 10
     },
     "amount": "38",
-    "date": "2023-04-18",
+    "date": "2024-04-22",
     "operation": "JCP",
     "unitValue": "0.0702631578947368"
   },
@@ -490,7 +490,7 @@
       "id": 13
     },
     "amount": "11",
-    "date": "2023-04-18",
+    "date": "2024-04-23",
     "operation": "JCP",
     "unitValue": "0.437272727272727"
   },
@@ -501,7 +501,7 @@
       "id": 13
     },
     "amount": "15",
-    "date": "2023-04-18",
+    "date": "2024-04-23",
     "operation": "JCP",
     "unitValue": "0.0766666666666667"
   },
@@ -512,7 +512,7 @@
       "id": 13
     },
     "amount": "15",
-    "date": "2023-04-18",
+    "date": "2024-04-23",
     "operation": "JCP",
     "unitValue": "0.102666666666667"
   },
@@ -523,7 +523,7 @@
       "id": 13
     },
     "amount": "15",
-    "date": "2023-04-18",
+    "date": "2024-04-23",
     "operation": "JCP",
     "unitValue": "0.136"
   },
@@ -534,7 +534,7 @@
       "id": 13
     },
     "amount": "15",
-    "date": "2023-04-18",
+    "date": "2024-04-23",
     "operation": "JCP",
     "unitValue": "0.208"
   },
@@ -545,7 +545,7 @@
       "id": 13
     },
     "amount": "15",
-    "date": "2023-04-18",
+    "date": "2024-04-23",
     "operation": "JCP",
     "unitValue": "0.164"
   },
@@ -556,7 +556,7 @@
       "id": 4
     },
     "amount": "100",
-    "date": "2023-04-18",
+    "date": "2024-05-02",
     "operation": "JCP",
     "unitValue": "0.0161"
   },
@@ -567,7 +567,7 @@
       "id": 12
     },
     "amount": "15",
-    "date": "2023-04-18",
+    "date": "2024-05-02",
     "operation": "JCP",
     "unitValue": "0.0153333333333333"
   },
@@ -578,7 +578,7 @@
       "id": 11
     },
     "amount": "23",
-    "date": "2023-04-18",
+    "date": "2024-05-08",
     "operation": "JCP",
     "unitValue": "0.0121739130434783"
   },
@@ -589,7 +589,7 @@
       "id": 11
     },
     "amount": "23",
-    "date": "2023-04-18",
+    "date": "2024-05-08",
     "operation": "DIVIDEND",
     "unitValue": "0.550434782608696"
   },
@@ -600,7 +600,7 @@
       "id": 5
     },
     "amount": "41",
-    "date": "2023-04-18",
+    "date": "2024-05-10",
     "operation": "DIVIDEND",
     "unitValue": "0.790975609756098"
   },
@@ -611,7 +611,7 @@
       "id": 9
     },
     "amount": "1",
-    "date": "2023-04-18",
+    "date": "2024-05-13",
     "operation": "DIVIDEND",
     "unitValue": "1.19"
   },
@@ -622,7 +622,7 @@
       "id": 2
     },
     "amount": "60",
-    "date": "2023-04-18",
+    "date": "2024-05-15",
     "operation": "JCP",
     "unitValue": "0.179166666666667"
   },
@@ -633,7 +633,7 @@
       "id": 8
     },
     "amount": "37",
-    "date": "2023-04-18",
+    "date": "2024-05-16",
     "operation": "DIVIDEND",
     "unitValue": "0.377567567567568"
   },
@@ -644,7 +644,7 @@
       "id": 5
     },
     "amount": "41",
-    "date": "2023-04-18",
+    "date": "2024-05-17",
     "operation": "JCP",
     "unitValue": "0.263658536585366"
   },
@@ -655,7 +655,7 @@
       "id": 5
     },
     "amount": "41",
-    "date": "2023-04-18",
+    "date": "2024-05-17",
     "operation": "DIVIDEND",
     "unitValue": "0.144390243902439"
   },
@@ -666,7 +666,7 @@
       "id": 15
     },
     "amount": "2",
-    "date": "2023-04-18",
+    "date": "2024-05-27",
     "operation": "DIVIDEND",
     "unitValue": "0.335"
   },
@@ -677,7 +677,7 @@
       "id": 3
     },
     "amount": "102",
-    "date": "2023-04-18",
+    "date": "2024-05-28",
     "operation": "DIVIDEND",
     "unitValue": "0.19"
   },
@@ -688,7 +688,7 @@
       "id": 4
     },
     "amount": "100",
-    "date": "2023-04-18",
+    "date": "2024-06-03",
     "operation": "JCP",
     "unitValue": "0.0161"
   },
@@ -699,7 +699,7 @@
       "id": 12
     },
     "amount": "15",
-    "date": "2023-04-18",
+    "date": "2024-06-03",
     "operation": "JCP",
     "unitValue": "0.0153333333333333"
   },
@@ -710,7 +710,7 @@
       "id": 6
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2024-06-21",
     "operation": "JCP",
     "unitValue": "0.249"
   },
@@ -721,7 +721,7 @@
       "id": 6
     },
     "amount": "20",
-    "date": "2023-04-18",
+    "date": "2024-06-21",
     "operation": "DIVIDEND",
     "unitValue": "0.1645"
   },
@@ -732,7 +732,7 @@
       "id": 8
     },
     "amount": "37",
-    "date": "2023-04-18",
+    "date": "2024-07-27",
     "operation": "JCP",
     "unitValue": "0.119189189189189"
   },
@@ -743,7 +743,7 @@
       "id": 1
     },
     "amount": "25",
-    "date": "2023-04-18",
+    "date": "2024-07-27",
     "operation": "JCP",
     "unitValue": "0.1064"
   },
@@ -754,7 +754,7 @@
       "id": 7
     },
     "amount": "54",
-    "date": "2023-04-18",
+    "date": "2024-06-28",
     "operation": "DIVIDEND",
     "unitValue": "0.0455555555555556"
   },
@@ -765,7 +765,7 @@
       "id": 7
     },
     "amount": "50",
-    "date": "2023-04-18",
+    "date": "2024-06-28",
     "operation": "JCP",
     "unitValue": "0.1486"
   },
@@ -776,7 +776,7 @@
       "id": 6
     },
     "amount": "72",
-    "date": "2023-04-18",
+    "date": "2024-06-28",
     "operation": "JCP",
     "unitValue": "0.173611111111111"
   }

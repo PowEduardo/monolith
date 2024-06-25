@@ -46,6 +46,7 @@ public class StockMovimentServiceImpl extends MovimentServiceImpl {
   public Page<MovimentDTO> search(Pageable pageable, String parameters) {
     Page<StockMovimentModel> page = repository.findAll(StockMovimentSpecification.getQuery(parameters), pageable);
     List<MovimentDTO> response = mapper.toDtosList(page.getContent());
+
     return new PageImpl<>(response, pageable, page.getTotalElements());
   }
 
