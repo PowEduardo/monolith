@@ -1,6 +1,6 @@
 package br.com.powtec.finance.monolith.model;
 
-import br.com.powtec.finance.monolith.enums.StockOperationEnum;
+import br.com.powtec.finance.monolith.enums.AssetMovimentOperationEnum;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -25,6 +25,6 @@ public class AssetMovimentModel extends MovimentModel {
   @JoinColumn(name = "asset_id")
   private AssetModel asset;
   @Enumerated(EnumType.STRING)
-  private StockOperationEnum operation;
+  private AssetMovimentOperationEnum operation;
 
 }

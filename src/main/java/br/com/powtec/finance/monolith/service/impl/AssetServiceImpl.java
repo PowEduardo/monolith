@@ -8,11 +8,13 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import br.com.powtec.finance.monolith.calculations.AssetConsolidateCalculation;
 import br.com.powtec.finance.monolith.calculations.AssetDetailsCalculation;
 import br.com.powtec.finance.monolith.mapper.AssetMapper;
 import br.com.powtec.finance.monolith.model.AssetModel;
 import br.com.powtec.finance.monolith.model.AssetMovimentModel;
 import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
+import br.com.powtec.finance.monolith.model.dto.AssetConsolidatedDTO;
 import br.com.powtec.finance.monolith.model.dto.AssetDTO;
 import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
 import br.com.powtec.finance.monolith.repository.AssetRepository;
@@ -66,6 +68,13 @@ public class AssetServiceImpl implements AssetService {
     List<AssetReturnsMovimentModel> returns = returnsRepository.findAllByStockId(id);
     AssetDetailsCalculation assetDetailsCalculation = new AssetDetailsCalculation();
     return assetDetailsCalculation.calculate(asset, moviments, returns);
+  }
+
+  @Override
+  public AssetConsolidatedDTO getConsolidated() {
+    AssetConsolidateCalculation consolidate = new AssetConsolidateCalculation();
+
+    return consolidate.calculate(repository.findAll());
   }
 
 }

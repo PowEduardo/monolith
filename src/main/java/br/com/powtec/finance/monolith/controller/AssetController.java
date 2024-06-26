@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.powtec.finance.monolith.model.dto.AssetConsolidatedDTO;
 import br.com.powtec.finance.monolith.model.dto.AssetDTO;
 import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
 import br.com.powtec.finance.monolith.service.AssetService;
@@ -62,5 +63,10 @@ public class AssetController {
   @GetMapping("/assets/{id}/details")
   public ResponseEntity<AssetDetailsDTO> getDetails(@PathVariable Long id) {
     return ResponseEntity.ok().body(service.getDetails(id));
+  }
+
+  @GetMapping("/assets/{id}/consolidate")
+  public ResponseEntity<AssetConsolidatedDTO> getConsolidated(@PathVariable Long id) {
+    return ResponseEntity.ok().body(service.getConsolidated());
   }
 }
