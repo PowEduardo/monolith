@@ -18,7 +18,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class StockReturnsMovimentModel extends MovimentModel {
+public class AssetReturnsMovimentModel extends MovimentModel {
 
   private Integer amount;
   @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)

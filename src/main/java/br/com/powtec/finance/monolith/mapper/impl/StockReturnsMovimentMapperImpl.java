@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 
 import br.com.powtec.finance.monolith.mapper.AssetMapper;
 import br.com.powtec.finance.monolith.model.MovimentModel;
-import br.com.powtec.finance.monolith.model.StockReturnsMovimentModel;
+import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 import br.com.powtec.finance.monolith.model.dto.StockReturnsMovimentDTO;
 
@@ -21,8 +21,8 @@ public class StockReturnsMovimentMapperImpl extends MovimentMapperImpl {
   @Override
   public MovimentDTO toDto(MovimentModel model) {
     StockReturnsMovimentDTO returnsDto = new StockReturnsMovimentDTO();
-    if (model instanceof StockReturnsMovimentModel) {
-      StockReturnsMovimentModel returnsModel = (StockReturnsMovimentModel) model;
+    if (model instanceof AssetReturnsMovimentModel) {
+      AssetReturnsMovimentModel returnsModel = (AssetReturnsMovimentModel) model;
       returnsDto.setAmount(returnsModel.getAmount());
       returnsDto.setDate(returnsModel.getDate());
       returnsDto.setId(returnsModel.getId());
@@ -49,7 +49,7 @@ public class StockReturnsMovimentMapperImpl extends MovimentMapperImpl {
   @Override
   public MovimentModel toModel(MovimentDTO dto) {
     StockReturnsMovimentDTO request = (StockReturnsMovimentDTO) dto;
-    StockReturnsMovimentModel model = new StockReturnsMovimentModel();
+    AssetReturnsMovimentModel model = new AssetReturnsMovimentModel();
     model.setDate(request.getDate());
     model.setType(request.getType());
     model.setValue(request.getValue());

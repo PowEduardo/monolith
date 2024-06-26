@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.powtec.finance.monolith.mapper.MovimentMapper;
-import br.com.powtec.finance.monolith.model.StockMovimentModel;
+import br.com.powtec.finance.monolith.model.AssetMovimentModel;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
-import br.com.powtec.finance.monolith.repository.StockMovimentRepository;
+import br.com.powtec.finance.monolith.repository.AssetMovimentRepository;
 import br.com.powtec.finance.monolith.repository.specification.StockMovimentSpecification;
 
 @Service("stockMovimentService")
@@ -21,7 +21,7 @@ import br.com.powtec.finance.monolith.repository.specification.StockMovimentSpec
 public class StockMovimentServiceImpl extends MovimentServiceImpl {
 
   @Autowired
-  StockMovimentRepository repository;
+  AssetMovimentRepository repository;
 
   @Autowired
   @Qualifier("stockMovimentMapper")
@@ -44,7 +44,7 @@ public class StockMovimentServiceImpl extends MovimentServiceImpl {
 
   @Override
   public Page<MovimentDTO> search(Pageable pageable, String parameters) {
-    Page<StockMovimentModel> page = repository.findAll(StockMovimentSpecification.getQuery(parameters), pageable);
+    Page<AssetMovimentModel> page = repository.findAll(StockMovimentSpecification.getQuery(parameters), pageable);
     List<MovimentDTO> response = mapper.toDtosList(page.getContent());
 
     return new PageImpl<>(response, pageable, page.getTotalElements());

@@ -7,7 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
-import br.com.powtec.finance.monolith.model.StockMovimentModel;
+import br.com.powtec.finance.monolith.model.AssetMovimentModel;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
@@ -18,13 +18,13 @@ import lombok.NoArgsConstructor;
 @Component
 public class StockMovimentSpecification {
 
-  public static Specification<StockMovimentModel> getQuery(String parameters) {
+  public static Specification<AssetMovimentModel> getQuery(String parameters) {
     return new Specification<>() {
 
       @SuppressWarnings("null")
       @Override
       @Nullable
-      public Predicate toPredicate(Root<StockMovimentModel> root, CriteriaQuery<?> query,
+      public Predicate toPredicate(Root<AssetMovimentModel> root, CriteriaQuery<?> query,
           CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicates = new ArrayList<>();
         for (String param : parameters.split(",")) {
