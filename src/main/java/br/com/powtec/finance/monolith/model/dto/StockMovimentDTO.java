@@ -1,6 +1,6 @@
 package br.com.powtec.finance.monolith.model.dto;
 
-import br.com.powtec.finance.monolith.enums.StockOperationEnum;
+import br.com.powtec.finance.monolith.enums.AssetMovimentOperationEnum;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +14,6 @@ public class StockMovimentDTO extends MovimentDTO {
 
   AssetDTO asset;
   Integer amount;
-  StockOperationEnum operation;
+  AssetMovimentOperationEnum operation;
 
 }

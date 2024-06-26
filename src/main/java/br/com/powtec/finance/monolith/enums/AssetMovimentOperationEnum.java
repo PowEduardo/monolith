@@ -3,7 +3,7 @@ package br.com.powtec.finance.monolith.enums;
 import lombok.Getter;
 
 @Getter
-public enum StockOperationEnum {
+public enum AssetMovimentOperationEnum {
 
   BUY("BUY"),
   SELL("SELL"),
@@ -11,7 +11,7 @@ public enum StockOperationEnum {
 
   private String name;
 
-  StockOperationEnum(String name) {
+  AssetMovimentOperationEnum(String name) {
     this.name = name;
   }
 }

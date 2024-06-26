@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 import java.sql.Date;
 import java.util.List;
 
-import br.com.powtec.finance.monolith.enums.StockOperationEnum;
+import br.com.powtec.finance.monolith.enums.AssetMovimentOperationEnum;
 import br.com.powtec.finance.monolith.model.AssetModel;
 import br.com.powtec.finance.monolith.model.AssetMovimentModel;
 import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
@@ -21,11 +21,11 @@ public class AssetDetailsCalculation {
 
   private void calculateAmountAndPaidValue(List<AssetMovimentModel> moviments) {
     for (AssetMovimentModel stockMoviment : moviments) {
-      if (stockMoviment.getOperation() == StockOperationEnum.BUY
-          || stockMoviment.getOperation() == StockOperationEnum.SPLIT) {
+      if (stockMoviment.getOperation() == AssetMovimentOperationEnum.BUY
+          || stockMoviment.getOperation() == AssetMovimentOperationEnum.SPLIT) {
         amount += stockMoviment.getAmount();
         paidValue += stockMoviment.getValue();
-      } else if (stockMoviment.getOperation() == StockOperationEnum.SELL) {
+      } else if (stockMoviment.getOperation() == AssetMovimentOperationEnum.SELL) {
         amount -= stockMoviment.getAmount();
       }
     }
