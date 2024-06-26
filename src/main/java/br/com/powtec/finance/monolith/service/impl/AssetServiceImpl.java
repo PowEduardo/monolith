@@ -8,10 +8,16 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import br.com.powtec.finance.monolith.calculations.AssetDetailsCalculation;
 import br.com.powtec.finance.monolith.mapper.AssetMapper;
 import br.com.powtec.finance.monolith.model.AssetModel;
+import br.com.powtec.finance.monolith.model.AssetMovimentModel;
+import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
 import br.com.powtec.finance.monolith.model.dto.AssetDTO;
+import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
 import br.com.powtec.finance.monolith.repository.AssetRepository;
+import br.com.powtec.finance.monolith.repository.AssetMovimentRepository;
+import br.com.powtec.finance.monolith.repository.StockReturnsMovimentRepository;
 import br.com.powtec.finance.monolith.repository.specification.AssetSpecification;
 import br.com.powtec.finance.monolith.service.AssetService;
 
@@ -20,6 +26,12 @@ public class AssetServiceImpl implements AssetService {
 
   @Autowired
   private AssetRepository repository;
+
+  @Autowired
+  private AssetMovimentRepository movimentRepository;
+
+  @Autowired
+  private StockReturnsMovimentRepository returnsRepository;
 
   @Autowired
   private AssetMapper mapper;
@@ -45,6 +57,15 @@ public class AssetServiceImpl implements AssetService {
         pageable);
     List<AssetDTO> response = mapper.toDtosList(page.getContent());
     return new PageImpl<>(response, pageable, page.getTotalElements());
+  }
+
+  @Override
+  public AssetDetailsDTO getDetails(Long id) {
+    AssetModel asset = repository.findById(id).orElseThrow();
+    List<AssetMovimentModel> moviments = movimentRepository.findAllByAssetId(id);
+    List<AssetReturnsMovimentModel> returns = returnsRepository.findAllByStockId(id);
+    AssetDetailsCalculation assetDetailsCalculation = new AssetDetailsCalculation();
+    return assetDetailsCalculation.calculate(asset, moviments, returns);
   }
 
 }

@@ -6,6 +6,7 @@ spring:
     generate-ddl: true
     hibernate:
       ddl-auto: create-drop
+    open-in-view: true
     
 server:
   port: 8080

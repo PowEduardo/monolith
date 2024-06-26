@@ -1,20 +1,9 @@
 package br.com.powtec.finance.monolith.service;
 
-import java.util.List;
-
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-
 import br.com.powtec.finance.monolith.model.dto.AssetDTO;
+import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
 
-public interface AssetService {
+public interface AssetService extends BaseCrudService<AssetDTO> {
 
-  public AssetDTO create(AssetDTO body);
-
-  public List<AssetDTO> createInBatch(List<AssetDTO> body);
-
-  public AssetDTO findById(Long id);
-
-  public Page<AssetDTO> search(Pageable pageable, String parameters);
-
+  public AssetDetailsDTO getDetails(Long id);
 }

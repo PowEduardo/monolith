@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.monolith.model.dto.AssetDTO;
+import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
 import br.com.powtec.finance.monolith.service.AssetService;
 import jakarta.validation.constraints.Min;
 
@@ -56,5 +57,10 @@ public class AssetController {
       @RequestParam(value = "_sort", required = false) String sort) {
     Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
     return ResponseEntity.ok().body(service.search(pageable, parameters));
+  }
+
+  @GetMapping("/assets/{id}/details")
+  public ResponseEntity<AssetDetailsDTO> getDetails(@PathVariable Long id) {
+    return ResponseEntity.ok().body(service.getDetails(id));
   }
 }
