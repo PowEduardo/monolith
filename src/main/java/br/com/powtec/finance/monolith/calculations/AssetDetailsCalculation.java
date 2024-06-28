@@ -122,7 +122,7 @@ public class AssetDetailsCalculation {
 
     return AssetDetailsDTO.builder()
         .amount(this.amount)
-        .paidValue(this.paidValue)
+        .paidValue(formatDouble(this.paidValue))
         .currentValue(this.currentValue(asset.getValue()))
         .average(this.average())
         .returns(0.0)
@@ -131,5 +131,9 @@ public class AssetDetailsCalculation {
         .ady(0.0)
         .targetAmount(0)
         .build();
+  }
+
+  private Double formatDouble(Double value) {
+    return BigDecimal.valueOf(value).setScale(2, RoundingMode.DOWN).doubleValue();
   }
 }
