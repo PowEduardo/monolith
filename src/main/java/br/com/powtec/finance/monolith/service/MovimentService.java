@@ -11,7 +11,7 @@ public interface MovimentService {
 
   public Page<MovimentDTO> search(Pageable pageable, String parameters);
 
-  public MovimentDTO create(MovimentDTO request);
+  public MovimentDTO create(MovimentDTO request, Long assetId);
 
   public List<MovimentDTO> createInBatch(List<? extends MovimentDTO> request);
 

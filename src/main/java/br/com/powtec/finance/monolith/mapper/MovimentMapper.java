@@ -13,7 +13,7 @@ public interface MovimentMapper {
 
   public MovimentDTO toDtoOnlyId(MovimentModel model);
 
-  public MovimentModel toModel(MovimentDTO dto);
+  public MovimentModel toModel(MovimentDTO dto, Long assetId);
 
   public List<MovimentModel> toModelsList(List<? extends MovimentDTO> movimentsDto);
 }

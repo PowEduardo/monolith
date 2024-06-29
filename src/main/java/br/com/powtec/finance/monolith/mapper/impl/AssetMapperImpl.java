@@ -55,4 +55,9 @@ public class AssetMapperImpl implements AssetMapper {
     return stockModels;
   }
 
+  @Override
+  public AssetModel toModelById(Long id) {
+    return AssetModel.builder().id(id).build();
+  }
+
 }

@@ -46,13 +46,13 @@ public class StockMovimentMapperImpl extends MovimentMapperImpl {
   }
 
   @Override
-  public MovimentModel toModel(MovimentDTO dto) {
+  public MovimentModel toModel(MovimentDTO dto, Long assetId) {
     StockMovimentDTO request = (StockMovimentDTO) dto;
     AssetMovimentModel model = new AssetMovimentModel();
     model.setDate(request.getDate());
     model.setType(request.getType());
     model.setValue(request.getValue());
-    model.setAsset(stockMapper.toModel(request.getAsset()));
+    model.setAsset(stockMapper.toModelById(assetId));
     model.setAmount(request.getAmount());
     model.setOperation(request.getOperation());
     return model;
@@ -60,11 +60,12 @@ public class StockMovimentMapperImpl extends MovimentMapperImpl {
 
   @Override
   public List<MovimentModel> toModelsList(List<? extends MovimentDTO> dto) {
-    List<MovimentModel> modelsList = new ArrayList<>(dto.size());
-    for (MovimentDTO stockDto : dto) {
-      modelsList.add(toModel(stockDto));
-    }
-    return modelsList;
+    throw new UnsupportedOperationException("Method not yep finished");
+    // List<MovimentModel> modelsList = new ArrayList<>(dto.size());
+    // for (MovimentDTO stockDto : dto) {
+    // modelsList.add(toModel(stockDto, 0L));
+    // }
+    // return modelsList;
   }
 
 }

@@ -26,7 +26,7 @@ public class StockReturnsMovimentMapperImpl extends MovimentMapperImpl {
       returnsDto.setAmount(returnsModel.getAmount());
       returnsDto.setDate(returnsModel.getDate());
       returnsDto.setId(returnsModel.getId());
-      returnsDto.setStock(stockMapper.toDtoOnlyId(returnsModel.getStock()));
+      returnsDto.setAsset(stockMapper.toDtoOnlyId(returnsModel.getStock()));
       returnsDto.setType(returnsModel.getType());
       returnsDto.setValue(returnsModel.getValue());
       returnsDto.setOperation(returnsModel.getOperation());
@@ -47,13 +47,13 @@ public class StockReturnsMovimentMapperImpl extends MovimentMapperImpl {
   }
 
   @Override
-  public MovimentModel toModel(MovimentDTO dto) {
+  public MovimentModel toModel(MovimentDTO dto, Long id) {
     StockReturnsMovimentDTO request = (StockReturnsMovimentDTO) dto;
     AssetReturnsMovimentModel model = new AssetReturnsMovimentModel();
     model.setDate(request.getDate());
     model.setType(request.getType());
     model.setValue(request.getValue());
-    model.setStock(stockMapper.toModel(request.getStock()));
+    model.setStock(stockMapper.toModelById(id));
     model.setAmount(request.getAmount());
     model.setOperation(request.getOperation());
     model.setUnitValue(request.getUnitValue());
@@ -62,11 +62,13 @@ public class StockReturnsMovimentMapperImpl extends MovimentMapperImpl {
 
   @Override
   public List<MovimentModel> toModelsList(List<? extends MovimentDTO> movimentsListDto) {
-    List<MovimentModel> movimentsListModel = new ArrayList<>(movimentsListDto.size());
-    for (MovimentDTO movimentDto : movimentsListDto) {
-      movimentsListModel.add(toModel(movimentDto));
-    }
-    return movimentsListModel;
+    throw new UnsupportedOperationException("Method not yet finished");
+    // List<MovimentModel> movimentsListModel = new
+    // ArrayList<>(movimentsListDto.size());
+    // for (MovimentDTO movimentDto : movimentsListDto) {
+    // movimentsListModel.add(toModel(movimentDto));
+    // }
+    // return movimentsListModel;
   }
 
 }

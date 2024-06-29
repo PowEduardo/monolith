@@ -28,7 +28,7 @@ public class MovimentMapperImpl implements MovimentMapper {
   }
 
   @Override
-  public MovimentModel toModel(MovimentDTO dto) {
+  public MovimentModel toModel(MovimentDTO dto, Long assetId) {
     return MovimentModel.builder()
         .date(dto.getDate())
         .type(dto.getType())
