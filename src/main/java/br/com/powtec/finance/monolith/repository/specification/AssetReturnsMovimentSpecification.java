@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Component
-public class StockReturnsMovimentSpecification {
+public class AssetReturnsMovimentSpecification {
 
   public static Specification<AssetReturnsMovimentModel> getQuery(String parameters) {
     return new Specification<>() {

@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
-import br.com.powtec.finance.monolith.model.dto.StockReturnsMovimentDTO;
+import br.com.powtec.finance.monolith.model.dto.AssetReturnsMovimentDTO;
 import br.com.powtec.finance.monolith.service.MovimentService;
 import jakarta.validation.constraints.Min;
 
@@ -31,19 +31,19 @@ import jakarta.validation.constraints.Min;
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path = "/assets/{assetId}")
 @Validated
-public class StockReturnsMovimentController {
+public class AssetReturnsMovimentController {
   @Autowired
   @Qualifier("stockReturnsService")
   MovimentService service;
 
   @PostMapping("/returns")
-  public ResponseEntity<MovimentDTO> create(@PathVariable Long assetId, @RequestBody StockReturnsMovimentDTO body) {
+  public ResponseEntity<MovimentDTO> create(@PathVariable Long assetId, @RequestBody AssetReturnsMovimentDTO body) {
     MovimentDTO response = service.create(body, assetId);
     return ResponseEntity.created(URI.create("/moviments/returns/" + response.getId())).body(response);
   }
 
   @PostMapping("/returns:batch")
-  public ResponseEntity<List<MovimentDTO>> createByList(@RequestBody List<StockReturnsMovimentDTO> body) {
+  public ResponseEntity<List<MovimentDTO>> createByList(@RequestBody List<AssetReturnsMovimentDTO> body) {
     return ResponseEntity.ok().body(service.createInBatch(body));
   }
 
