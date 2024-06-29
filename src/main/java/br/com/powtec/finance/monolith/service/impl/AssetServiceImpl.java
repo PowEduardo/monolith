@@ -19,7 +19,7 @@ import br.com.powtec.finance.monolith.model.dto.AssetDTO;
 import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
 import br.com.powtec.finance.monolith.repository.AssetRepository;
 import br.com.powtec.finance.monolith.repository.AssetMovimentRepository;
-import br.com.powtec.finance.monolith.repository.StockReturnsMovimentRepository;
+import br.com.powtec.finance.monolith.repository.AssetReturnsMovimentRepository;
 import br.com.powtec.finance.monolith.repository.specification.AssetSpecification;
 import br.com.powtec.finance.monolith.service.AssetService;
 
@@ -33,7 +33,7 @@ public class AssetServiceImpl implements AssetService {
   private AssetMovimentRepository movimentRepository;
 
   @Autowired
-  private StockReturnsMovimentRepository returnsRepository;
+  private AssetReturnsMovimentRepository returnsRepository;
 
   @Autowired
   private AssetMapper mapper;

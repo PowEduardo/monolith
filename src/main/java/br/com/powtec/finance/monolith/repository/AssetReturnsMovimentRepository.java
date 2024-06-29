@@ -10,7 +10,7 @@ import br.com.powtec.finance.monolith.model.MovimentModel;
 import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
 
 @Repository
-public interface StockReturnsMovimentRepository
+public interface AssetReturnsMovimentRepository
         extends JpaRepository<MovimentModel, Long>, JpaSpecificationExecutor<AssetReturnsMovimentModel> {
     List<AssetReturnsMovimentModel> findAllByStockId(Long id);
 }

@@ -1,6 +1,8 @@
 package br.com.powtec.finance.monolith.model;
 
-import br.com.powtec.finance.monolith.enums.StockReturnsOperationEnum;
+import java.sql.Date;
+
+import br.com.powtec.finance.monolith.enums.AssetReturnsOperationEnum;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -25,6 +27,7 @@ public class AssetReturnsMovimentModel extends MovimentModel {
   @JoinColumn(name = "asset_id")
   private AssetModel stock;
   @Enumerated(EnumType.STRING)
-  private StockReturnsOperationEnum operation;
+  private AssetReturnsOperationEnum operation;
   private Double unitValue;
+  private Date exDividendDate;
 }

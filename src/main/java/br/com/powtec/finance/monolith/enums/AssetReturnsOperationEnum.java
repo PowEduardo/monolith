@@ -3,7 +3,7 @@ package br.com.powtec.finance.monolith.enums;
 import lombok.Getter;
 
 @Getter
-public enum StockReturnsOperationEnum {
+public enum AssetReturnsOperationEnum {
 
   DIVIDEND("DIVIDEND"),
   JCP("JCP"),
@@ -11,7 +11,7 @@ public enum StockReturnsOperationEnum {
 
   private String name;
 
-  StockReturnsOperationEnum(String name) {
+  AssetReturnsOperationEnum(String name) {
     this.name = name;
   }
 }

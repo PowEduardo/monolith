@@ -10,31 +10,32 @@ import br.com.powtec.finance.monolith.mapper.AssetMapper;
 import br.com.powtec.finance.monolith.model.MovimentModel;
 import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
-import br.com.powtec.finance.monolith.model.dto.StockReturnsMovimentDTO;
+import br.com.powtec.finance.monolith.model.dto.AssetReturnsMovimentDTO;
 
 @Component("stockReturnsMapper")
-public class StockReturnsMovimentMapperImpl extends MovimentMapperImpl {
+public class AssetReturnsMovimentMapperImpl extends MovimentMapperImpl {
 
   @Autowired
   private AssetMapper stockMapper;
 
   @Override
   public MovimentDTO toDto(MovimentModel model) {
-    StockReturnsMovimentDTO returnsDto = new StockReturnsMovimentDTO();
+    AssetReturnsMovimentDTO response = new AssetReturnsMovimentDTO();
     if (model instanceof AssetReturnsMovimentModel) {
       AssetReturnsMovimentModel returnsModel = (AssetReturnsMovimentModel) model;
-      returnsDto.setAmount(returnsModel.getAmount());
-      returnsDto.setDate(returnsModel.getDate());
-      returnsDto.setId(returnsModel.getId());
-      returnsDto.setAsset(stockMapper.toDtoOnlyId(returnsModel.getStock()));
-      returnsDto.setType(returnsModel.getType());
-      returnsDto.setValue(returnsModel.getValue());
-      returnsDto.setOperation(returnsModel.getOperation());
-      returnsDto.setUnitValue(returnsModel.getUnitValue());
+      response.setAmount(returnsModel.getAmount());
+      response.setDate(returnsModel.getDate());
+      response.setId(returnsModel.getId());
+      response.setAsset(stockMapper.toDtoOnlyId(returnsModel.getStock()));
+      response.setType(returnsModel.getType());
+      response.setValue(returnsModel.getValue());
+      response.setOperation(returnsModel.getOperation());
+      response.setUnitValue(returnsModel.getUnitValue());
+      response.setExDividendDate(returnsModel.getExDividendDate());
     } else {
       throw new RuntimeException("You fucked up");
     }
-    return returnsDto;
+    return response;
   }
 
   @Override
@@ -48,7 +49,7 @@ public class StockReturnsMovimentMapperImpl extends MovimentMapperImpl {
 
   @Override
   public MovimentModel toModel(MovimentDTO dto, Long id) {
-    StockReturnsMovimentDTO request = (StockReturnsMovimentDTO) dto;
+    AssetReturnsMovimentDTO request = (AssetReturnsMovimentDTO) dto;
     AssetReturnsMovimentModel model = new AssetReturnsMovimentModel();
     model.setDate(request.getDate());
     model.setType(request.getType());
@@ -57,6 +58,7 @@ public class StockReturnsMovimentMapperImpl extends MovimentMapperImpl {
     model.setAmount(request.getAmount());
     model.setOperation(request.getOperation());
     model.setUnitValue(request.getUnitValue());
+    model.setExDividendDate(request.getExDividendDate());
     return model;
   }
 
