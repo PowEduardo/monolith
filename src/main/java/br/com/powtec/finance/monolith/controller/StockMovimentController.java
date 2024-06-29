@@ -38,8 +38,8 @@ public class StockMovimentController {
   MovimentService service;
 
   @PostMapping("/assets")
-  public ResponseEntity<MovimentDTO> create(@RequestBody StockMovimentDTO body) {
-    MovimentDTO response = service.create(body);
+  public ResponseEntity<MovimentDTO> create(@PathVariable Long assetId, @RequestBody StockMovimentDTO body) {
+    MovimentDTO response = service.create(body, assetId);
     return ResponseEntity.created(URI.create("/moviments/assets/" + response.getId())).body(response);
   }
 

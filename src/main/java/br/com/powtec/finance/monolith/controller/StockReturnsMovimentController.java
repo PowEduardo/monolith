@@ -29,7 +29,7 @@ import jakarta.validation.constraints.Min;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping(path = "/moviments")
+@RequestMapping(path = "/assets/{assetId}")
 @Validated
 public class StockReturnsMovimentController {
   @Autowired
@@ -37,8 +37,8 @@ public class StockReturnsMovimentController {
   MovimentService service;
 
   @PostMapping("/returns")
-  public ResponseEntity<MovimentDTO> create(@RequestBody StockReturnsMovimentDTO body) {
-    MovimentDTO response = service.create(body);
+  public ResponseEntity<MovimentDTO> create(@PathVariable Long assetId, @RequestBody StockReturnsMovimentDTO body) {
+    MovimentDTO response = service.create(body, assetId);
     return ResponseEntity.created(URI.create("/moviments/returns/" + response.getId())).body(response);
   }
 

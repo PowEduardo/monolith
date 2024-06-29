@@ -21,7 +21,7 @@ public class MovimentServiceImpl implements MovimentService {
   }
 
   @Override
-  public MovimentDTO create(MovimentDTO request) {
+  public MovimentDTO create(MovimentDTO request, Long assetId) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'create'");
   }

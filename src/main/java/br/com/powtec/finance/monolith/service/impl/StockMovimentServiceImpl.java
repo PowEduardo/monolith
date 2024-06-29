@@ -28,8 +28,8 @@ public class StockMovimentServiceImpl extends MovimentServiceImpl {
   MovimentMapper mapper;
 
   @Override
-  public MovimentDTO create(MovimentDTO body) {
-    return mapper.toDtoOnlyId(repository.save(mapper.toModel(body)));
+  public MovimentDTO create(MovimentDTO body, Long assetId) {
+    return mapper.toDtoOnlyId(repository.save(mapper.toModel(body, assetId)));
   }
 
   @Override

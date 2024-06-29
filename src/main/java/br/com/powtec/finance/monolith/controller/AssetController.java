@@ -65,8 +65,8 @@ public class AssetController {
     return ResponseEntity.ok().body(service.getDetails(id));
   }
 
-  @GetMapping("/assets/{id}/consolidate")
-  public ResponseEntity<AssetConsolidatedDTO> getConsolidated(@PathVariable Long id) {
+  @GetMapping("/assets/consolidate")
+  public ResponseEntity<AssetConsolidatedDTO> getConsolidated() {
     return ResponseEntity.ok().body(service.getConsolidated());
   }
 }

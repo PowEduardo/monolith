@@ -9,4 +9,5 @@ public interface AssetService extends BaseCrudService<AssetDTO> {
   public AssetDetailsDTO getDetails(Long id);
 
   public AssetConsolidatedDTO getConsolidated();
+
 }

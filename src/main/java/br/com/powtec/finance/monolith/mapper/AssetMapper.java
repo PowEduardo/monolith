@@ -15,5 +15,7 @@ public interface AssetMapper {
 
   public AssetModel toModel(AssetDTO dto);
 
+  public AssetModel toModelById(Long id);
+
   public List<AssetModel> toModelsList(List<? extends AssetDTO> movimentsDto);
 }
