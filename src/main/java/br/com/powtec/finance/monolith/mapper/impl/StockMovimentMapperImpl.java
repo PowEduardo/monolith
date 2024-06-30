@@ -37,7 +37,7 @@ public class StockMovimentMapperImpl extends MovimentMapperImpl {
   }
 
   @Override
-  public List<MovimentDTO> toDtosList(List<? extends MovimentModel> pageModel) {
+  public List<MovimentDTO> toDtosList(List<MovimentModel> pageModel) {
     List<MovimentDTO> dtosList = new ArrayList<>(pageModel.size());
     for (MovimentModel model : pageModel) {
       dtosList.add(toDto(model));
@@ -59,7 +59,7 @@ public class StockMovimentMapperImpl extends MovimentMapperImpl {
   }
 
   @Override
-  public List<MovimentModel> toModelsList(List<? extends MovimentDTO> dto) {
+  public List<MovimentModel> toModelsList(List<MovimentDTO> dto) {
     throw new UnsupportedOperationException("Method not yep finished");
     // List<MovimentModel> modelsList = new ArrayList<>(dto.size());
     // for (MovimentDTO stockDto : dto) {

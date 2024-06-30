@@ -5,15 +5,15 @@ import java.util.List;
 import br.com.powtec.finance.monolith.model.MovimentModel;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 
-public interface MovimentMapper {
+public interface MovimentMapper<T extends MovimentModel> {
 
-  public MovimentDTO toDto(MovimentModel model);
+  public MovimentDTO toDto(T model);
 
-  public List<MovimentDTO> toDtosList(List<? extends MovimentModel> movimentsModel);
+  public List<MovimentDTO> toDtosList(List<T> movimentsModel);
 
-  public MovimentDTO toDtoOnlyId(MovimentModel model);
+  public MovimentDTO toDtoOnlyId(T model);
 
-  public MovimentModel toModel(MovimentDTO dto, Long assetId);
+  public T toModel(MovimentDTO dto, Long assetId);
 
-  public List<MovimentModel> toModelsList(List<? extends MovimentDTO> movimentsDto);
+  public List<T> toModelsList(List<MovimentDTO> movimentsDto);
 }

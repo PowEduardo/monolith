@@ -11,7 +11,7 @@ import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 
 @Component("movimentMapper")
 @Primary
-public class MovimentMapperImpl implements MovimentMapper {
+public class MovimentMapperImpl implements MovimentMapper<MovimentModel> {
 
   @Override
   public MovimentDTO toDto(MovimentModel model) {
@@ -37,13 +37,13 @@ public class MovimentMapperImpl implements MovimentMapper {
   }
 
   @Override
-  public List<MovimentDTO> toDtosList(List<? extends MovimentModel> movimentsModel) {
+  public List<MovimentDTO> toDtosList(List<MovimentModel> movimentsModel) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'toDtosList'");
   }
 
   @Override
-  public List<MovimentModel> toModelsList(List<? extends MovimentDTO> movimentsDto) {
+  public List<MovimentModel> toModelsList(List<MovimentDTO> movimentsDto) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'toModelsList'");
   }

@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import br.com.powtec.finance.monolith.model.MovimentModel;
 
 @Repository
-public interface MovimentRepository
-    extends JpaRepository<MovimentModel, Long>, JpaSpecificationExecutor<MovimentModel> {
+public interface MovimentRepository<T extends MovimentModel>
+        extends JpaRepository<T, Long>, JpaSpecificationExecutor<T> {
 }
