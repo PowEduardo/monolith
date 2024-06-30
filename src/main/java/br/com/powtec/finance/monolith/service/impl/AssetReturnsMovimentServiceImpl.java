@@ -12,21 +12,23 @@ import org.springframework.stereotype.Service;
 import br.com.powtec.finance.monolith.mapper.MovimentMapper;
 import br.com.powtec.finance.monolith.model.MovimentModel;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
-import br.com.powtec.finance.monolith.repository.AssetReturnsMovimentRepository;
+import br.com.powtec.finance.monolith.repository.MovimentRepository;
 import br.com.powtec.finance.monolith.repository.specification.AssetReturnsMovimentSpecification;
 
 @Service("stockReturnsService")
+@SuppressWarnings({ "unchecked", "rawtypes" })
 public class AssetReturnsMovimentServiceImpl extends MovimentServiceImpl {
 
   @Autowired
-  @Qualifier("stockReturnsMapper")
+  @Qualifier("assetReturnsMapper")
   private MovimentMapper mapper;
   @Autowired
-  private AssetReturnsMovimentRepository repository;
+  @Qualifier("assetReturnRepository")
+  private MovimentRepository repository;
 
   @Override
   public MovimentDTO create(MovimentDTO request, Long assetId) {
-    return mapper.toDtoOnlyId(repository.save(mapper.toModel(request, assetId)));
+    return mapper.toDtoOnlyId((MovimentModel) repository.save(mapper.toModel(request, assetId)));
   }
 
   @Override
@@ -36,7 +38,7 @@ public class AssetReturnsMovimentServiceImpl extends MovimentServiceImpl {
 
   @Override
   public MovimentDTO findById(Long id) {
-    return mapper.toDto(repository.findById(id).orElseThrow());
+    return mapper.toDto((MovimentModel) repository.findById(id).orElseThrow());
   }
 
   @Override

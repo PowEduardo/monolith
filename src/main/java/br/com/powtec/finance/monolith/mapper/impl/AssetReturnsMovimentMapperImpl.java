@@ -12,7 +12,7 @@ import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 import br.com.powtec.finance.monolith.model.dto.AssetReturnsMovimentDTO;
 
-@Component("stockReturnsMapper")
+@Component("assetReturnsMapper")
 public class AssetReturnsMovimentMapperImpl extends MovimentMapperImpl {
 
   @Autowired
@@ -39,7 +39,7 @@ public class AssetReturnsMovimentMapperImpl extends MovimentMapperImpl {
   }
 
   @Override
-  public List<MovimentDTO> toDtosList(List<? extends MovimentModel> movimentsModel) {
+  public List<MovimentDTO> toDtosList(List<MovimentModel> movimentsModel) {
     List<MovimentDTO> movimentsDto = new ArrayList<>(movimentsModel.size());
     for (MovimentModel movimentModel : movimentsModel) {
       movimentsDto.add(toDto(movimentModel));
@@ -63,7 +63,7 @@ public class AssetReturnsMovimentMapperImpl extends MovimentMapperImpl {
   }
 
   @Override
-  public List<MovimentModel> toModelsList(List<? extends MovimentDTO> movimentsListDto) {
+  public List<MovimentModel> toModelsList(List<MovimentDTO> movimentsListDto) {
     throw new UnsupportedOperationException("Method not yet finished");
     // List<MovimentModel> movimentsListModel = new
     // ArrayList<>(movimentsListDto.size());
