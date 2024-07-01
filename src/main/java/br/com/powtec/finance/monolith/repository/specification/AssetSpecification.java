@@ -7,6 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
+import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
 import br.com.powtec.finance.monolith.model.AssetModel;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
@@ -30,7 +31,12 @@ public class AssetSpecification {
         if (parameters != null) {
           for (String param : parameters.split(",")) {
             String keyValue[] = param.split(":");
-            predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]), keyValue[1])));
+            if (keyValue[0].equals("type")) {
+              predicates.add(criteriaBuilder
+                  .and(criteriaBuilder.equal(root.get(keyValue[0]), AssetTypeEnum.valueOf(keyValue[1].toUpperCase()))));
+            } else {
+              predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]), keyValue[1])));
+            }
           }
         }
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
