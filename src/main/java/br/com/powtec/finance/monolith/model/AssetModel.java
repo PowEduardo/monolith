@@ -2,8 +2,11 @@ package br.com.powtec.finance.monolith.model;
 
 import java.util.List;
 
+import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -32,5 +35,7 @@ public class AssetModel {
   private List<AssetMovimentModel> moviments;
   @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "stock")
   private List<AssetReturnsMovimentModel> returns;
+  @Enumerated(EnumType.STRING)
+  private AssetTypeEnum type;
 
 }
