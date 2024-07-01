@@ -59,18 +59,18 @@ public class AssetReturnsMovimentMapperImpl extends MovimentMapperImpl {
     model.setOperation(request.getOperation());
     model.setUnitValue(request.getUnitValue());
     model.setExDividendDate(request.getExDividendDate());
+    model.setId(dto.getId());
     return model;
   }
 
   @Override
   public List<MovimentModel> toModelsList(List<MovimentDTO> movimentsListDto) {
-    throw new UnsupportedOperationException("Method not yet finished");
-    // List<MovimentModel> movimentsListModel = new
-    // ArrayList<>(movimentsListDto.size());
-    // for (MovimentDTO movimentDto : movimentsListDto) {
-    // movimentsListModel.add(toModel(movimentDto));
-    // }
-    // return movimentsListModel;
+    List<MovimentModel> movimentsListModel = new ArrayList<>(movimentsListDto.size());
+    for (MovimentDTO movimentDto : movimentsListDto) {
+      AssetReturnsMovimentDTO request = (AssetReturnsMovimentDTO) movimentDto;
+      movimentsListModel.add(toModel(movimentDto, request.getAsset().getId()));
+    }
+    return movimentsListModel;
   }
 
 }

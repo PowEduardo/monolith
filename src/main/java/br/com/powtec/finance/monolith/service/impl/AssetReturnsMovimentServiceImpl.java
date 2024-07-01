@@ -14,10 +14,11 @@ import br.com.powtec.finance.monolith.model.MovimentModel;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 import br.com.powtec.finance.monolith.repository.MovimentRepository;
 import br.com.powtec.finance.monolith.repository.specification.AssetReturnsMovimentSpecification;
+import br.com.powtec.finance.monolith.service.MovimentService;
 
 @Service("stockReturnsService")
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class AssetReturnsMovimentServiceImpl extends MovimentServiceImpl {
+public class AssetReturnsMovimentServiceImpl implements MovimentService {
 
   @Autowired
   @Qualifier("assetReturnsMapper")
@@ -47,5 +48,11 @@ public class AssetReturnsMovimentServiceImpl extends MovimentServiceImpl {
         pageable);
     List<MovimentDTO> response = mapper.toDtosList(page.getContent());
     return new PageImpl<>(response, pageable, page.getTotalElements());
+  }
+
+  @Override
+  public MovimentDTO update(MovimentDTO request, Long assetId, Long id) {
+    request.setId(id);
+    return mapper.toDtoOnlyId((MovimentModel) repository.save(mapper.toModel(request, assetId)));
   }
 }

@@ -1,10 +1,11 @@
 package br.com.powtec.finance.monolith.model.dto;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import br.com.powtec.finance.monolith.enums.MovimentTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -20,7 +21,7 @@ import lombok.Setter;
 public class MovimentDTO {
 
   Long id;
-  Date date;
+  LocalDate date;
   Double value;
-  String type;
+  MovimentTypeEnum type;
 }

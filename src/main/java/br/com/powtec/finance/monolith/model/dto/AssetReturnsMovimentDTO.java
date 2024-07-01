@@ -1,6 +1,6 @@
 package br.com.powtec.finance.monolith.model.dto;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import br.com.powtec.finance.monolith.enums.AssetReturnsOperationEnum;
 import lombok.AllArgsConstructor;
@@ -18,6 +18,6 @@ public class AssetReturnsMovimentDTO extends MovimentDTO {
   private AssetDTO asset;
   private AssetReturnsOperationEnum operation;
   private Double unitValue;
-  private Date exDividendDate;
+  private LocalDate exDividendDate;
 
 }

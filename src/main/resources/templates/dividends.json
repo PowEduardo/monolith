@@ -1,8 +1,8 @@
 [
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "9.66",
-    "stock": {
+    "asset": {
       "id": 10
     },
     "amount": "39",
@@ -11,9 +11,9 @@
     "unitValue": "0.247692307692308"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.65",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "20",
@@ -22,9 +22,9 @@
     "unitValue": "0.0325"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "3.15",
-    "stock": {
+    "asset": {
       "id": 10
     },
     "amount": "39",
@@ -33,9 +33,9 @@
     "unitValue": "0.0807692307692308"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "6.29",
-    "stock": {
+    "asset": {
       "id": 2
     },
     "amount": "35",
@@ -44,9 +44,9 @@
     "unitValue": "0.179714285714286"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "27.45",
-    "stock": {
+    "asset": {
       "id": 16
     },
     "amount": "20",
@@ -55,9 +55,9 @@
     "unitValue": "1.3725"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "1.05",
-    "stock": {
+    "asset": {
       "id": 16
     },
     "amount": "20",
@@ -66,9 +66,9 @@
     "unitValue": "0.0525"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "17.49",
-    "stock": {
+    "asset": {
       "id": 16
     },
     "amount": "20",
@@ -77,9 +77,9 @@
     "unitValue": "0.8745"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.81",
-    "stock": {
+    "asset": {
       "id": 16
     },
     "amount": "20",
@@ -88,9 +88,9 @@
     "unitValue": "0.0405"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "5.09",
-    "stock": {
+    "asset": {
       "id": 10
     },
     "amount": "50",
@@ -99,9 +99,9 @@
     "unitValue": "0.1018"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "5.97",
-    "stock": {
+    "asset": {
       "id": 13
     },
     "amount": "12",
@@ -110,9 +110,9 @@
     "unitValue": "0.4975"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.35",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "20",
@@ -121,9 +121,9 @@
     "unitValue": "0.0175"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "6.29",
-    "stock": {
+    "asset": {
       "id": 2
     },
     "amount": "35",
@@ -132,9 +132,9 @@
     "unitValue": "0.179714285714286"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "4.46",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "20",
@@ -143,9 +143,9 @@
     "unitValue": "0.223"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "4.53",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "20",
@@ -154,9 +154,9 @@
     "unitValue": "0.2265"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.25",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "10",
@@ -165,9 +165,9 @@
     "unitValue": "0.025"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "1.88",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "20",
@@ -176,9 +176,9 @@
     "unitValue": "0.094"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "3.56",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "20",
@@ -187,9 +187,9 @@
     "unitValue": "0.178"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "4.46",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "20",
@@ -198,9 +198,9 @@
     "unitValue": "0.223"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.3",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "20",
@@ -209,9 +209,9 @@
     "unitValue": "0.015"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.3",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "20",
@@ -220,9 +220,9 @@
     "unitValue": "0.015"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "1.78",
-    "stock": {
+    "asset": {
       "id": 13
     },
     "amount": "12",
@@ -231,9 +231,9 @@
     "unitValue": "0.148333333333333"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "7.46",
-    "stock": {
+    "asset": {
       "id": 10
     },
     "amount": "50",
@@ -242,9 +242,9 @@
     "unitValue": "0.1492"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.3",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "20",
@@ -253,9 +253,9 @@
     "unitValue": "0.015"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "4.7",
-    "stock": {
+    "asset": {
       "id": 2
     },
     "amount": "35",
@@ -264,9 +264,9 @@
     "unitValue": "0.134285714285714"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "1.87",
-    "stock": {
+    "asset": {
       "id": 2
     },
     "amount": "35",
@@ -275,9 +275,9 @@
     "unitValue": "0.0534285714285714"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "6.78",
-    "stock": {
+    "asset": {
       "id": 7
     },
     "amount": "50",
@@ -286,9 +286,9 @@
     "unitValue": "0.1356"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.3",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "20",
@@ -297,9 +297,9 @@
     "unitValue": "0.015"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.14",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "37",
@@ -308,9 +308,9 @@
     "unitValue": "0.00378378378378378"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "6.1",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "37",
@@ -319,9 +319,9 @@
     "unitValue": "0.164864864864865"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "9.96",
-    "stock": {
+    "asset": {
       "id": 16
     },
     "amount": "20",
@@ -330,9 +330,9 @@
     "unitValue": "0.498"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "1.03",
-    "stock": {
+    "asset": {
       "id": 16
     },
     "amount": "20",
@@ -341,9 +341,9 @@
     "unitValue": "0.0515"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.23",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "15",
@@ -352,9 +352,9 @@
     "unitValue": "0.0153333333333333"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "8.16",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "37",
@@ -363,9 +363,9 @@
     "unitValue": "0.220540540540541"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "8.74",
-    "stock": {
+    "asset": {
       "id": 10
     },
     "amount": "38",
@@ -374,9 +374,9 @@
     "unitValue": "0.23"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.23",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "15",
@@ -385,9 +385,9 @@
     "unitValue": "0.0153333333333333"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.23",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "15",
@@ -396,9 +396,9 @@
     "unitValue": "0.0153333333333333"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "16.87",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "15",
@@ -407,9 +407,9 @@
     "unitValue": "1.12466666666667"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "3.15",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "15",
@@ -418,9 +418,9 @@
     "unitValue": "0.21"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "4.58",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "20",
@@ -429,9 +429,9 @@
     "unitValue": "0.229"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "3.49",
-    "stock": {
+    "asset": {
       "id": 6
     },
     "amount": "10",
@@ -440,9 +440,9 @@
     "unitValue": "0.349"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.23",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "15",
@@ -451,9 +451,9 @@
     "unitValue": "0.0153333333333333"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "1.61",
-    "stock": {
+    "asset": {
       "id": 4
     },
     "amount": "100",
@@ -462,9 +462,9 @@
     "unitValue": "0.0161"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "6.86",
-    "stock": {
+    "asset": {
       "id": 10
     },
     "amount": "38",
@@ -473,9 +473,9 @@
     "unitValue": "0.180526315789474"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "2.67",
-    "stock": {
+    "asset": {
       "id": 10
     },
     "amount": "38",
@@ -484,9 +484,9 @@
     "unitValue": "0.0702631578947368"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "4.81",
-    "stock": {
+    "asset": {
       "id": 13
     },
     "amount": "11",
@@ -495,9 +495,9 @@
     "unitValue": "0.437272727272727"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "1.15",
-    "stock": {
+    "asset": {
       "id": 13
     },
     "amount": "15",
@@ -506,9 +506,9 @@
     "unitValue": "0.0766666666666667"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "1.54",
-    "stock": {
+    "asset": {
       "id": 13
     },
     "amount": "15",
@@ -517,9 +517,9 @@
     "unitValue": "0.102666666666667"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "2.04",
-    "stock": {
+    "asset": {
       "id": 13
     },
     "amount": "15",
@@ -528,9 +528,9 @@
     "unitValue": "0.136"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "3.12",
-    "stock": {
+    "asset": {
       "id": 13
     },
     "amount": "15",
@@ -539,9 +539,9 @@
     "unitValue": "0.208"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "2.46",
-    "stock": {
+    "asset": {
       "id": 13
     },
     "amount": "15",
@@ -550,9 +550,9 @@
     "unitValue": "0.164"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "1.61",
-    "stock": {
+    "asset": {
       "id": 4
     },
     "amount": "100",
@@ -561,9 +561,9 @@
     "unitValue": "0.0161"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.23",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "15",
@@ -572,9 +572,9 @@
     "unitValue": "0.0153333333333333"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.28",
-    "stock": {
+    "asset": {
       "id": 11
     },
     "amount": "23",
@@ -583,9 +583,9 @@
     "unitValue": "0.0121739130434783"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "12.66",
-    "stock": {
+    "asset": {
       "id": 11
     },
     "amount": "23",
@@ -594,9 +594,9 @@
     "unitValue": "0.550434782608696"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "32.43",
-    "stock": {
+    "asset": {
       "id": 5
     },
     "amount": "41",
@@ -605,9 +605,9 @@
     "unitValue": "0.790975609756098"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "1.19",
-    "stock": {
+    "asset": {
       "id": 9
     },
     "amount": "1",
@@ -616,9 +616,9 @@
     "unitValue": "1.19"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "10.75",
-    "stock": {
+    "asset": {
       "id": 2
     },
     "amount": "60",
@@ -627,9 +627,9 @@
     "unitValue": "0.179166666666667"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "13.97",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "37",
@@ -638,9 +638,9 @@
     "unitValue": "0.377567567567568"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "10.81",
-    "stock": {
+    "asset": {
       "id": 5
     },
     "amount": "41",
@@ -649,9 +649,9 @@
     "unitValue": "0.263658536585366"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "5.92",
-    "stock": {
+    "asset": {
       "id": 5
     },
     "amount": "41",
@@ -660,9 +660,9 @@
     "unitValue": "0.144390243902439"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.67",
-    "stock": {
+    "asset": {
       "id": 15
     },
     "amount": "2",
@@ -671,9 +671,9 @@
     "unitValue": "0.335"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "19.38",
-    "stock": {
+    "asset": {
       "id": 3
     },
     "amount": "102",
@@ -682,9 +682,9 @@
     "unitValue": "0.19"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "1.61",
-    "stock": {
+    "asset": {
       "id": 4
     },
     "amount": "100",
@@ -693,9 +693,9 @@
     "unitValue": "0.0161"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "0.23",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "15",
@@ -704,9 +704,9 @@
     "unitValue": "0.0153333333333333"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "4.98",
-    "stock": {
+    "asset": {
       "id": 6
     },
     "amount": "20",
@@ -715,9 +715,9 @@
     "unitValue": "0.249"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "3.29",
-    "stock": {
+    "asset": {
       "id": 6
     },
     "amount": "20",
@@ -726,9 +726,9 @@
     "unitValue": "0.1645"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "4.41",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "37",
@@ -737,9 +737,9 @@
     "unitValue": "0.119189189189189"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "2.66",
-    "stock": {
+    "asset": {
       "id": 1
     },
     "amount": "25",
@@ -748,9 +748,9 @@
     "unitValue": "0.1064"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "2.46",
-    "stock": {
+    "asset": {
       "id": 7
     },
     "amount": "54",
@@ -759,9 +759,9 @@
     "unitValue": "0.0455555555555556"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "7.43",
-    "stock": {
+    "asset": {
       "id": 7
     },
     "amount": "50",
@@ -770,9 +770,9 @@
     "unitValue": "0.1486"
   },
   {
-    "type": "STOCK_RETURNS",
+    "type": "ASSET_RETURN",
     "value": "12.5",
-    "stock": {
+    "asset": {
       "id": 6
     },
     "amount": "72",

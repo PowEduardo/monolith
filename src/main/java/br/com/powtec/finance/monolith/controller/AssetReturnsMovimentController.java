@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,6 +51,13 @@ public class AssetReturnsMovimentController {
   @GetMapping("/returns/{id}")
   public ResponseEntity<MovimentDTO> getById(@PathVariable Long id) {
     return ResponseEntity.ok().body(service.findById(id));
+  }
+
+  @PutMapping("/returns/{id}")
+  public ResponseEntity<MovimentDTO> updateById(@PathVariable Long id,
+      @PathVariable Long assetId,
+      @RequestBody AssetReturnsMovimentDTO body) {
+    return ResponseEntity.ok().body(service.update(body, assetId, id));
   }
 
   @GetMapping("/returns:search")

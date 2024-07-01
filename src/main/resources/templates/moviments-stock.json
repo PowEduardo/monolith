@@ -1,8 +1,8 @@
 [
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "0",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "3",
@@ -10,9 +10,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "24.13",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "7",
@@ -20,9 +20,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "483.98",
-    "stock": {
+    "asset": {
       "id": 2
     },
     "amount": "34",
@@ -30,9 +30,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "477.76",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "20",
@@ -40,9 +40,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "484.93",
-    "stock": {
+    "asset": {
       "id": 10
     },
     "amount": "39",
@@ -50,9 +50,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "469.24",
-    "stock": {
+    "asset": {
       "id": 13
     },
     "amount": "12",
@@ -60,9 +60,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "489.95",
-    "stock": {
+    "asset": {
       "id": 16
     },
     "amount": "20",
@@ -70,9 +70,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "14.1",
-    "stock": {
+    "asset": {
       "id": 2
     },
     "amount": "1",
@@ -80,9 +80,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "7.39",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "2",
@@ -90,9 +90,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "7.95",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "2",
@@ -100,9 +100,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "11.61",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "1",
@@ -110,9 +110,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "43.07",
-    "stock": {
+    "asset": {
       "id": 19
     },
     "amount": "1",
@@ -120,9 +120,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "105.7",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "9",
@@ -130,9 +130,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "13.84",
-    "stock": {
+    "asset": {
       "id": 10
     },
     "amount": "1",
@@ -140,9 +140,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "4.11",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "1",
@@ -150,9 +150,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "4.17",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "2",
@@ -160,9 +160,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "4.18",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "1",
@@ -170,9 +170,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "44.52",
-    "stock": {
+    "asset": {
       "id": 17
     },
     "amount": "50",
@@ -180,9 +180,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "527.34",
-    "stock": {
+    "asset": {
       "id": 16
     },
     "amount": "20",
@@ -190,9 +190,9 @@
     "operation": "SELL"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "10.25",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "2",
@@ -200,9 +200,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "2.53",
-    "stock": {
+    "asset": {
       "id": 17
     },
     "amount": "3",
@@ -210,9 +210,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "41.78",
-    "stock": {
+    "asset": {
       "id": 17
     },
     "amount": "48",
@@ -220,9 +220,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "125.39",
-    "stock": {
+    "asset": {
       "id": 13
     },
     "amount": "3",
@@ -230,9 +230,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "139.85",
-    "stock": {
+    "asset": {
       "id": 10
     },
     "amount": "10",
@@ -240,9 +240,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "125.15",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "10",
@@ -250,9 +250,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "32.12",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "6",
@@ -260,9 +260,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "11.45",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "2",
@@ -270,9 +270,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "2.62",
-    "stock": {
+    "asset": {
       "id": 17
     },
     "amount": "3",
@@ -280,9 +280,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "23.47",
-    "stock": {
+    "asset": {
       "id": 7
     },
     "amount": "3",
@@ -290,9 +290,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "382.59",
-    "stock": {
+    "asset": {
       "id": 7
     },
     "amount": "46",
@@ -300,9 +300,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "137.11",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "22",
@@ -310,9 +310,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "8.32",
-    "stock": {
+    "asset": {
       "id": 7
     },
     "amount": "1",
@@ -320,9 +320,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "50.58",
-    "stock": {
+    "asset": {
       "id": 19
     },
     "amount": "1",
@@ -330,9 +330,9 @@
     "operation": "SELL"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "103.86",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "9",
@@ -340,9 +340,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "11.54",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "1",
@@ -350,9 +350,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "46.18",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "4",
@@ -360,9 +360,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "5.63",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "1",
@@ -370,9 +370,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "34.1",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "3",
@@ -380,9 +380,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "205.44",
-    "stock": {
+    "asset": {
       "id": 10
     },
     "amount": "12",
@@ -390,9 +390,9 @@
     "operation": "SELL"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "156.15",
-    "stock": {
+    "asset": {
       "id": 12
     },
     "amount": "5",
@@ -400,9 +400,9 @@
     "operation": "SELL"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "206.96",
-    "stock": {
+    "asset": {
       "id": 13
     },
     "amount": "4",
@@ -410,9 +410,9 @@
     "operation": "SELL"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "262.89",
-    "stock": {
+    "asset": {
       "id": 11
     },
     "amount": "23",
@@ -420,9 +420,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "129.5",
-    "stock": {
+    "asset": {
       "id": 1
     },
     "amount": "25",
@@ -430,9 +430,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "93.94",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "14",
@@ -440,9 +440,9 @@
     "operation": "SELL"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "36.53",
-    "stock": {
+    "asset": {
       "id": 9
     },
     "amount": "1",
@@ -450,9 +450,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "45.98",
-    "stock": {
+    "asset": {
       "id": 15
     },
     "amount": "2",
@@ -460,9 +460,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "5.79",
-    "stock": {
+    "asset": {
       "id": 1
     },
     "amount": "1",
@@ -470,9 +470,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "5.9",
-    "stock": {
+    "asset": {
       "id": 1
     },
     "amount": "1",
@@ -480,9 +480,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "39.76",
-    "stock": {
+    "asset": {
       "id": 7
     },
     "amount": "4",
@@ -490,9 +490,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "5.59",
-    "stock": {
+    "asset": {
       "id": 1
     },
     "amount": "1",
@@ -500,9 +500,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "75.1",
-    "stock": {
+    "asset": {
       "id": 17
     },
     "amount": "104",
@@ -510,9 +510,9 @@
     "operation": "SELL"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "55.8",
-    "stock": {
+    "asset": {
       "id": 1
     },
     "amount": "10",
@@ -520,9 +520,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "66.84",
-    "stock": {
+    "asset": {
       "id": 1
     },
     "amount": "12",
@@ -530,9 +530,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "552",
-    "stock": {
+    "asset": {
       "id": 1
     },
     "amount": "100",
@@ -540,9 +540,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "204.24",
-    "stock": {
+    "asset": {
       "id": 1
     },
     "amount": "37",
@@ -550,9 +550,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "167.92",
-    "stock": {
+    "asset": {
       "id": 3
     },
     "amount": "17",
@@ -560,9 +560,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "16.17",
-    "stock": {
+    "asset": {
       "id": 1
     },
     "amount": "3",
@@ -570,9 +570,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "834.19",
-    "stock": {
+    "asset": {
       "id": 3
     },
     "amount": "83",
@@ -580,9 +580,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "520",
-    "stock": {
+    "asset": {
       "id": 1
     },
     "amount": "100",
@@ -590,9 +590,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "520",
-    "stock": {
+    "asset": {
       "id": 5
     },
     "amount": "25",
@@ -600,9 +600,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "380.78",
-    "stock": {
+    "asset": {
       "id": 2
     },
     "amount": "25",
@@ -610,9 +610,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "581.7",
-    "stock": {
+    "asset": {
       "id": 6
     },
     "amount": "10",
@@ -620,9 +620,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "1378",
-    "stock": {
+    "asset": {
       "id": 4
     },
     "amount": "100",
@@ -630,9 +630,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "339.66",
-    "stock": {
+    "asset": {
       "id": 18
     },
     "amount": "37",
@@ -640,9 +640,9 @@
     "operation": "SELL"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "328.64",
-    "stock": {
+    "asset": {
       "id": 5
     },
     "amount": "16",
@@ -650,9 +650,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "20.38",
-    "stock": {
+    "asset": {
       "id": 3
     },
     "amount": "2",
@@ -660,9 +660,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "0",
-    "stock": {
+    "asset": {
       "id": 6
     },
     "amount": "10",
@@ -670,9 +670,9 @@
     "operation": "SPLIT"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "146.04",
-    "stock": {
+    "asset": {
       "id": 8
     },
     "amount": "13",
@@ -680,9 +680,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "1604.29",
-    "stock": {
+    "asset": {
       "id": 9
     },
     "amount": "49",
@@ -690,9 +690,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "14.26",
-    "stock": {
+    "asset": {
       "id": 2
     },
     "amount": "1",
@@ -700,9 +700,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "1981.39",
-    "stock": {
+    "asset": {
       "id": 2
     },
     "amount": "139",
@@ -710,9 +710,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "1385.73",
-    "stock": {
+    "asset": {
       "id": 6
     },
     "amount": "52",
@@ -720,9 +720,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "854.81",
-    "stock": {
+    "asset": {
       "id": 5
     },
     "amount": "44",
@@ -730,9 +730,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "28.11",
-    "stock": {
+    "asset": {
       "id": 14
     },
     "amount": "10",
@@ -740,9 +740,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "320.03",
-    "stock": {
+    "asset": {
       "id": 3
     },
     "amount": "31",
@@ -750,9 +750,9 @@
     "operation": "BUY"
   },
   {
-    "type": "STOCK",
+    "type": "ASSET_MOVIMENT",
     "value": "10.33",
-    "stock": {
+    "asset": {
       "id": 3
     },
     "amount": "1",

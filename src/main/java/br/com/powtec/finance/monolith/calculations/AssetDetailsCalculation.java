@@ -2,7 +2,7 @@ package br.com.powtec.finance.monolith.calculations;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 import br.com.powtec.finance.monolith.enums.AssetMovimentOperationEnum;
@@ -43,19 +43,17 @@ public class AssetDetailsCalculation {
     return BigDecimal.valueOf(average).setScale(2, RoundingMode.HALF_UP).doubleValue();
   }
 
-  @SuppressWarnings("deprecation")
   private void calculateReturns(List<AssetReturnsMovimentModel> returns) {
     for (AssetReturnsMovimentModel assetReturn : returns) {
       this.allReturn += assetReturn.getValue();
-      if (assetReturn.getDate().getYear() == new Date(System.currentTimeMillis()).getYear()) {
+      if (assetReturn.getDate().getYear() == LocalDate.now().getYear()) {
         unitYearReturn += assetReturn.getUnitValue();
       }
     }
   }
 
-  @SuppressWarnings("deprecation")
   private void calculateMonthlyReturn() {
-    this.monthlyReturn += unitYearReturn / new Date(System.currentTimeMillis()).getMonth();
+    this.monthlyReturn += unitYearReturn / LocalDate.now().getMonthValue();
   }
 
   private Double calculateDy(Double assetValue) {

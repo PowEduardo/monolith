@@ -15,5 +15,7 @@ public interface MovimentService {
 
   public List<MovimentDTO> createInBatch(List<? extends MovimentDTO> request);
 
+  public MovimentDTO update(MovimentDTO request, Long assetId, Long id);
+
   public MovimentDTO findById(Long id);
 }

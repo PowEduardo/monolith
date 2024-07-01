@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.powtec.finance.monolith.mapper.AssetMapper;
-import br.com.powtec.finance.monolith.model.MovimentModel;
 import br.com.powtec.finance.monolith.model.AssetMovimentModel;
+import br.com.powtec.finance.monolith.model.MovimentModel;
+import br.com.powtec.finance.monolith.model.dto.AssetMovimentDTO;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
-import br.com.powtec.finance.monolith.model.dto.StockMovimentDTO;
 
 @Component("stockMovimentMapper")
 public class StockMovimentMapperImpl extends MovimentMapperImpl {
@@ -19,8 +19,8 @@ public class StockMovimentMapperImpl extends MovimentMapperImpl {
   private AssetMapper stockMapper;
 
   @Override
-  public StockMovimentDTO toDto(MovimentModel model) {
-    StockMovimentDTO stockDto = new StockMovimentDTO();
+  public AssetMovimentDTO toDto(MovimentModel model) {
+    AssetMovimentDTO stockDto = new AssetMovimentDTO();
     if (model instanceof AssetMovimentModel) {
       AssetMovimentModel stockModel = (AssetMovimentModel) model;
       stockDto.setAmount(stockModel.getAmount());
@@ -47,7 +47,7 @@ public class StockMovimentMapperImpl extends MovimentMapperImpl {
 
   @Override
   public MovimentModel toModel(MovimentDTO dto, Long assetId) {
-    StockMovimentDTO request = (StockMovimentDTO) dto;
+    AssetMovimentDTO request = (AssetMovimentDTO) dto;
     AssetMovimentModel model = new AssetMovimentModel();
     model.setDate(request.getDate());
     model.setType(request.getType());
@@ -59,13 +59,13 @@ public class StockMovimentMapperImpl extends MovimentMapperImpl {
   }
 
   @Override
-  public List<MovimentModel> toModelsList(List<MovimentDTO> dto) {
-    throw new UnsupportedOperationException("Method not yep finished");
-    // List<MovimentModel> modelsList = new ArrayList<>(dto.size());
-    // for (MovimentDTO stockDto : dto) {
-    // modelsList.add(toModel(stockDto, 0L));
-    // }
-    // return modelsList;
+  public List<MovimentModel> toModelsList(List<MovimentDTO> body) {
+    List<MovimentModel> modelsList = new ArrayList<>(body.size());
+    for (MovimentDTO moviment : body) {
+      AssetMovimentDTO request = (AssetMovimentDTO) moviment;
+      modelsList.add(toModel(moviment, request.getAsset().getId()));
+    }
+    return modelsList;
   }
 
 }
