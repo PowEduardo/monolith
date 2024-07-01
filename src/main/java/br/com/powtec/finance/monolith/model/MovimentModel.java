@@ -1,9 +1,12 @@
 package br.com.powtec.finance.monolith.model;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
+import br.com.powtec.finance.monolith.enums.MovimentTypeEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -26,12 +29,13 @@ import lombok.Setter;
 @Table(name = "tb_moviments")
 public class MovimentModel {
 
-  Date date;
+  LocalDate date;
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   Long id;
   @Column(name = "tp")
-  String type;
+  @Enumerated(EnumType.STRING)
+  MovimentTypeEnum type;
   @Column(name = "vl")
   Double value;
 }

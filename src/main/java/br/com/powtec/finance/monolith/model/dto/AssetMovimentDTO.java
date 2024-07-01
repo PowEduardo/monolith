@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class StockMovimentDTO extends MovimentDTO {
+public class AssetMovimentDTO extends MovimentDTO {
 
   AssetDTO asset;
   Integer amount;

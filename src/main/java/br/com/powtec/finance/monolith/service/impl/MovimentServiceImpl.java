@@ -38,4 +38,10 @@ public class MovimentServiceImpl implements MovimentService {
     throw new UnsupportedOperationException("Unimplemented method 'createInBatch'");
   }
 
+  @Override
+  public MovimentDTO update(MovimentDTO request, Long assetId, Long id) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'update'");
+  }
+
 }

@@ -7,7 +7,8 @@ public enum AssetReturnsOperationEnum {
 
   DIVIDEND("DIVIDEND"),
   JCP("JCP"),
-  REFUND("REFUND");
+  REFUND("REFUND"),
+  AMORTIZATION("AMORTIZATION");
 
   private String name;
 
