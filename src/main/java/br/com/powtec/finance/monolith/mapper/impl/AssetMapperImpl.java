@@ -43,6 +43,7 @@ public class AssetMapperImpl implements AssetMapper {
         .id(dto.getId())
         .ticker(dto.getTicker())
         .value(dto.getValue())
+        .type(dto.getType())
         .build();
   }
 
