@@ -20,6 +20,7 @@ public class AssetDetailsDTO {
   private Double currentValue;
   private Double average;
   private Double monthlyReturn;
+  private Double lastReturn;
   private Double dy;
   private Double ady;
   private Integer targetAmount;

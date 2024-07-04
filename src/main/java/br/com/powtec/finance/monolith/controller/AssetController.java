@@ -16,10 +16,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
 import br.com.powtec.finance.monolith.model.dto.AssetConsolidatedDTO;
 import br.com.powtec.finance.monolith.model.dto.AssetDTO;
 import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
@@ -45,6 +47,13 @@ public class AssetController {
 
   }
 
+  @PutMapping("/assets/{id}")
+  public ResponseEntity<AssetDTO> update(@PathVariable Long id,
+      @RequestBody AssetDTO body) {
+    AssetDTO response = service.update(id, body);
+    return ResponseEntity.ok().body(response);
+  }
+
   @GetMapping("/assets/{id}")
   public ResponseEntity<AssetDTO> getById(@PathVariable Long id) {
     return ResponseEntity.ok().body(service.findById(id));
@@ -66,7 +75,7 @@ public class AssetController {
   }
 
   @GetMapping("/assets/consolidate")
-  public ResponseEntity<AssetConsolidatedDTO> getConsolidated() {
-    return ResponseEntity.ok().body(service.getConsolidated());
+  public ResponseEntity<AssetConsolidatedDTO> getConsolidated(@RequestParam AssetTypeEnum type) {
+    return ResponseEntity.ok().body(service.getConsolidated(type));
   }
 }
