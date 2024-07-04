@@ -15,4 +15,6 @@ public interface BaseCrudService<T> {
 
   public Page<T> search(Pageable pageable, String parameters);
 
+  public T update(Long id, T body);
+
 }

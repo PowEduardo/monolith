@@ -38,6 +38,12 @@ public class AssetReturnsMovimentServiceImpl implements MovimentService {
   }
 
   @Override
+  public MovimentDTO update(MovimentDTO request, Long assetId, Long id) {
+    request.setId(id);
+    return mapper.toDtoOnlyId((MovimentModel) repository.save(mapper.toModel(request, assetId)));
+  }
+
+  @Override
   public MovimentDTO findById(Long id) {
     return mapper.toDto((MovimentModel) repository.findById(id).orElseThrow());
   }
@@ -48,11 +54,5 @@ public class AssetReturnsMovimentServiceImpl implements MovimentService {
         pageable);
     List<MovimentDTO> response = mapper.toDtosList(page.getContent());
     return new PageImpl<>(response, pageable, page.getTotalElements());
-  }
-
-  @Override
-  public MovimentDTO update(MovimentDTO request, Long assetId, Long id) {
-    request.setId(id);
-    return mapper.toDtoOnlyId((MovimentModel) repository.save(mapper.toModel(request, assetId)));
   }
 }

@@ -18,6 +18,8 @@ public class AssetDetailsCalculation {
   private Double allReturn = 0.0;
   private Double unitYearReturn = 0.0;
   private Double monthlyReturn = 0.0;
+  private Double lastReturn = 0.0;
+  private LocalDate lastReturnDate = LocalDate.parse("2024-01-01");
 
   private void calculateAmountAndPaidValue(List<AssetMovimentModel> moviments) {
     for (AssetMovimentModel stockMoviment : moviments) {
@@ -46,14 +48,21 @@ public class AssetDetailsCalculation {
   private void calculateReturns(List<AssetReturnsMovimentModel> returns) {
     for (AssetReturnsMovimentModel assetReturn : returns) {
       this.allReturn += assetReturn.getValue();
+
       if (assetReturn.getDate().getYear() == LocalDate.now().getYear()) {
         unitYearReturn += assetReturn.getUnitValue();
+      }
+      if (assetReturn.getExDividendDate() != null &&
+          assetReturn.getExDividendDate().isAfter(lastReturnDate) &&
+          assetReturn.getExDividendDate().isBefore(LocalDate.now())) {
+        lastReturnDate = assetReturn.getExDividendDate();
+        this.lastReturn = assetReturn.getUnitValue();
       }
     }
   }
 
   private void calculateMonthlyReturn() {
-    this.monthlyReturn += unitYearReturn / LocalDate.now().getMonthValue();
+    this.monthlyReturn += unitYearReturn / lastReturnDate.getMonthValue();
   }
 
   private Double calculateDy(Double assetValue) {
@@ -77,16 +86,15 @@ public class AssetDetailsCalculation {
         .intValue();
   }
 
-  public AssetDetailsDTO calculate(AssetModel asset, List<AssetMovimentModel> moviments,
-      List<AssetReturnsMovimentModel> returns) {
-    if (moviments.isEmpty()) {
+  public AssetDetailsDTO calculate(AssetModel asset) {
+    if (asset.getMoviments().isEmpty()) {
       return this.newAsset();
     }
-    this.calculateAmountAndPaidValue(moviments);
-    if (returns.isEmpty()) {
-      return this.assetWithoutReturns(asset, moviments);
+    this.calculateAmountAndPaidValue(asset.getMoviments());
+    if (asset.getReturns().isEmpty() || this.amount == 0) {
+      return this.assetWithoutReturns(asset, asset.getMoviments());
     }
-    this.calculateReturns(returns);
+    this.calculateReturns(asset.getReturns());
     this.calculateMonthlyReturn();
     return AssetDetailsDTO.builder()
         .amount(this.amount)
@@ -94,7 +102,8 @@ public class AssetDetailsCalculation {
         .currentValue(this.currentValue(asset.getValue()))
         .average(this.average())
         .returns(this.allReturn)
-        .monthlyReturn(monthlyReturn)
+        .monthlyReturn(this.monthlyReturn)
+        .lastReturn(this.lastReturn)
         .dy(this.calculateDy(asset.getValue()))
         .ady(this.calculateADy())
         .targetAmount(this.calculateTargetAmount(asset.getValue()))
@@ -110,6 +119,7 @@ public class AssetDetailsCalculation {
         .average(0.0)
         .returns(0.0)
         .monthlyReturn(0.0)
+        .lastReturn(this.lastReturn)
         .dy(0.0)
         .ady(0.0)
         .targetAmount(0)
@@ -125,6 +135,7 @@ public class AssetDetailsCalculation {
         .average(this.average())
         .returns(0.0)
         .monthlyReturn(0.0)
+        .lastReturn(this.lastReturn)
         .dy(0.0)
         .ady(0.0)
         .targetAmount(0)

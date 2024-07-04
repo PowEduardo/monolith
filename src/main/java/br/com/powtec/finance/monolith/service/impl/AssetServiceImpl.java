@@ -10,16 +10,13 @@ import org.springframework.stereotype.Service;
 
 import br.com.powtec.finance.monolith.calculations.AssetConsolidateCalculation;
 import br.com.powtec.finance.monolith.calculations.AssetDetailsCalculation;
+import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
 import br.com.powtec.finance.monolith.mapper.AssetMapper;
 import br.com.powtec.finance.monolith.model.AssetModel;
-import br.com.powtec.finance.monolith.model.AssetMovimentModel;
-import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
 import br.com.powtec.finance.monolith.model.dto.AssetConsolidatedDTO;
 import br.com.powtec.finance.monolith.model.dto.AssetDTO;
 import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
 import br.com.powtec.finance.monolith.repository.AssetRepository;
-import br.com.powtec.finance.monolith.repository.AssetMovimentRepository;
-import br.com.powtec.finance.monolith.repository.AssetReturnsMovimentRepository;
 import br.com.powtec.finance.monolith.repository.specification.AssetSpecification;
 import br.com.powtec.finance.monolith.service.AssetService;
 
@@ -28,12 +25,6 @@ public class AssetServiceImpl implements AssetService {
 
   @Autowired
   private AssetRepository repository;
-
-  @Autowired
-  private AssetMovimentRepository movimentRepository;
-
-  @Autowired
-  private AssetReturnsMovimentRepository returnsRepository;
 
   @Autowired
   private AssetMapper mapper;
@@ -46,6 +37,12 @@ public class AssetServiceImpl implements AssetService {
   @Override
   public List<AssetDTO> createInBatch(List<AssetDTO> body) {
     return mapper.toDtosList(repository.saveAll(mapper.toModelsList(body)));
+  }
+
+  @Override
+  public AssetDTO update(Long id, AssetDTO body) {
+    body.setId(id);
+    return mapper.toDtoOnlyId(repository.save(mapper.toModel(body)));
   }
 
   @Override
@@ -64,17 +61,14 @@ public class AssetServiceImpl implements AssetService {
   @Override
   public AssetDetailsDTO getDetails(Long id) {
     AssetModel asset = repository.findById(id).orElseThrow();
-    List<AssetMovimentModel> moviments = movimentRepository.findAllByAssetId(id);
-    List<AssetReturnsMovimentModel> returns = returnsRepository.findAllByStockId(id);
     AssetDetailsCalculation assetDetailsCalculation = new AssetDetailsCalculation();
-    return assetDetailsCalculation.calculate(asset, moviments, returns);
+    return assetDetailsCalculation.calculate(asset);
   }
 
   @Override
-  public AssetConsolidatedDTO getConsolidated() {
+  public AssetConsolidatedDTO getConsolidated(AssetTypeEnum type) {
     AssetConsolidateCalculation consolidate = new AssetConsolidateCalculation();
-
-    return consolidate.calculate(repository.findAll());
+    return consolidate.calculate(repository.findAllByType(type));
   }
 
 }
