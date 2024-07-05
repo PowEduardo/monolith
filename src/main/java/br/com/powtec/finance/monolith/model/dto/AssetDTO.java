@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
+import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -21,5 +22,6 @@ public class AssetDTO {
   private Long id;
   private String ticker;
   private Double value;
+  @NotBlank
   private AssetTypeEnum type;
 }
