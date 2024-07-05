@@ -48,6 +48,15 @@ public class AssetMovimentController {
     return ResponseEntity.ok().body(service.createInBatch(body));
   }
 
+  @PostMapping("/moviments/{id}")
+  public ResponseEntity<AssetMovimentDTO> update(@PathVariable Long assetId,
+      @RequestBody AssetMovimentDTO body,
+      @PathVariable Long id) {
+    body.setId(id);
+    AssetMovimentDTO response = service.update(body, assetId, id);
+    return ResponseEntity.ok().body(response);
+  }
+
   @GetMapping("/moviments/{id}")
   public ResponseEntity<AssetMovimentDTO> getById(@PathVariable Long id) {
     return ResponseEntity.ok().body(service.findById(id));
