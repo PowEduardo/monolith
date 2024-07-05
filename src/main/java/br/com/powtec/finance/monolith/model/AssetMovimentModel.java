@@ -26,5 +26,6 @@ public class AssetMovimentModel extends MovimentModel {
   private AssetModel asset;
   @Enumerated(EnumType.STRING)
   private AssetMovimentOperationEnum operation;
+  private Double unitValue;
 
 }

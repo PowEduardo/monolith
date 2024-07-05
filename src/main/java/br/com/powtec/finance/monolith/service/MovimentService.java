@@ -7,15 +7,15 @@ import org.springframework.data.domain.Pageable;
 
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 
-public interface MovimentService {
+public interface MovimentService<T extends MovimentDTO> {
 
-  public Page<MovimentDTO> search(Pageable pageable, String parameters);
+  public Page<T> search(Pageable pageable, String parameters, Long assetId);
 
-  public MovimentDTO create(MovimentDTO request, Long assetId);
+  public T create(T request, Long assetId);
 
-  public List<MovimentDTO> createInBatch(List<? extends MovimentDTO> request);
+  public List<T> createInBatch(List<T> request);
 
-  public MovimentDTO update(MovimentDTO request, Long assetId, Long id);
+  public T update(T request, Long assetId, Long id);
 
-  public MovimentDTO findById(Long id);
+  public T findById(Long id);
 }

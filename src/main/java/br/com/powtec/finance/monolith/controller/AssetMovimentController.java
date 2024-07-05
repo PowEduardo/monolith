@@ -22,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 import br.com.powtec.finance.monolith.model.dto.AssetMovimentDTO;
 import br.com.powtec.finance.monolith.service.MovimentService;
 import jakarta.validation.constraints.Min;
@@ -34,34 +33,35 @@ import jakarta.validation.constraints.Min;
 public class AssetMovimentController {
 
   @Autowired
-  @Qualifier("stockMovimentService")
-  MovimentService service;
+  @Qualifier("assetMovimentService")
+  MovimentService<AssetMovimentDTO> service;
 
   @PostMapping("/moviments")
-  public ResponseEntity<MovimentDTO> create(@PathVariable Long assetId, @RequestBody AssetMovimentDTO body) {
-    MovimentDTO response = service.create(body, assetId);
+  public ResponseEntity<AssetMovimentDTO> create(@PathVariable Long assetId, @RequestBody AssetMovimentDTO body) {
+    AssetMovimentDTO response = service.create(body, assetId);
     return ResponseEntity.created(URI.create("/assets/" + assetId + "/moviments/" + response.getId())).body(response);
   }
 
   @PostMapping("/moviments:batch")
-  public ResponseEntity<List<MovimentDTO>> createInBatch(@RequestBody List<AssetMovimentDTO> body) {
+  public ResponseEntity<List<AssetMovimentDTO>> createInBatch(@RequestBody List<AssetMovimentDTO> body) {
 
     return ResponseEntity.ok().body(service.createInBatch(body));
   }
 
   @GetMapping("/moviments/{id}")
-  public ResponseEntity<MovimentDTO> getById(@PathVariable Long id) {
+  public ResponseEntity<AssetMovimentDTO> getById(@PathVariable Long id) {
     return ResponseEntity.ok().body(service.findById(id));
   }
 
   @GetMapping("/moviments:search")
-  public ResponseEntity<Page<MovimentDTO>> search(
+  public ResponseEntity<Page<AssetMovimentDTO>> search(
       @RequestParam(value = "_limit", required = true) @Min(value = 1L, message = MINIMUM_ELEMENTS_PER_PAGE) Integer elementsPerPage,
       @RequestParam(value = "_offset", required = true) @Min(value = 0L, message = MINIMUM_PAGE_NUMBER) Integer pageNumber,
       @RequestParam(value = "_q", required = false) String parameters,
-      @RequestParam(value = "_sort", required = false) String sort) {
+      @RequestParam(value = "_sort", required = false) String sort,
+      @PathVariable Long assetId) {
     Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
-    return ResponseEntity.ok().body(service.search(pageable, parameters));
+    return ResponseEntity.ok().body(service.search(pageable, parameters, assetId));
   }
 
 }

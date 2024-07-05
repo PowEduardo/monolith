@@ -10,14 +10,15 @@ import org.springframework.stereotype.Service;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 import br.com.powtec.finance.monolith.service.MovimentService;
 
+@SuppressWarnings("rawtypes")
 @Service("movimentService")
 @Primary
 public class MovimentServiceImpl implements MovimentService {
 
   @Override
-  public Page<MovimentDTO> search(Pageable pageable, String parameters) {
+  public Page search(Pageable pageable, String parameters, Long assetId) {
     // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'create'");
+    throw new UnsupportedOperationException("Unimplemented method 'search'");
   }
 
   @Override
@@ -27,13 +28,7 @@ public class MovimentServiceImpl implements MovimentService {
   }
 
   @Override
-  public MovimentDTO findById(Long id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'findById'");
-  }
-
-  @Override
-  public List<MovimentDTO> createInBatch(List<? extends MovimentDTO> request) {
+  public List createInBatch(List request) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'createInBatch'");
   }
@@ -42,6 +37,12 @@ public class MovimentServiceImpl implements MovimentService {
   public MovimentDTO update(MovimentDTO request, Long assetId, Long id) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'update'");
+  }
+
+  @Override
+  public MovimentDTO findById(Long id) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'findById'");
   }
 
 }
