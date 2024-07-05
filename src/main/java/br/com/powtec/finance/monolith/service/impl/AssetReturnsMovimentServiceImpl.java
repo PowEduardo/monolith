@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import br.com.powtec.finance.monolith.mapper.MovimentMapper;
 import br.com.powtec.finance.monolith.model.MovimentModel;
+import br.com.powtec.finance.monolith.model.dto.AssetReturnsMovimentDTO;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 import br.com.powtec.finance.monolith.repository.MovimentRepository;
 import br.com.powtec.finance.monolith.repository.specification.AssetReturnsMovimentSpecification;
@@ -33,7 +34,7 @@ public class AssetReturnsMovimentServiceImpl implements MovimentService {
   }
 
   @Override
-  public List<MovimentDTO> createInBatch(List<? extends MovimentDTO> body) {
+  public List<AssetReturnsMovimentDTO> createInBatch(List body) {
     return mapper.toDtosList(repository.saveAll(mapper.toModelsList(body)));
   }
 
@@ -49,7 +50,7 @@ public class AssetReturnsMovimentServiceImpl implements MovimentService {
   }
 
   @Override
-  public Page<MovimentDTO> search(Pageable pageable, String parameters) {
+  public Page<MovimentDTO> search(Pageable pageable, String parameters, Long assetId) {
     Page<? extends MovimentModel> page = repository.findAll(AssetReturnsMovimentSpecification.getQuery(parameters),
         pageable);
     List<MovimentDTO> response = mapper.toDtosList(page.getContent());

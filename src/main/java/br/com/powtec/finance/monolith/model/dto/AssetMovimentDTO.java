@@ -15,5 +15,6 @@ public class AssetMovimentDTO extends MovimentDTO {
   AssetDTO asset;
   Integer amount;
   AssetMovimentOperationEnum operation;
+  Double unitValue;
 
 }

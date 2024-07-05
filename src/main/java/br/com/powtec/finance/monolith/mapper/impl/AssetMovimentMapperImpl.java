@@ -12,28 +12,29 @@ import br.com.powtec.finance.monolith.model.MovimentModel;
 import br.com.powtec.finance.monolith.model.dto.AssetMovimentDTO;
 import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
 
-@Component("stockMovimentMapper")
-public class StockMovimentMapperImpl extends MovimentMapperImpl {
+@Component("assetMovimentMapper")
+public class AssetMovimentMapperImpl extends MovimentMapperImpl {
 
   @Autowired
   private AssetMapper stockMapper;
 
   @Override
   public AssetMovimentDTO toDto(MovimentModel model) {
-    AssetMovimentDTO stockDto = new AssetMovimentDTO();
+    AssetMovimentDTO response = new AssetMovimentDTO();
     if (model instanceof AssetMovimentModel) {
-      AssetMovimentModel stockModel = (AssetMovimentModel) model;
-      stockDto.setAmount(stockModel.getAmount());
-      stockDto.setDate(stockModel.getDate());
-      stockDto.setId(stockModel.getId());
-      stockDto.setAsset(stockMapper.toDtoOnlyId(stockModel.getAsset()));
-      stockDto.setType(stockModel.getType());
-      stockDto.setValue(stockModel.getValue());
-      stockDto.setOperation(stockModel.getOperation());
+      AssetMovimentModel assetModel = (AssetMovimentModel) model;
+      response.setAmount(assetModel.getAmount());
+      response.setDate(assetModel.getDate());
+      response.setId(assetModel.getId());
+      response.setAsset(stockMapper.toDtoOnlyId(assetModel.getAsset()));
+      response.setType(assetModel.getType());
+      response.setValue(assetModel.getValue());
+      response.setOperation(assetModel.getOperation());
+      response.setUnitValue(assetModel.getUnitValue());
     } else {
       throw new RuntimeException("You fucked up");
     }
-    return stockDto;
+    return response;
   }
 
   @Override
@@ -46,8 +47,8 @@ public class StockMovimentMapperImpl extends MovimentMapperImpl {
   }
 
   @Override
-  public MovimentModel toModel(MovimentDTO dto, Long assetId) {
-    AssetMovimentDTO request = (AssetMovimentDTO) dto;
+  public MovimentModel toModel(MovimentDTO body, Long assetId) {
+    AssetMovimentDTO request = (AssetMovimentDTO) body;
     AssetMovimentModel model = new AssetMovimentModel();
     model.setDate(request.getDate());
     model.setType(request.getType());
@@ -55,6 +56,7 @@ public class StockMovimentMapperImpl extends MovimentMapperImpl {
     model.setAsset(stockMapper.toModelById(assetId));
     model.setAmount(request.getAmount());
     model.setOperation(request.getOperation());
+    model.setUnitValue(request.getUnitValue());
     return model;
   }
 
