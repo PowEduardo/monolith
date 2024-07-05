@@ -18,6 +18,7 @@ public class AssetMapperImpl implements AssetMapper {
         .id(model.getId())
         .ticker(model.getTicker())
         .value(model.getValue())
+        .type(model.getType())
         .build();
   }
 
