@@ -21,7 +21,7 @@ import lombok.Setter;
 public class AssetMovimentModel extends MovimentModel {
 
   private Integer amount;
-  @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
+  @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
   @JoinColumn(name = "asset_id")
   private AssetModel asset;
   @Enumerated(EnumType.STRING)

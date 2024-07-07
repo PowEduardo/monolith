@@ -70,8 +70,9 @@ public class AssetReturnsMovimentMapperImpl
 
   @Override
   public AssetReturnsMovimentDTO toDtoOnlyId(AssetReturnsMovimentModel model) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'toDtoOnlyId'");
+    AssetReturnsMovimentDTO response = new AssetReturnsMovimentDTO();
+    response.setId(model.getId());
+    return response;
   }
 
 }
