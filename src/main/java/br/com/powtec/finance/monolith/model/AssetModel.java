@@ -31,9 +31,9 @@ public class AssetModel {
   private Long id;
   private String ticker;
   private Double value;
-  @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "asset")
+  @OneToMany(cascade = { CascadeType.REFRESH, CascadeType.REMOVE }, fetch = FetchType.LAZY, mappedBy = "asset")
   private List<AssetMovimentModel> moviments;
-  @OneToMany(cascade = CascadeType.REFRESH, fetch = FetchType.LAZY, mappedBy = "stock")
+  @OneToMany(cascade = { CascadeType.REFRESH, CascadeType.REMOVE }, fetch = FetchType.LAZY, mappedBy = "stock")
   private List<AssetReturnsMovimentModel> returns;
   @Enumerated(EnumType.STRING)
   private AssetTypeEnum type;
