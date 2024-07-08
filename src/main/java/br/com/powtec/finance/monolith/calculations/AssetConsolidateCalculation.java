@@ -5,6 +5,7 @@ import java.math.RoundingMode;
 import java.util.List;
 
 import br.com.powtec.finance.monolith.enums.AssetMovimentOperationEnum;
+import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
 import br.com.powtec.finance.monolith.model.AssetModel;
 import br.com.powtec.finance.monolith.model.AssetMovimentModel;
 import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
@@ -18,7 +19,10 @@ public class AssetConsolidateCalculation {
     Double wantedValue = 17000.00;
     Double returnsValue = 0.0;
     for (AssetModel assetModel : assets) {
-      Integer amount = 0;
+      if (assetModel.getType() == AssetTypeEnum.DIRECT_TREASURE) {
+        wantedValue = 14400.00;
+      }
+      Double amount = 0.0;
       for (AssetMovimentModel movimentModel : assetModel.getMoviments()) {
         if (movimentModel.getOperation() == AssetMovimentOperationEnum.BUY ||
             movimentModel.getOperation() == AssetMovimentOperationEnum.SPLIT) {

@@ -13,7 +13,7 @@ import lombok.Setter;
 public class AssetMovimentDTO extends MovimentDTO {
 
   AssetDTO asset;
-  Integer amount;
+  Double amount;
   AssetMovimentOperationEnum operation;
   Double unitValue;
 
