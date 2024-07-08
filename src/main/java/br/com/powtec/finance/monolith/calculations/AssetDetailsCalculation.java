@@ -13,7 +13,9 @@ import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
 
 public class AssetDetailsCalculation {
 
-  private Integer amount = 0;
+  private Double amount = 0.0;
+  private Double average = 0.0;
+  private Double difference = 0.0;
   private Double paidValue = 0.0;
   private Double allReturn = 0.0;
   private Double unitYearReturn = 0.0;
@@ -21,7 +23,7 @@ public class AssetDetailsCalculation {
   private Double lastReturn = 0.0;
   private LocalDate lastReturnDate = LocalDate.parse("2024-01-01");
 
-  private void calculateAmountAndPaidValue(List<AssetMovimentModel> moviments) {
+  private void amountAndPaidValue(List<AssetMovimentModel> moviments) {
     for (AssetMovimentModel stockMoviment : moviments) {
       if (stockMoviment.getOperation() == AssetMovimentOperationEnum.BUY
           || stockMoviment.getOperation() == AssetMovimentOperationEnum.SPLIT) {
@@ -37,15 +39,19 @@ public class AssetDetailsCalculation {
     return amount * value;
   }
 
-  private Double average() {
-    if (amount == 0) {
-      return 0.0;
-    }
-    Double average = paidValue / amount;
-    return BigDecimal.valueOf(average).setScale(2, RoundingMode.HALF_UP).doubleValue();
+  private void difference(Double value) {
+    this.difference = formatDouble(value * 100 / this.average - 100);
   }
 
-  private void calculateReturns(List<AssetReturnsMovimentModel> returns) {
+  private void average() {
+    if (amount == 0) {
+      this.average = 0.0;
+    }
+    Double average = paidValue / amount;
+    this.average = BigDecimal.valueOf(average).setScale(2, RoundingMode.HALF_UP).doubleValue();
+  }
+
+  private void returns(List<AssetReturnsMovimentModel> returns) {
     for (AssetReturnsMovimentModel assetReturn : returns) {
       this.allReturn += assetReturn.getValue();
 
@@ -61,24 +67,24 @@ public class AssetDetailsCalculation {
     }
   }
 
-  private void calculateMonthlyReturn() {
+  private void monthlyReturn() {
     this.monthlyReturn += unitYearReturn / lastReturnDate.getMonthValue();
   }
 
-  private Double calculateDy(Double assetValue) {
+  private Double dy(Double assetValue) {
     return BigDecimal.valueOf((this.monthlyReturn * 12) * 100 / assetValue).setScale(2, RoundingMode.HALF_UP)
         .doubleValue();
   }
 
-  private Double calculateADy() {
-    if (average() == 0) {
+  private Double ady() {
+    if (this.average == 0) {
       return 0.0;
     }
-    return BigDecimal.valueOf((this.monthlyReturn * 12) * 100 / average()).setScale(2, RoundingMode.HALF_UP)
+    return BigDecimal.valueOf((this.monthlyReturn * 12) * 100 / this.average).setScale(2, RoundingMode.HALF_UP)
         .doubleValue();
   }
 
-  private Integer calculateTargetAmount(Double assetValue) {
+  private Integer targetAmount(Double assetValue) {
     if (monthlyReturn == 0) {
       return 0;
     }
@@ -90,35 +96,39 @@ public class AssetDetailsCalculation {
     if (asset.getMoviments().isEmpty()) {
       return this.newAsset();
     }
-    this.calculateAmountAndPaidValue(asset.getMoviments());
+    this.amountAndPaidValue(asset.getMoviments());
     if (asset.getReturns().isEmpty() || this.amount == 0) {
       return this.assetWithoutReturns(asset, asset.getMoviments());
     }
-    this.calculateReturns(asset.getReturns());
-    this.calculateMonthlyReturn();
+    this.returns(asset.getReturns());
+    this.monthlyReturn();
+    this.average();
+    this.difference(asset.getValue());
     return AssetDetailsDTO.builder()
         .amount(this.amount)
-        .paidValue(this.paidValue)
+        .average(this.average)
         .currentValue(this.currentValue(asset.getValue()))
-        .average(this.average())
+        .difference(this.difference)
+        .paidValue(this.paidValue)
         .returns(this.allReturn)
         .monthlyReturn(this.monthlyReturn)
         .lastReturn(this.lastReturn)
-        .dy(this.calculateDy(asset.getValue()))
-        .ady(this.calculateADy())
-        .targetAmount(this.calculateTargetAmount(asset.getValue()))
+        .dy(this.dy(asset.getValue()))
+        .ady(this.ady())
+        .targetAmount(this.targetAmount(asset.getValue()))
         .build();
 
   }
 
   private AssetDetailsDTO newAsset() {
     return AssetDetailsDTO.builder()
-        .amount(0)
-        .paidValue(0.0)
-        .currentValue(0.0)
-        .average(0.0)
-        .returns(0.0)
-        .monthlyReturn(0.0)
+        .amount(this.amount)
+        .average(this.average)
+        .currentValue(this.currentValue(paidValue))
+        .difference(this.difference)
+        .paidValue(this.paidValue)
+        .returns(this.allReturn)
+        .monthlyReturn(this.monthlyReturn)
         .lastReturn(this.lastReturn)
         .dy(0.0)
         .ady(0.0)
@@ -129,10 +139,11 @@ public class AssetDetailsCalculation {
   private AssetDetailsDTO assetWithoutReturns(AssetModel asset, List<AssetMovimentModel> moviments) {
 
     return AssetDetailsDTO.builder()
-        .amount(this.amount)
-        .paidValue(formatDouble(this.paidValue))
+        .amount(formatDouble(this.amount))
+        .average(this.average)
         .currentValue(this.currentValue(asset.getValue()))
-        .average(this.average())
+        .difference(this.difference)
+        .paidValue(formatDouble(this.paidValue))
         .returns(0.0)
         .monthlyReturn(0.0)
         .lastReturn(this.lastReturn)

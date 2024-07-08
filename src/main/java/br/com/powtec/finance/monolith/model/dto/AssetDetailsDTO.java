@@ -16,9 +16,10 @@ import lombok.Setter;
 @NoArgsConstructor
 @JsonInclude(Include.NON_NULL)
 public class AssetDetailsDTO {
-  private Integer amount;
-  private Double currentValue;
+  private Double amount;
   private Double average;
+  private Double currentValue;
+  private Double difference;
   private Double monthlyReturn;
   private Double lastReturn;
   private Double dy;

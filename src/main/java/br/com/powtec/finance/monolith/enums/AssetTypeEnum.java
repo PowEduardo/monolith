@@ -6,7 +6,8 @@ import lombok.Getter;
 public enum AssetTypeEnum {
 
   STOCK("STOCK"),
-  REIT("REIT");
+  REIT("REIT"),
+  DIRECT_TREASURE("DIRECT_TREASURE");
 
   private String name;
 

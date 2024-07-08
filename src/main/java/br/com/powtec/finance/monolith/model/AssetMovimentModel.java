@@ -20,7 +20,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AssetMovimentModel extends MovimentModel {
 
-  private Integer amount;
+  private Double amount;
   @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)
   @JoinColumn(name = "asset_id")
   private AssetModel asset;
