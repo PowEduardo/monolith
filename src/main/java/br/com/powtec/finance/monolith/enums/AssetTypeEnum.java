@@ -7,7 +7,8 @@ public enum AssetTypeEnum {
 
   STOCK("STOCK"),
   REIT("REIT"),
-  DIRECT_TREASURE("DIRECT_TREASURE");
+  DIRECT_TREASURE("DIRECT_TREASURE"),
+  PENSION("PENSION");
 
   private String name;
 
