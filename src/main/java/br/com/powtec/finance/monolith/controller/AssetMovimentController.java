@@ -43,9 +43,11 @@ public class AssetMovimentController {
   }
 
   @PostMapping("/moviments:batch")
-  public ResponseEntity<List<AssetMovimentDTO>> createInBatch(@RequestBody List<AssetMovimentDTO> body) {
+  public ResponseEntity<List<AssetMovimentDTO>> createInBatch(
+      @RequestBody List<AssetMovimentDTO> body,
+      @PathVariable Long assetId) {
 
-    return ResponseEntity.ok().body(service.createInBatch(body));
+    return ResponseEntity.ok().body(service.createInBatch(body, assetId));
   }
 
   @PostMapping("/moviments/{id}")

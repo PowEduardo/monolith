@@ -15,5 +15,5 @@ public interface MovimentMapper<T extends MovimentModel, Y extends MovimentDTO> 
 
   public T toModel(Y dto, Long assetId);
 
-  public List<T> toModelsList(List<Y> movimentsDto);
+  public List<T> toModelsList(List<Y> movimentsDto, Long assetId);
 }

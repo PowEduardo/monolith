@@ -18,7 +18,7 @@ import lombok.NoArgsConstructor;
 @Component
 public class AssetReturnsMovimentSpecification {
 
-  public static Specification<AssetReturnsMovimentModel> getQuery(String parameters) {
+  public static Specification<AssetReturnsMovimentModel> getQuery(String parameters, Long assetId) {
     return new Specification<>() {
 
       @SuppressWarnings("null")
@@ -27,15 +27,17 @@ public class AssetReturnsMovimentSpecification {
       public Predicate toPredicate(Root<AssetReturnsMovimentModel> root, CriteriaQuery<?> query,
           CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicates = new ArrayList<>();
-        for (String param : parameters.split(",")) {
-          String keyValue[] = param.split(":");
-          if (keyValue[0].equalsIgnoreCase("stock")) {
-            predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]).get("id"), keyValue[1])));
-          } else {
-            predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]), keyValue[1])));
+        if (parameters != null) {
+          for (String param : parameters.split(",")) {
+            String keyValue[] = param.split(":");
+            if (keyValue[0].equalsIgnoreCase("stock")) {
+              predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]).get("id"), keyValue[1])));
+            } else {
+              predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]), keyValue[1])));
+            }
           }
         }
-
+        predicates.add(criteriaBuilder.equal(root.get("stock").get("id"), assetId));
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
       }
 

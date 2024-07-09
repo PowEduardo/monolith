@@ -59,11 +59,10 @@ public class AssetReturnsMovimentMapperImpl
   }
 
   @Override
-  public List<AssetReturnsMovimentModel> toModelsList(List<AssetReturnsMovimentDTO> movimentsListDto) {
+  public List<AssetReturnsMovimentModel> toModelsList(List<AssetReturnsMovimentDTO> movimentsListDto, Long assetId) {
     List<AssetReturnsMovimentModel> movimentsListModel = new ArrayList<>(movimentsListDto.size());
-    for (AssetReturnsMovimentDTO AssetReturnsMovimentDTO : movimentsListDto) {
-      AssetReturnsMovimentDTO request = AssetReturnsMovimentDTO;
-      movimentsListModel.add(toModel(AssetReturnsMovimentDTO, request.getAsset().getId()));
+    for (AssetReturnsMovimentDTO request : movimentsListDto) {
+      movimentsListModel.add(toModel(request, assetId));
     }
     return movimentsListModel;
   }

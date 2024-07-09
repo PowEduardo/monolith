@@ -34,8 +34,8 @@ public class AssetMovimentServiceImpl implements MovimentService<AssetMovimentDT
   }
 
   @Override
-  public List<AssetMovimentDTO> createInBatch(List<AssetMovimentDTO> request) {
-    return mapper.toDtosList(repository.saveAll(mapper.toModelsList(request)));
+  public List<AssetMovimentDTO> createInBatch(List<AssetMovimentDTO> request, Long assetId) {
+    return mapper.toDtosList(repository.saveAll(mapper.toModelsList(request, assetId)));
   }
 
   public AssetMovimentDTO findById(Long id) {

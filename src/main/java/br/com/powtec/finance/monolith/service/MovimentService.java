@@ -13,7 +13,7 @@ public interface MovimentService<T extends MovimentDTO> {
 
   public T create(T request, Long assetId);
 
-  public List<T> createInBatch(List<T> request);
+  public List<T> createInBatch(List<T> request, Long assetId);
 
   public T update(T request, Long assetId, Long id);
 

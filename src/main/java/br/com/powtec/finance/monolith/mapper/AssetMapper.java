@@ -18,4 +18,20 @@ public interface AssetMapper {
   public AssetModel toModelById(Long id);
 
   public List<AssetModel> toModelsList(List<? extends AssetDTO> movimentsDto);
+
+  default AssetDTO buildDTO(AssetModel model, AssetDTO response) {
+    response.setId(model.getId());
+    response.setTicker(model.getTicker());
+    response.setType(model.getType());
+    response.setValue(model.getValue());
+    return response;
+  }
+
+  default AssetModel buildModel(AssetDTO request, AssetModel model) {
+    model.setId(request.getId());
+    model.setTicker(request.getTicker());
+    model.setType(request.getType());
+    model.setValue(request.getValue());
+    return model;
+  }
 }
