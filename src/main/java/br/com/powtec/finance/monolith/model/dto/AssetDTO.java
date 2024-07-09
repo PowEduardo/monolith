@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
+import br.com.powtec.finance.monolith.enums.IndexerEnum;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,4 +25,6 @@ public class AssetDTO {
   private Double value;
   @NotBlank
   private AssetTypeEnum type;
+  private Double interestRate;
+  private IndexerEnum indexer;
 }

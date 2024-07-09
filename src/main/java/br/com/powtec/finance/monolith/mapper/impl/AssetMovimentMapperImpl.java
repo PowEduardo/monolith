@@ -28,6 +28,7 @@ public class AssetMovimentMapperImpl implements MovimentMapper<AssetMovimentMode
     response.setValue(model.getValue());
     response.setOperation(model.getOperation());
     response.setUnitValue(model.getUnitValue());
+    response.setDueDate(model.getDueDate());
     return response;
   }
 
@@ -51,14 +52,16 @@ public class AssetMovimentMapperImpl implements MovimentMapper<AssetMovimentMode
     model.setOperation(request.getOperation());
     model.setUnitValue(request.getUnitValue());
     model.setId(request.getId());
+    model.setDueDate(request.getDueDate());
+
     return model;
   }
 
   @Override
-  public List<AssetMovimentModel> toModelsList(List<AssetMovimentDTO> body) {
+  public List<AssetMovimentModel> toModelsList(List<AssetMovimentDTO> body, Long assetId) {
     List<AssetMovimentModel> modelsList = new ArrayList<>(body.size());
     for (AssetMovimentDTO moviment : body) {
-      modelsList.add(toModel(moviment, moviment.getAsset().getId()));
+      modelsList.add(toModel(moviment, assetId));
     }
     return modelsList;
   }

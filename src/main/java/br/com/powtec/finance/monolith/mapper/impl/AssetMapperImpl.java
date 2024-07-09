@@ -5,7 +5,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
+import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
 import br.com.powtec.finance.monolith.mapper.AssetMapper;
+import br.com.powtec.finance.monolith.model.AssetFixedIncomeModel;
 import br.com.powtec.finance.monolith.model.AssetModel;
 import br.com.powtec.finance.monolith.model.dto.AssetDTO;
 
@@ -14,12 +16,15 @@ public class AssetMapperImpl implements AssetMapper {
 
   @Override
   public AssetDTO toDto(AssetModel model) {
-    return AssetDTO.builder()
-        .id(model.getId())
-        .ticker(model.getTicker())
-        .value(model.getValue())
-        .type(model.getType())
-        .build();
+    AssetDTO response = new AssetDTO();
+    this.buildDTO(model, response);
+    if (model instanceof AssetFixedIncomeModel) {
+      AssetFixedIncomeModel fixedIncomeModel = (AssetFixedIncomeModel) model;
+      response.setIndexer(fixedIncomeModel.getIndexer());
+      response.setInterestRate(fixedIncomeModel.getInterestRate());
+      return response;
+    }
+    return response;
   }
 
   @Override
@@ -39,13 +44,18 @@ public class AssetMapperImpl implements AssetMapper {
   }
 
   @Override
-  public AssetModel toModel(AssetDTO dto) {
-    return AssetModel.builder()
-        .id(dto.getId())
-        .ticker(dto.getTicker())
-        .value(dto.getValue())
-        .type(dto.getType())
-        .build();
+  public AssetModel toModel(AssetDTO request) {
+
+    if (request.getType() == AssetTypeEnum.FIXED_INCOME) {
+      AssetFixedIncomeModel model = new AssetFixedIncomeModel();
+      this.buildModel(request, model);
+      model.setIndexer(request.getIndexer());
+      model.setInterestRate(request.getInterestRate());
+      return model;
+    } else {
+      AssetModel model = new AssetModel();
+      return this.buildModel(request, model);
+    }
   }
 
   @Override

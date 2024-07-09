@@ -34,8 +34,8 @@ public class AssetReturnsMovimentServiceImpl implements MovimentService {
   }
 
   @Override
-  public List<AssetReturnsMovimentDTO> createInBatch(List body) {
-    return mapper.toDtosList(repository.saveAll(mapper.toModelsList(body)));
+  public List<AssetReturnsMovimentDTO> createInBatch(List body, Long assetId) {
+    return mapper.toDtosList(repository.saveAll(mapper.toModelsList(body, assetId)));
   }
 
   @Override
@@ -51,7 +51,8 @@ public class AssetReturnsMovimentServiceImpl implements MovimentService {
 
   @Override
   public Page<MovimentDTO> search(Pageable pageable, String parameters, Long assetId) {
-    Page<? extends MovimentModel> page = repository.findAll(AssetReturnsMovimentSpecification.getQuery(parameters),
+    Page<? extends MovimentModel> page = repository.findAll(
+        AssetReturnsMovimentSpecification.getQuery(parameters, assetId),
         pageable);
     List<MovimentDTO> response = mapper.toDtosList(page.getContent());
     return new PageImpl<>(response, pageable, page.getTotalElements());

@@ -5,7 +5,7 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.List;
 
-import br.com.powtec.finance.monolith.enums.AssetMovimentOperationEnum;
+import br.com.powtec.finance.monolith.enums.AssetOperationEnum;
 import br.com.powtec.finance.monolith.model.AssetModel;
 import br.com.powtec.finance.monolith.model.AssetMovimentModel;
 import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
@@ -25,30 +25,34 @@ public class AssetDetailsCalculation {
 
   private void amountAndPaidValue(List<AssetMovimentModel> moviments) {
     for (AssetMovimentModel stockMoviment : moviments) {
-      if (stockMoviment.getOperation() == AssetMovimentOperationEnum.BUY
-          || stockMoviment.getOperation() == AssetMovimentOperationEnum.SPLIT) {
-        amount += stockMoviment.getAmount();
+      if (stockMoviment.getOperation() != AssetOperationEnum.SELL) {
+        amount += stockMoviment.getAmount() == null ? 0 : stockMoviment.getAmount();
         paidValue += stockMoviment.getValue();
-      } else if (stockMoviment.getOperation() == AssetMovimentOperationEnum.SELL) {
-        amount -= stockMoviment.getAmount();
+      } else {
+        amount -= stockMoviment.getAmount() == null ? 0 : stockMoviment.getAmount();
       }
     }
   }
 
   private Double currentValue(Double value) {
-    return amount * value;
+    return formatDouble(amount * value, 2, RoundingMode.HALF_UP);
   }
 
   private void difference(Double value) {
-    this.difference = formatDouble(value * 100 / this.average - 100);
+    if (this.average == 0) {
+      this.difference = 0.0;
+    } else {
+      this.difference = formatDouble(value * 100 / this.average - 100, 2, RoundingMode.DOWN);
+    }
   }
 
   private void average() {
     if (amount == 0) {
       this.average = 0.0;
+    } else {
+      Double average = paidValue / amount;
+      this.average = BigDecimal.valueOf(average).setScale(2, RoundingMode.HALF_UP).doubleValue();
     }
-    Double average = paidValue / amount;
-    this.average = BigDecimal.valueOf(average).setScale(2, RoundingMode.HALF_UP).doubleValue();
   }
 
   private void returns(List<AssetReturnsMovimentModel> returns) {
@@ -97,13 +101,13 @@ public class AssetDetailsCalculation {
       return this.newAsset();
     }
     this.amountAndPaidValue(asset.getMoviments());
+    this.average();
+    this.difference(asset.getValue());
     if (asset.getReturns().isEmpty() || this.amount == 0) {
       return this.assetWithoutReturns(asset, asset.getMoviments());
     }
     this.returns(asset.getReturns());
     this.monthlyReturn();
-    this.average();
-    this.difference(asset.getValue());
     return AssetDetailsDTO.builder()
         .amount(this.amount)
         .average(this.average)
@@ -139,11 +143,11 @@ public class AssetDetailsCalculation {
   private AssetDetailsDTO assetWithoutReturns(AssetModel asset, List<AssetMovimentModel> moviments) {
 
     return AssetDetailsDTO.builder()
-        .amount(formatDouble(this.amount))
+        .amount(formatDouble(this.amount, 8, RoundingMode.HALF_UP))
         .average(this.average)
         .currentValue(this.currentValue(asset.getValue()))
         .difference(this.difference)
-        .paidValue(formatDouble(this.paidValue))
+        .paidValue(formatDouble(this.paidValue, 2, RoundingMode.DOWN))
         .returns(0.0)
         .monthlyReturn(0.0)
         .lastReturn(this.lastReturn)
@@ -153,7 +157,7 @@ public class AssetDetailsCalculation {
         .build();
   }
 
-  private Double formatDouble(Double value) {
-    return BigDecimal.valueOf(value).setScale(2, RoundingMode.DOWN).doubleValue();
+  private Double formatDouble(Double value, Integer scale, RoundingMode mode) {
+    return BigDecimal.valueOf(value).setScale(scale, mode).doubleValue();
   }
 }

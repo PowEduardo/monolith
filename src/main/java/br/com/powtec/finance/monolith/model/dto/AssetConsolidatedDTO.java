@@ -20,4 +20,5 @@ public class AssetConsolidatedDTO {
   private Double currentValue;
   private Double wantedValue;
   private Double totalReturns;
+  private Double difference;
 }
