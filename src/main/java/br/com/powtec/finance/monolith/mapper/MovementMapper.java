@@ -2,10 +2,10 @@ package br.com.powtec.finance.monolith.mapper;
 
 import java.util.List;
 
-import br.com.powtec.finance.monolith.model.MovimentModel;
-import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
+import br.com.powtec.finance.monolith.model.MovementModel;
+import br.com.powtec.finance.monolith.model.dto.MovementDTO;
 
-public interface MovimentMapper<T extends MovimentModel, Y extends MovimentDTO> {
+public interface MovementMapper<T extends MovementModel, Y extends MovementDTO> {
 
   public Y toDto(T model);
 

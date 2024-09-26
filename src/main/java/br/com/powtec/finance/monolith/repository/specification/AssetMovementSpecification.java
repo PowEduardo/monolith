@@ -7,7 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
-import br.com.powtec.finance.monolith.model.AssetMovimentModel;
+import br.com.powtec.finance.monolith.model.AssetMovementModel;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
@@ -16,18 +16,20 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Component
-public class AssetMovimentSpecification {
+public class AssetMovementSpecification {
 
-  public static Specification<AssetMovimentModel> getQuery(String parameters, Long assetId) {
+  public static Specification<AssetMovementModel> getQuery(String parameters, Long assetId) {
     return new Specification<>() {
 
       @SuppressWarnings("null")
       @Override
       @Nullable
-      public Predicate toPredicate(Root<AssetMovimentModel> root, CriteriaQuery<?> query,
+      public Predicate toPredicate(Root<AssetMovementModel> root, CriteriaQuery<?> query,
           CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicates = new ArrayList<>();
-        predicates.add(criteriaBuilder.equal(root.get("asset").get("id"), assetId));
+        if (assetId != 0) {
+          predicates.add(criteriaBuilder.equal(root.get("asset").get("id"), assetId));
+        }
         if (parameters != null) {
           for (String param : parameters.split(",")) {
             String keyValue[] = param.split(":");

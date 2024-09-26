@@ -9,52 +9,52 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.powtec.finance.monolith.mapper.MovimentMapper;
-import br.com.powtec.finance.monolith.model.MovimentModel;
-import br.com.powtec.finance.monolith.model.dto.AssetReturnsMovimentDTO;
-import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
-import br.com.powtec.finance.monolith.repository.MovimentRepository;
-import br.com.powtec.finance.monolith.repository.specification.AssetReturnsMovimentSpecification;
-import br.com.powtec.finance.monolith.service.MovimentService;
+import br.com.powtec.finance.monolith.mapper.MovementMapper;
+import br.com.powtec.finance.monolith.model.MovementModel;
+import br.com.powtec.finance.monolith.model.dto.AssetReturnsMovementDTO;
+import br.com.powtec.finance.monolith.model.dto.MovementDTO;
+import br.com.powtec.finance.monolith.repository.MovementRepository;
+import br.com.powtec.finance.monolith.repository.specification.AssetReturnsMovementSpecification;
+import br.com.powtec.finance.monolith.service.MovementService;
 
 @Service("stockReturnsService")
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class AssetReturnsMovimentServiceImpl implements MovimentService {
+public class AssetReturnsMovimentServiceImpl implements MovementService {
 
   @Autowired
   @Qualifier("assetReturnsMapper")
-  private MovimentMapper mapper;
+  private MovementMapper mapper;
   @Autowired
   @Qualifier("assetReturnRepository")
-  private MovimentRepository repository;
+  private MovementRepository repository;
 
   @Override
-  public MovimentDTO create(MovimentDTO request, Long assetId) {
-    return mapper.toDtoOnlyId((MovimentModel) repository.save(mapper.toModel(request, assetId)));
+  public MovementDTO create(MovementDTO request, Long assetId) {
+    return mapper.toDtoOnlyId((MovementModel) repository.save(mapper.toModel(request, assetId)));
   }
 
   @Override
-  public List<AssetReturnsMovimentDTO> createInBatch(List body, Long assetId) {
+  public List<AssetReturnsMovementDTO> createInBatch(List body, Long assetId) {
     return mapper.toDtosList(repository.saveAll(mapper.toModelsList(body, assetId)));
   }
 
   @Override
-  public MovimentDTO update(MovimentDTO request, Long assetId, Long id) {
+  public MovementDTO update(MovementDTO request, Long assetId, Long id) {
     request.setId(id);
-    return mapper.toDtoOnlyId((MovimentModel) repository.save(mapper.toModel(request, assetId)));
+    return mapper.toDtoOnlyId((MovementModel) repository.save(mapper.toModel(request, assetId)));
   }
 
   @Override
-  public MovimentDTO findById(Long id) {
-    return mapper.toDto((MovimentModel) repository.findById(id).orElseThrow());
+  public MovementDTO findById(Long id) {
+    return mapper.toDto((MovementModel) repository.findById(id).orElseThrow());
   }
 
   @Override
-  public Page<MovimentDTO> search(Pageable pageable, String parameters, Long assetId) {
-    Page<? extends MovimentModel> page = repository.findAll(
-        AssetReturnsMovimentSpecification.getQuery(parameters, assetId),
+  public Page<MovementDTO> search(Pageable pageable, String parameters, Long assetId) {
+    Page<? extends MovementModel> page = repository.findAll(
+        AssetReturnsMovementSpecification.getQuery(parameters, assetId),
         pageable);
-    List<MovimentDTO> response = mapper.toDtosList(page.getContent());
+    List<MovementDTO> response = mapper.toDtosList(page.getContent());
     return new PageImpl<>(response, pageable, page.getTotalElements());
   }
 }

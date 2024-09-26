@@ -2,7 +2,7 @@ package br.com.powtec.finance.monolith.model;
 
 import java.time.LocalDate;
 
-import br.com.powtec.finance.monolith.enums.MovimentTypeEnum;
+import br.com.powtec.finance.monolith.enums.MovementTypeEnum;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -26,8 +26,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @Setter
 @Inheritance(strategy = InheritanceType.JOINED)
-@Table(name = "tb_moviments")
-public class MovimentModel {
+@Table(name = "tb_movements")
+public class MovementModel {
 
   LocalDate date;
   @Id
@@ -35,7 +35,7 @@ public class MovimentModel {
   Long id;
   @Column(name = "tp")
   @Enumerated(EnumType.STRING)
-  MovimentTypeEnum type;
+  MovementTypeEnum type;
   @Column(name = "vl")
   Double value;
 }

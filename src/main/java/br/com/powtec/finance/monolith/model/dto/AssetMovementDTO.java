@@ -1,17 +1,23 @@
-package br.com.powtec.finance.monolith.model;
+package br.com.powtec.finance.monolith.model.dto;
+
+import java.time.LocalDate;
 
 import br.com.powtec.finance.monolith.enums.AssetOperationEnum;
-import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "tb_moviments_public_pension")
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
-public class PublicPensionMovimentModel extends MovimentModel {
+public class AssetMovementDTO extends MovementDTO {
+
+  AssetDTO asset;
+  Double amount;
   AssetOperationEnum operation;
+  Double unitValue;
+  LocalDate dueDate;
+
 }

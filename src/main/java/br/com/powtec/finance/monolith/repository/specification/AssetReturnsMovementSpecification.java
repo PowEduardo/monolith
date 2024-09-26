@@ -7,7 +7,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
-import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
+import br.com.powtec.finance.monolith.model.AssetReturnsMovementModel;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
@@ -16,15 +16,15 @@ import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
 @Component
-public class AssetReturnsMovimentSpecification {
+public class AssetReturnsMovementSpecification {
 
-  public static Specification<AssetReturnsMovimentModel> getQuery(String parameters, Long assetId) {
+  public static Specification<AssetReturnsMovementModel> getQuery(String parameters, Long assetId) {
     return new Specification<>() {
 
       @SuppressWarnings("null")
       @Override
       @Nullable
-      public Predicate toPredicate(Root<AssetReturnsMovimentModel> root, CriteriaQuery<?> query,
+      public Predicate toPredicate(Root<AssetReturnsMovementModel> root, CriteriaQuery<?> query,
           CriteriaBuilder criteriaBuilder) {
         List<Predicate> predicates = new ArrayList<>();
         if (parameters != null) {
@@ -37,7 +37,9 @@ public class AssetReturnsMovimentSpecification {
             }
           }
         }
-        predicates.add(criteriaBuilder.equal(root.get("stock").get("id"), assetId));
+        if (assetId != 0) {
+          predicates.add(criteriaBuilder.equal(root.get("stock").get("id"), assetId));
+        }
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));
       }
 

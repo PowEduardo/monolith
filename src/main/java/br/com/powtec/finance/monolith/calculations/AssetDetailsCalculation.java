@@ -7,8 +7,8 @@ import java.util.List;
 
 import br.com.powtec.finance.monolith.enums.AssetOperationEnum;
 import br.com.powtec.finance.monolith.model.AssetModel;
-import br.com.powtec.finance.monolith.model.AssetMovimentModel;
-import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
+import br.com.powtec.finance.monolith.model.AssetMovementModel;
+import br.com.powtec.finance.monolith.model.AssetReturnsMovementModel;
 import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
 
 public class AssetDetailsCalculation {
@@ -23,8 +23,8 @@ public class AssetDetailsCalculation {
   private Double lastReturn = 0.0;
   private LocalDate lastReturnDate = LocalDate.parse("2024-01-01");
 
-  private void amountAndPaidValue(List<AssetMovimentModel> moviments) {
-    for (AssetMovimentModel stockMoviment : moviments) {
+  private void amountAndPaidValue(List<AssetMovementModel> moviments) {
+    for (AssetMovementModel stockMoviment : moviments) {
       if (stockMoviment.getOperation() != AssetOperationEnum.SELL) {
         amount += stockMoviment.getAmount() == null ? 0 : stockMoviment.getAmount();
         paidValue += stockMoviment.getValue();
@@ -55,8 +55,8 @@ public class AssetDetailsCalculation {
     }
   }
 
-  private void returns(List<AssetReturnsMovimentModel> returns) {
-    for (AssetReturnsMovimentModel assetReturn : returns) {
+  private void returns(List<AssetReturnsMovementModel> returns) {
+    for (AssetReturnsMovementModel assetReturn : returns) {
       this.allReturn += assetReturn.getValue();
 
       if (assetReturn.getDate().getYear() == LocalDate.now().getYear()) {
@@ -140,7 +140,7 @@ public class AssetDetailsCalculation {
         .build();
   }
 
-  private AssetDetailsDTO assetWithoutReturns(AssetModel asset, List<AssetMovimentModel> moviments) {
+  private AssetDetailsDTO assetWithoutReturns(AssetModel asset, List<AssetMovementModel> moviments) {
 
     return AssetDetailsDTO.builder()
         .amount(formatDouble(this.amount, 8, RoundingMode.HALF_UP))

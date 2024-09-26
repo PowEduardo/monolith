@@ -15,12 +15,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "tb_moviments_asset_return")
+@Entity(name = "tb_movements_asset_return")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class AssetReturnsMovimentModel extends MovimentModel {
+public class AssetReturnsMovementModel extends MovementModel {
 
   private Integer amount;
   @ManyToOne(cascade = CascadeType.REFRESH, fetch = FetchType.EAGER)

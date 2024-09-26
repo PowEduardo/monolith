@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import br.com.powtec.finance.monolith.model.dto.MovimentDTO;
+import br.com.powtec.finance.monolith.model.dto.MovementDTO;
 
-public interface MovimentService<T extends MovimentDTO> {
+public interface MovementService<T extends MovementDTO> {
 
   public Page<T> search(Pageable pageable, String parameters, Long assetId);
 
