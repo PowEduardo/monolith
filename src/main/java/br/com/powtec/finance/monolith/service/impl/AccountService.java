@@ -34,8 +34,7 @@ public class AccountService implements BaseCrudService<AccountDTO>{
 
   @Override
   public AccountDTO findById(Long id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'findById'");
+    return mapper.toDto(repository.findById(id).orElseThrow());
   }
 
   @Override

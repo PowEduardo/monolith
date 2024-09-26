@@ -13,8 +13,14 @@ public class AccountMapperImpl implements AccountMapper {
 
   @Override
   public AccountDTO toDto(AccountModel model) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'toDto'");
+    return AccountDTO.builder()
+    .bank(model.getBank())
+    .branch(model.getBranch())
+    .createDate(model.getCreateDate())
+    .id(model.getId())
+    .number(model.getNumber())
+    .primary(model.getPrimary())
+    .build();
   }
 
   @Override
