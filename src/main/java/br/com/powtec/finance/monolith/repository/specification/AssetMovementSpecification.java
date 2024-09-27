@@ -33,7 +33,11 @@ public class AssetMovementSpecification {
         if (parameters != null) {
           for (String param : parameters.split(",")) {
             String keyValue[] = param.split(":");
+            if (keyValue[0].equals("assetType")) {
+              predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("asset").get("type"), keyValue[1])));
+            } else {
             predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]), keyValue[1])));
+            }
           }
         }
         return criteriaBuilder.and(predicates.toArray(new Predicate[0]));

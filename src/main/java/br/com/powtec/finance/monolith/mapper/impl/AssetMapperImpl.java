@@ -40,6 +40,7 @@ public class AssetMapperImpl implements AssetMapper {
   public AssetDTO toDtoOnlyId(AssetModel model) {
     return AssetDTO.builder()
         .id(model.getId())
+        .ticker(model.getTicker())
         .build();
   }
 

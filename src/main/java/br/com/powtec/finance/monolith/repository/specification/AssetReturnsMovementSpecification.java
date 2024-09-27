@@ -32,6 +32,8 @@ public class AssetReturnsMovementSpecification {
             String keyValue[] = param.split(":");
             if (keyValue[0].equalsIgnoreCase("stock")) {
               predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]).get("id"), keyValue[1])));
+            } else if (keyValue[0].equals("assetType")) {
+              predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get("stock").get("type"), keyValue[1])));
             } else {
               predicates.add(criteriaBuilder.and(criteriaBuilder.equal(root.get(keyValue[0]), keyValue[1])));
             }
