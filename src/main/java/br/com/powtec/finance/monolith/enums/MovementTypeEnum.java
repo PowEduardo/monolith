@@ -5,7 +5,7 @@ import lombok.Getter;
 @Getter
 public enum MovementTypeEnum {
   ASSET_RETURN("ASSET_RETURN"),
-  ASSET_MOVIMENT("ASSET_MOVIMENT");
+  ASSET_MOVEMENT("ASSET_MOVEMENT");
 
   private String name;
 

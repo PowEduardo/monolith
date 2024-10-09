@@ -24,4 +24,5 @@ public class MovementDTO {
   LocalDate date;
   Double value;
   MovementTypeEnum type;
+  String description;
 }

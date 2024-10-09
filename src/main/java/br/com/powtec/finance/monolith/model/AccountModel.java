@@ -1,12 +1,16 @@
 package br.com.powtec.finance.monolith.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -29,4 +33,6 @@ public class AccountModel {
   @Column(name = "isPrimary")
   private Boolean primary;
   private LocalDate createDate;
+  @OneToMany(cascade = CascadeType.REFRESH, mappedBy = "account", fetch = FetchType.LAZY, orphanRemoval = false)
+  private List<MovementModel> movements;
 } 
