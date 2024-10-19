@@ -56,4 +56,10 @@ public class AssetMovementServiceImpl implements MovementService<AssetMovementDT
 
   }
 
+  @Override
+  public void delete(Long id) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'delete'");
+  }
+
 }

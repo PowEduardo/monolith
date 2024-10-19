@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.monolith.model.dto.AccountDTO;
-import br.com.powtec.finance.monolith.service.impl.AccountService;
+import br.com.powtec.finance.monolith.service.impl.AccountServiceImpl;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -22,7 +22,7 @@ import br.com.powtec.finance.monolith.service.impl.AccountService;
 public class AccountController implements BaseCrudController<AccountDTO> {
 
   @Autowired
-  private AccountService service;
+  private AccountServiceImpl service;
 
   @PostMapping("/accounts")
   @Override

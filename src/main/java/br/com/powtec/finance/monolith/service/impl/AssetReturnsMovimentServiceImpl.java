@@ -57,4 +57,10 @@ public class AssetReturnsMovimentServiceImpl implements MovementService {
     List<MovementDTO> response = mapper.toDtosList(page.getContent());
     return new PageImpl<>(response, pageable, page.getTotalElements());
   }
+
+  @Override
+  public void delete(Long id) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'delete'");
+  }
 }

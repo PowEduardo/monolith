@@ -27,19 +27,18 @@ public class AccountMovementServiceImpl implements MovementService<MovementDTO> 
   MovementMapper<MovementModel, MovementDTO> mapper;
 
   @Override
-  public MovementDTO create(MovementDTO request, Long assetId) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'create'");
+  public MovementDTO create(MovementDTO request, Long parentId) {
+    return mapper.toDtoOnlyId(repository.save(mapper.toModel(request, parentId)));
+    
   }
 
   @Override
-  public List<MovementDTO> createInBatch(List<MovementDTO> request, Long assetId) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'createInBatch'");
+  public List<MovementDTO> createInBatch(List<MovementDTO> request, Long parentId) {
+    return mapper.toDtosList(repository.saveAll(mapper.toModelsList(request, parentId)));
   }
 
   @Override
-  public MovementDTO update(MovementDTO request, Long assetId, Long id) {
+  public MovementDTO update(MovementDTO request, Long parentId, Long id) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'update'");
   }
@@ -51,12 +50,17 @@ public class AccountMovementServiceImpl implements MovementService<MovementDTO> 
   }
 
   @Override
-  public Page<MovementDTO> search(Pageable pageable, String parameters, Long assetId) {
+  public Page<MovementDTO> search(Pageable pageable, String parameters, Long parentId) {
     Page<MovementModel> page = repository.findAll(
-        MovementSpecification.getQuery(parameters, assetId), pageable);
+        MovementSpecification.getQuery(parameters, parentId), pageable);
     List<MovementDTO> response = mapper.toDtosList(page.getContent());
 
     return new PageImpl<>(response, pageable, page.getTotalElements());
+  }
+
+  @Override
+  public void delete(Long id) {
+    repository.deleteById(id);
   }
 
 }

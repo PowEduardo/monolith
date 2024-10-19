@@ -13,7 +13,7 @@ public interface MovementMapper<T extends MovementModel, Y extends MovementDTO> 
 
   public Y toDtoOnlyId(T model);
 
-  public T toModel(Y dto, Long assetId);
+  public T toModel(Y dto, Long parentId);
 
-  public List<T> toModelsList(List<Y> movimentsDto, Long assetId);
+  public List<T> toModelsList(List<Y> movimentsDto, Long parentId);
 }
