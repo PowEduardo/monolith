@@ -13,7 +13,7 @@ import br.com.powtec.finance.monolith.repository.AccountRepository;
 import br.com.powtec.finance.monolith.service.BaseCrudService;
 
 @Service
-public class AccountService implements BaseCrudService<AccountDTO>{
+public class AccountServiceImpl implements BaseCrudService<AccountDTO>{
 
   @Autowired
   private AccountMapper mapper;
