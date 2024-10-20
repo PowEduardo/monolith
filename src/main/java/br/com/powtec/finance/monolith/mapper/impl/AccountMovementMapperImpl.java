@@ -1,14 +1,12 @@
 package br.com.powtec.finance.monolith.mapper.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-
 import br.com.powtec.finance.monolith.mapper.MovementMapper;
 import br.com.powtec.finance.monolith.model.AccountModel;
-import br.com.powtec.finance.monolith.model.AssetMovementModel;
 import br.com.powtec.finance.monolith.model.MovementModel;
 import br.com.powtec.finance.monolith.model.dto.MovementDTO;
 

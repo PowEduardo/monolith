@@ -7,9 +7,9 @@ import java.util.List;
 import br.com.powtec.finance.monolith.enums.AssetOperationEnum;
 import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
 import br.com.powtec.finance.monolith.model.AssetModel;
-import br.com.powtec.finance.monolith.model.AssetMovementModel;
-import br.com.powtec.finance.monolith.model.AssetReturnsMovementModel;
 import br.com.powtec.finance.monolith.model.dto.AssetConsolidatedDTO;
+import br.com.powtec.finance.monolith.model.movement.AssetMovementModel;
+import br.com.powtec.finance.monolith.model.movement.AssetReturnsMovementModel;
 
 //TODO: Refatorar
 public class AssetConsolidateCalculation {

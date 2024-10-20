@@ -8,8 +8,8 @@ import org.springframework.stereotype.Component;
 
 import br.com.powtec.finance.monolith.mapper.AssetMapper;
 import br.com.powtec.finance.monolith.mapper.MovementMapper;
-import br.com.powtec.finance.monolith.model.AssetReturnsMovementModel;
 import br.com.powtec.finance.monolith.model.dto.AssetReturnsMovementDTO;
+import br.com.powtec.finance.monolith.model.movement.AssetReturnsMovementModel;
 
 @Component("assetReturnsMapper")
 public class AssetReturnsMovementMapperImpl

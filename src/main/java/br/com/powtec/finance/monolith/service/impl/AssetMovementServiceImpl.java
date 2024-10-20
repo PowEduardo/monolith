@@ -11,8 +11,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.powtec.finance.monolith.mapper.MovementMapper;
-import br.com.powtec.finance.monolith.model.AssetMovementModel;
 import br.com.powtec.finance.monolith.model.dto.AssetMovementDTO;
+import br.com.powtec.finance.monolith.model.movement.AssetMovementModel;
 import br.com.powtec.finance.monolith.repository.MovementRepository;
 import br.com.powtec.finance.monolith.repository.specification.AssetMovementSpecification;
 import br.com.powtec.finance.monolith.service.MovementService;

@@ -1,6 +1,7 @@
-package br.com.powtec.finance.monolith.model;
+package br.com.powtec.finance.monolith.model.movement;
 
 import br.com.powtec.finance.monolith.enums.AssetOperationEnum;
+import br.com.powtec.finance.monolith.model.MovementModel;
 import jakarta.persistence.Entity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

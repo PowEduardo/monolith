@@ -3,6 +3,8 @@ package br.com.powtec.finance.monolith.model;
 import java.util.List;
 
 import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
+import br.com.powtec.finance.monolith.model.movement.AssetMovementModel;
+import br.com.powtec.finance.monolith.model.movement.AssetReturnsMovementModel;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

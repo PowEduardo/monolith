@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.powtec.finance.monolith.model.AssetMovementModel;
+import br.com.powtec.finance.monolith.model.movement.AssetMovementModel;
 
 @Repository("assetMovementRepository")
 public interface AssetMovimentRepository
