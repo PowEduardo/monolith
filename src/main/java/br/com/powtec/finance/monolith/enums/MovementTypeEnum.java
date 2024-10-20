@@ -3,13 +3,14 @@ package br.com.powtec.finance.monolith.enums;
 import lombok.Getter;
 
 @Getter
-public enum MovimentTypeEnum {
+public enum MovementTypeEnum {
   ASSET_RETURN("ASSET_RETURN"),
-  ASSET_MOVIMENT("ASSET_MOVIMENT");
+  ASSET_MOVEMENT("ASSET_MOVEMENT"),
+  ACCOUNT("ACCOUNT");
 
   private String name;
 
-  MovimentTypeEnum(String name) {
+  MovementTypeEnum(String name) {
     this.name = name;
   }
 }

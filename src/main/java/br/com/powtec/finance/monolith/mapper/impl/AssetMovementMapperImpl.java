@@ -7,19 +7,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.powtec.finance.monolith.mapper.AssetMapper;
-import br.com.powtec.finance.monolith.mapper.MovimentMapper;
-import br.com.powtec.finance.monolith.model.AssetMovimentModel;
-import br.com.powtec.finance.monolith.model.dto.AssetMovimentDTO;
+import br.com.powtec.finance.monolith.mapper.MovementMapper;
+import br.com.powtec.finance.monolith.model.AssetMovementModel;
+import br.com.powtec.finance.monolith.model.dto.AssetMovementDTO;
 
-@Component("assetMovimentMapper")
-public class AssetMovimentMapperImpl implements MovimentMapper<AssetMovimentModel, AssetMovimentDTO> {
+@Component("assetMovementMapper")
+public class AssetMovementMapperImpl implements MovementMapper<AssetMovementModel, AssetMovementDTO> {
 
   @Autowired
   private AssetMapper stockMapper;
 
   @Override
-  public AssetMovimentDTO toDto(AssetMovimentModel model) {
-    AssetMovimentDTO response = new AssetMovimentDTO();
+  public AssetMovementDTO toDto(AssetMovementModel model) {
+    AssetMovementDTO response = new AssetMovementDTO();
     response.setAmount(model.getAmount());
     response.setDate(model.getDate());
     response.setId(model.getId());
@@ -33,17 +33,17 @@ public class AssetMovimentMapperImpl implements MovimentMapper<AssetMovimentMode
   }
 
   @Override
-  public List<AssetMovimentDTO> toDtosList(List<AssetMovimentModel> pageModel) {
-    List<AssetMovimentDTO> dtosList = new ArrayList<>(pageModel.size());
-    for (AssetMovimentModel model : pageModel) {
+  public List<AssetMovementDTO> toDtosList(List<AssetMovementModel> pageModel) {
+    List<AssetMovementDTO> dtosList = new ArrayList<>(pageModel.size());
+    for (AssetMovementModel model : pageModel) {
       dtosList.add(toDto(model));
     }
     return dtosList;
   }
 
   @Override
-  public AssetMovimentModel toModel(AssetMovimentDTO request, Long assetId) {
-    AssetMovimentModel model = new AssetMovimentModel();
+  public AssetMovementModel toModel(AssetMovementDTO request, Long assetId) {
+    AssetMovementModel model = new AssetMovementModel();
     model.setDate(request.getDate());
     model.setType(request.getType());
     model.setValue(request.getValue());
@@ -58,17 +58,17 @@ public class AssetMovimentMapperImpl implements MovimentMapper<AssetMovimentMode
   }
 
   @Override
-  public List<AssetMovimentModel> toModelsList(List<AssetMovimentDTO> body, Long assetId) {
-    List<AssetMovimentModel> modelsList = new ArrayList<>(body.size());
-    for (AssetMovimentDTO moviment : body) {
+  public List<AssetMovementModel> toModelsList(List<AssetMovementDTO> body, Long assetId) {
+    List<AssetMovementModel> modelsList = new ArrayList<>(body.size());
+    for (AssetMovementDTO moviment : body) {
       modelsList.add(toModel(moviment, assetId));
     }
     return modelsList;
   }
 
   @Override
-  public AssetMovimentDTO toDtoOnlyId(AssetMovimentModel model) {
-    AssetMovimentDTO response = new AssetMovimentDTO();
+  public AssetMovementDTO toDtoOnlyId(AssetMovementModel model) {
+    AssetMovementDTO response = new AssetMovementDTO();
     response.setId(model.getId());
     return response;
   }

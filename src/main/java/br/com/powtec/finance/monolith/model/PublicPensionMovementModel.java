@@ -7,11 +7,11 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Entity(name = "tb_moviments_public_pension")
+@Entity(name = "tb_movements_public_pension")
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class PublicPensionMovimentModel extends MovimentModel {
+public class PublicPensionMovementModel extends MovementModel {
   AssetOperationEnum operation;
 }

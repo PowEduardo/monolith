@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.powtec.finance.monolith.model.AssetMovimentModel;
+import br.com.powtec.finance.monolith.model.AssetMovementModel;
 
-@Repository("assetMovimentRepository")
+@Repository("assetMovementRepository")
 public interface AssetMovimentRepository
-        extends MovimentRepository<AssetMovimentModel> {
-    List<AssetMovimentModel> findAllByAssetId(Long id);
+        extends MovementRepository<AssetMovementModel> {
+    List<AssetMovementModel> findAllByAssetId(Long id);
 }

@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class FixedIncomeMovimentDTO extends MovimentDTO {
+public class FixedIncomeMovementDTO extends MovementDTO {
 
   LocalDate dueDate;
 

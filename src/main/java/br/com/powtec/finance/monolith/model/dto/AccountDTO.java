@@ -2,22 +2,22 @@ package br.com.powtec.finance.monolith.model.dto;
 
 import java.time.LocalDate;
 
-import br.com.powtec.finance.monolith.enums.AssetOperationEnum;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
+@Builder
 @Getter
-@Setter
 @NoArgsConstructor
-public class AssetMovimentDTO extends MovimentDTO {
-
-  AssetDTO asset;
-  Double amount;
-  AssetOperationEnum operation;
-  Double unitValue;
-  LocalDate dueDate;
-
+@Setter
+public class AccountDTO {
+  private Long id;
+  private String bank;
+  private String number;
+  private String branch;
+  private Boolean primary;
+  private LocalDate createDate;
 }

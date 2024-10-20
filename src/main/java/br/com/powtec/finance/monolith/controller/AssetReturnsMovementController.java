@@ -17,55 +17,53 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.powtec.finance.monolith.model.dto.AssetMovimentDTO;
-import br.com.powtec.finance.monolith.service.MovimentService;
+import br.com.powtec.finance.monolith.model.dto.AssetReturnsMovementDTO;
+import br.com.powtec.finance.monolith.service.MovementService;
 import jakarta.validation.constraints.Min;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path = "/assets/{assetId}")
 @Validated
-public class AssetMovimentController {
-
+public class AssetReturnsMovementController {
   @Autowired
-  @Qualifier("assetMovimentService")
-  MovimentService<AssetMovimentDTO> service;
+  @Qualifier("stockReturnsService")
+  MovementService<AssetReturnsMovementDTO> service;
 
-  @PostMapping("/moviments")
-  public ResponseEntity<AssetMovimentDTO> create(@PathVariable Long assetId, @RequestBody AssetMovimentDTO body) {
-    AssetMovimentDTO response = service.create(body, assetId);
-    return ResponseEntity.created(URI.create("/assets/" + assetId + "/moviments/" + response.getId())).body(response);
+  @PostMapping("/returns")
+  public ResponseEntity<AssetReturnsMovementDTO> create(@PathVariable Long assetId,
+      @RequestBody AssetReturnsMovementDTO body) {
+    AssetReturnsMovementDTO response = service.create(body, assetId);
+    return ResponseEntity.created(URI.create("/assets/" + assetId + "/returns/" + response.getId())).body(response);
   }
 
-  @PostMapping("/moviments:batch")
-  public ResponseEntity<List<AssetMovimentDTO>> createInBatch(
-      @RequestBody List<AssetMovimentDTO> body,
+  @PostMapping("/returns:batch")
+  public ResponseEntity<List<AssetReturnsMovementDTO>> createByList(
+      @RequestBody List<AssetReturnsMovementDTO> body,
       @PathVariable Long assetId) {
-
     return ResponseEntity.ok().body(service.createInBatch(body, assetId));
   }
 
-  @PostMapping("/moviments/{id}")
-  public ResponseEntity<AssetMovimentDTO> update(@PathVariable Long assetId,
-      @RequestBody AssetMovimentDTO body,
-      @PathVariable Long id) {
-    body.setId(id);
-    AssetMovimentDTO response = service.update(body, assetId, id);
-    return ResponseEntity.ok().body(response);
-  }
-
-  @GetMapping("/moviments/{id}")
-  public ResponseEntity<AssetMovimentDTO> getById(@PathVariable Long id) {
+  @GetMapping("/returns/{id}")
+  public ResponseEntity<AssetReturnsMovementDTO> getById(@PathVariable Long id) {
     return ResponseEntity.ok().body(service.findById(id));
   }
 
-  @GetMapping("/moviments:search")
-  public ResponseEntity<Page<AssetMovimentDTO>> search(
+  @PutMapping("/returns/{id}")
+  public ResponseEntity<AssetReturnsMovementDTO> updateById(@PathVariable Long id,
+      @PathVariable Long assetId,
+      @RequestBody AssetReturnsMovementDTO body) {
+    return ResponseEntity.ok().body(service.update(body, assetId, id));
+  }
+
+  @GetMapping("/returns:search")
+  public ResponseEntity<Page<AssetReturnsMovementDTO>> search(
       @RequestParam(value = "_limit", required = true) @Min(value = 1L, message = MINIMUM_ELEMENTS_PER_PAGE) Integer elementsPerPage,
       @RequestParam(value = "_offset", required = true) @Min(value = 0L, message = MINIMUM_PAGE_NUMBER) Integer pageNumber,
       @RequestParam(value = "_q", required = false) String parameters,
@@ -74,5 +72,4 @@ public class AssetMovimentController {
     Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
     return ResponseEntity.ok().body(service.search(pageable, parameters, assetId));
   }
-
 }

@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
-import br.com.powtec.finance.monolith.enums.MovimentTypeEnum;
+import br.com.powtec.finance.monolith.enums.MovementTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -18,10 +18,11 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @JsonInclude(Include.NON_NULL)
-public class MovimentDTO {
+public class MovementDTO {
 
   Long id;
   LocalDate date;
   Double value;
-  MovimentTypeEnum type;
+  MovementTypeEnum type;
+  String description;
 }

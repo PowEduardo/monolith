@@ -7,8 +7,8 @@ import java.util.List;
 import br.com.powtec.finance.monolith.enums.AssetOperationEnum;
 import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
 import br.com.powtec.finance.monolith.model.AssetModel;
-import br.com.powtec.finance.monolith.model.AssetMovimentModel;
-import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
+import br.com.powtec.finance.monolith.model.AssetMovementModel;
+import br.com.powtec.finance.monolith.model.AssetReturnsMovementModel;
 import br.com.powtec.finance.monolith.model.dto.AssetConsolidatedDTO;
 
 //TODO: Refatorar
@@ -30,7 +30,7 @@ public class AssetConsolidateCalculation {
       if (assetModel.getType() == AssetTypeEnum.PUBLIC_PENSION
           || assetModel.getType() == AssetTypeEnum.FIXED_INCOME) {
         Double allJAM = 0.0;
-        for (AssetMovimentModel movimentModel : assetModel.getMoviments()) {
+        for (AssetMovementModel movimentModel : assetModel.getMoviments()) {
           if (movimentModel.getOperation() == AssetOperationEnum.DEPOSIT) {
             paidValue += movimentModel.getValue();
             currentValue += movimentModel.getValue();
@@ -43,7 +43,7 @@ public class AssetConsolidateCalculation {
         }
         difference = difference(paidValue + allJAM, paidValue);
       } else {
-        for (AssetMovimentModel movimentModel : assetModel.getMoviments()) {
+        for (AssetMovementModel movimentModel : assetModel.getMoviments()) {
           if (movimentModel.getOperation() != AssetOperationEnum.SELL) {
             paidValue += movimentModel.getValue();
             amount += movimentModel.getAmount();
@@ -53,7 +53,7 @@ public class AssetConsolidateCalculation {
           }
         }
 
-        for (AssetReturnsMovimentModel returnsModel : assetModel.getReturns()) {
+        for (AssetReturnsMovementModel returnsModel : assetModel.getReturns()) {
           returnsValue += returnsModel.getValue();
         }
         currentValue += amount * assetModel.getValue();

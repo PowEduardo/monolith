@@ -7,21 +7,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.powtec.finance.monolith.mapper.AssetMapper;
-import br.com.powtec.finance.monolith.mapper.MovimentMapper;
-import br.com.powtec.finance.monolith.model.AssetReturnsMovimentModel;
-import br.com.powtec.finance.monolith.model.dto.AssetReturnsMovimentDTO;
+import br.com.powtec.finance.monolith.mapper.MovementMapper;
+import br.com.powtec.finance.monolith.model.AssetReturnsMovementModel;
+import br.com.powtec.finance.monolith.model.dto.AssetReturnsMovementDTO;
 
 @Component("assetReturnsMapper")
-public class AssetReturnsMovimentMapperImpl
-    implements MovimentMapper<AssetReturnsMovimentModel, AssetReturnsMovimentDTO> {
+public class AssetReturnsMovementMapperImpl
+    implements MovementMapper<AssetReturnsMovementModel, AssetReturnsMovementDTO> {
 
   @Autowired
   private AssetMapper stockMapper;
 
   @Override
-  public AssetReturnsMovimentDTO toDto(AssetReturnsMovimentModel model) {
-    AssetReturnsMovimentDTO response = new AssetReturnsMovimentDTO();
-    AssetReturnsMovimentModel returnsModel = (AssetReturnsMovimentModel) model;
+  public AssetReturnsMovementDTO toDto(AssetReturnsMovementModel model) {
+    AssetReturnsMovementDTO response = new AssetReturnsMovementDTO();
+    AssetReturnsMovementModel returnsModel = (AssetReturnsMovementModel) model;
     response.setAmount(returnsModel.getAmount());
     response.setDate(returnsModel.getDate());
     response.setId(returnsModel.getId());
@@ -35,17 +35,17 @@ public class AssetReturnsMovimentMapperImpl
   }
 
   @Override
-  public List<AssetReturnsMovimentDTO> toDtosList(List<AssetReturnsMovimentModel> movimentsModel) {
-    List<AssetReturnsMovimentDTO> movimentsDto = new ArrayList<>(movimentsModel.size());
-    for (AssetReturnsMovimentModel AssetReturnsMovimentModel : movimentsModel) {
+  public List<AssetReturnsMovementDTO> toDtosList(List<AssetReturnsMovementModel> movimentsModel) {
+    List<AssetReturnsMovementDTO> movimentsDto = new ArrayList<>(movimentsModel.size());
+    for (AssetReturnsMovementModel AssetReturnsMovimentModel : movimentsModel) {
       movimentsDto.add(toDto(AssetReturnsMovimentModel));
     }
     return movimentsDto;
   }
 
   @Override
-  public AssetReturnsMovimentModel toModel(AssetReturnsMovimentDTO request, Long id) {
-    AssetReturnsMovimentModel model = new AssetReturnsMovimentModel();
+  public AssetReturnsMovementModel toModel(AssetReturnsMovementDTO request, Long id) {
+    AssetReturnsMovementModel model = new AssetReturnsMovementModel();
     model.setDate(request.getDate());
     model.setType(request.getType());
     model.setValue(request.getValue());
@@ -59,17 +59,17 @@ public class AssetReturnsMovimentMapperImpl
   }
 
   @Override
-  public List<AssetReturnsMovimentModel> toModelsList(List<AssetReturnsMovimentDTO> movimentsListDto, Long assetId) {
-    List<AssetReturnsMovimentModel> movimentsListModel = new ArrayList<>(movimentsListDto.size());
-    for (AssetReturnsMovimentDTO request : movimentsListDto) {
+  public List<AssetReturnsMovementModel> toModelsList(List<AssetReturnsMovementDTO> movimentsListDto, Long assetId) {
+    List<AssetReturnsMovementModel> movimentsListModel = new ArrayList<>(movimentsListDto.size());
+    for (AssetReturnsMovementDTO request : movimentsListDto) {
       movimentsListModel.add(toModel(request, assetId));
     }
     return movimentsListModel;
   }
 
   @Override
-  public AssetReturnsMovimentDTO toDtoOnlyId(AssetReturnsMovimentModel model) {
-    AssetReturnsMovimentDTO response = new AssetReturnsMovimentDTO();
+  public AssetReturnsMovementDTO toDtoOnlyId(AssetReturnsMovementModel model) {
+    AssetReturnsMovementDTO response = new AssetReturnsMovementDTO();
     response.setId(model.getId());
     return response;
   }
