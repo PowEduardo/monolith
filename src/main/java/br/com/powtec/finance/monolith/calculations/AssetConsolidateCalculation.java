@@ -30,7 +30,7 @@ public class AssetConsolidateCalculation {
       if (assetModel.getType() == AssetTypeEnum.PUBLIC_PENSION
           || assetModel.getType() == AssetTypeEnum.FIXED_INCOME) {
         Double allJAM = 0.0;
-        for (AssetMovementModel movimentModel : assetModel.getMoviments()) {
+        for (AssetMovementModel movimentModel : assetModel.getMovements()) {
           if (movimentModel.getOperation() == AssetOperationEnum.DEPOSIT) {
             paidValue += movimentModel.getValue();
             currentValue += movimentModel.getValue();
@@ -43,7 +43,7 @@ public class AssetConsolidateCalculation {
         }
         difference = difference(paidValue + allJAM, paidValue);
       } else {
-        for (AssetMovementModel movimentModel : assetModel.getMoviments()) {
+        for (AssetMovementModel movimentModel : assetModel.getMovements()) {
           if (movimentModel.getOperation() != AssetOperationEnum.SELL) {
             paidValue += movimentModel.getValue();
             amount += movimentModel.getAmount();

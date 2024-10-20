@@ -97,14 +97,14 @@ public class AssetDetailsCalculation {
   }
 
   public AssetDetailsDTO calculate(AssetModel asset) {
-    if (asset.getMoviments().isEmpty()) {
+    if (asset.getMovements().isEmpty()) {
       return this.newAsset();
     }
-    this.amountAndPaidValue(asset.getMoviments());
+    this.amountAndPaidValue(asset.getMovements());
     this.average();
     this.difference(asset.getValue());
     if (asset.getReturns().isEmpty() || this.amount == 0) {
-      return this.assetWithoutReturns(asset, asset.getMoviments());
+      return this.assetWithoutReturns(asset, asset.getMovements());
     }
     this.returns(asset.getReturns());
     this.monthlyReturn();
