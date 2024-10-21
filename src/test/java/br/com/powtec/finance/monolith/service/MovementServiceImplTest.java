@@ -5,16 +5,16 @@ import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
 @ActiveProfiles(profiles = "test")
-public class MovimentServiceImplTest {
+public class MovementServiceImplTest {
 
   // @Autowired
-  // private MovimentService service;
+  // private MovementService service;
 
   // @MockBean
-  // private MovimentMapper mapper;
+  // private MovementMapper mapper;
 
   // @MockBean
-  // MovimentRepository repository;
+  // MovementRepository repository;
 
   // @Test
   // public void should_instantiateService_when_springIsUp() {
@@ -23,11 +23,11 @@ public class MovimentServiceImplTest {
 
   // @Test
   // public void should_returnPage_when_serviceCalled() {
-  // Page<MovimentModel> pageModel = mock(Page.class);
-  // Page<MovimentDTO> pageResponse = mock(Page.class);
+  // Page<MovementModel> pageModel = mock(Page.class);
+  // Page<MovementDTO> pageResponse = mock(Page.class);
   // when(repository.findAll(any(Pageable.class))).thenReturn(pageModel);
   // when(mapper.toDtosList(pageModel.getContent())).thenReturn(pageResponse.getContent());
-  // // Page<MovimentDTO> page = service.search(0, 15);
+  // // Page<MovementDTO> page = service.search(0, 15);
   // // assertNotNull(page);
   // }
 

@@ -19,7 +19,7 @@ import br.com.powtec.finance.monolith.service.MovementService;
 
 @Service("stockReturnsService")
 @SuppressWarnings({ "unchecked", "rawtypes" })
-public class AssetReturnsMovimentServiceImpl implements MovementService {
+public class AssetReturnsMovementServiceImpl implements MovementService {
 
   @Autowired
   @Qualifier("assetReturnsMapper")

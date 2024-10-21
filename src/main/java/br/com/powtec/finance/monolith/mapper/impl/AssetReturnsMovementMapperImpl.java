@@ -35,12 +35,12 @@ public class AssetReturnsMovementMapperImpl
   }
 
   @Override
-  public List<AssetReturnsMovementDTO> toDtosList(List<AssetReturnsMovementModel> movimentsModel) {
-    List<AssetReturnsMovementDTO> movimentsDto = new ArrayList<>(movimentsModel.size());
-    for (AssetReturnsMovementModel AssetReturnsMovimentModel : movimentsModel) {
-      movimentsDto.add(toDto(AssetReturnsMovimentModel));
+  public List<AssetReturnsMovementDTO> toDtosList(List<AssetReturnsMovementModel> movementsModel) {
+    List<AssetReturnsMovementDTO> movementsDto = new ArrayList<>(movementsModel.size());
+    for (AssetReturnsMovementModel AssetReturnsMovementModel : movementsModel) {
+      movementsDto.add(toDto(AssetReturnsMovementModel));
     }
-    return movimentsDto;
+    return movementsDto;
   }
 
   @Override
@@ -59,12 +59,12 @@ public class AssetReturnsMovementMapperImpl
   }
 
   @Override
-  public List<AssetReturnsMovementModel> toModelsList(List<AssetReturnsMovementDTO> movimentsListDto, Long assetId) {
-    List<AssetReturnsMovementModel> movimentsListModel = new ArrayList<>(movimentsListDto.size());
-    for (AssetReturnsMovementDTO request : movimentsListDto) {
-      movimentsListModel.add(toModel(request, assetId));
+  public List<AssetReturnsMovementModel> toModelsList(List<AssetReturnsMovementDTO> movementsListDto, Long assetId) {
+    List<AssetReturnsMovementModel> movementsListModel = new ArrayList<>(movementsListDto.size());
+    for (AssetReturnsMovementDTO request : movementsListDto) {
+      movementsListModel.add(toModel(request, assetId));
     }
-    return movimentsListModel;
+    return movementsListModel;
   }
 
   @Override

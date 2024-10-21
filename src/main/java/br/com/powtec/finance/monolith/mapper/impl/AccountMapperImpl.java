@@ -24,7 +24,7 @@ public class AccountMapperImpl implements AccountMapper {
   }
 
   @Override
-  public List<AccountDTO> toDtosList(List<? extends AccountModel> movimentsModel) {
+  public List<AccountDTO> toDtosList(List<? extends AccountModel> movementsModel) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'toDtosList'");
   }
@@ -55,7 +55,7 @@ public class AccountMapperImpl implements AccountMapper {
   }
 
   @Override
-  public List<AccountModel> toModelsList(List<? extends AccountDTO> movimentsDto) {
+  public List<AccountModel> toModelsList(List<? extends AccountDTO> movementsDto) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'toModelsList'");
   }

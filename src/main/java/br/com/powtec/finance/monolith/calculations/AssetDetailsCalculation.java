@@ -23,13 +23,13 @@ public class AssetDetailsCalculation {
   private Double lastReturn = 0.0;
   private LocalDate lastReturnDate = LocalDate.parse("2024-01-01");
 
-  private void amountAndPaidValue(List<AssetMovementModel> moviments) {
-    for (AssetMovementModel stockMoviment : moviments) {
-      if (stockMoviment.getOperation() != AssetOperationEnum.SELL) {
-        amount += stockMoviment.getAmount() == null ? 0 : stockMoviment.getAmount();
-        paidValue += stockMoviment.getValue();
+  private void amountAndPaidValue(List<AssetMovementModel> movements) {
+    for (AssetMovementModel stockMovement : movements) {
+      if (stockMovement.getOperation() != AssetOperationEnum.SELL) {
+        amount += stockMovement.getAmount() == null ? 0 : stockMovement.getAmount();
+        paidValue += stockMovement.getValue();
       } else {
-        amount -= stockMoviment.getAmount() == null ? 0 : stockMoviment.getAmount();
+        amount -= stockMovement.getAmount() == null ? 0 : stockMovement.getAmount();
       }
     }
   }
@@ -140,7 +140,7 @@ public class AssetDetailsCalculation {
         .build();
   }
 
-  private AssetDetailsDTO assetWithoutReturns(AssetModel asset, List<AssetMovementModel> moviments) {
+  private AssetDetailsDTO assetWithoutReturns(AssetModel asset, List<AssetMovementModel> movements) {
 
     return AssetDetailsDTO.builder()
         .amount(formatDouble(this.amount, 8, RoundingMode.HALF_UP))

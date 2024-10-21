@@ -25,9 +25,9 @@ public class AccountMovementMapperImpl implements MovementMapper<MovementModel, 
   }
 
   @Override
-  public List<MovementDTO> toDtosList(List<MovementModel> movimentsModel) {
-    List<MovementDTO> dtosList = new ArrayList<>(movimentsModel.size());
-    for (MovementModel model : movimentsModel) {
+  public List<MovementDTO> toDtosList(List<MovementModel> movementsModel) {
+    List<MovementDTO> dtosList = new ArrayList<>(movementsModel.size());
+    for (MovementModel model : movementsModel) {
       dtosList.add(toDto(model));
     }
     return dtosList;

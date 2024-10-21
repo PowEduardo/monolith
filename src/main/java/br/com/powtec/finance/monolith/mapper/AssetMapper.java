@@ -9,7 +9,7 @@ public interface AssetMapper {
 
   public AssetDTO toDto(AssetModel model);
 
-  public List<AssetDTO> toDtosList(List<? extends AssetModel> movimentsModel);
+  public List<AssetDTO> toDtosList(List<? extends AssetModel> movementsModel);
 
   public AssetDTO toDtoOnlyId(AssetModel model);
 
@@ -17,7 +17,7 @@ public interface AssetMapper {
 
   public AssetModel toModelById(Long id);
 
-  public List<AssetModel> toModelsList(List<? extends AssetDTO> movimentsDto);
+  public List<AssetModel> toModelsList(List<? extends AssetDTO> movementsDto);
 
   default AssetDTO buildDTO(AssetModel model, AssetDTO response) {
     response.setId(model.getId());

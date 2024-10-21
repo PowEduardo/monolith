@@ -30,26 +30,26 @@ public class AssetConsolidateCalculation {
       if (assetModel.getType() == AssetTypeEnum.PUBLIC_PENSION
           || assetModel.getType() == AssetTypeEnum.FIXED_INCOME) {
         Double allJAM = 0.0;
-        for (AssetMovementModel movimentModel : assetModel.getMovements()) {
-          if (movimentModel.getOperation() == AssetOperationEnum.DEPOSIT) {
-            paidValue += movimentModel.getValue();
-            currentValue += movimentModel.getValue();
-          } else if (movimentModel.getOperation() == AssetOperationEnum.JAM) {
-            currentValue += movimentModel.getValue();
-            allJAM += movimentModel.getValue();
+        for (AssetMovementModel movementModel : assetModel.getMovements()) {
+          if (movementModel.getOperation() == AssetOperationEnum.DEPOSIT) {
+            paidValue += movementModel.getValue();
+            currentValue += movementModel.getValue();
+          } else if (movementModel.getOperation() == AssetOperationEnum.JAM) {
+            currentValue += movementModel.getValue();
+            allJAM += movementModel.getValue();
           } else {
-            currentValue -= movimentModel.getValue();
+            currentValue -= movementModel.getValue();
           }
         }
         difference = difference(paidValue + allJAM, paidValue);
       } else {
-        for (AssetMovementModel movimentModel : assetModel.getMovements()) {
-          if (movimentModel.getOperation() != AssetOperationEnum.SELL) {
-            paidValue += movimentModel.getValue();
-            amount += movimentModel.getAmount();
+        for (AssetMovementModel movementModel : assetModel.getMovements()) {
+          if (movementModel.getOperation() != AssetOperationEnum.SELL) {
+            paidValue += movementModel.getValue();
+            amount += movementModel.getAmount();
           } else {
-            paidValue -= movimentModel.getValue();
-            amount -= movimentModel.getAmount();
+            paidValue -= movementModel.getValue();
+            amount -= movementModel.getAmount();
           }
         }
 

@@ -60,8 +60,8 @@ public class AssetMovementMapperImpl implements MovementMapper<AssetMovementMode
   @Override
   public List<AssetMovementModel> toModelsList(List<AssetMovementDTO> body, Long assetId) {
     List<AssetMovementModel> modelsList = new ArrayList<>(body.size());
-    for (AssetMovementDTO moviment : body) {
-      modelsList.add(toModel(moviment, assetId));
+    for (AssetMovementDTO movement : body) {
+      modelsList.add(toModel(movement, assetId));
     }
     return modelsList;
   }

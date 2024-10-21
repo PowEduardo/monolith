@@ -6,7 +6,7 @@ public interface BaseCrudMapper<T, Y> {
 
   public T toDto(Y model);
 
-  public List<T> toDtosList(List<? extends Y> movimentsModel);
+  public List<T> toDtosList(List<? extends Y> movementsModel);
 
   public T toDtoOnlyId(Y model);
 
@@ -14,5 +14,5 @@ public interface BaseCrudMapper<T, Y> {
 
   public Y toModelById(Long id);
 
-  public List<Y> toModelsList(List<? extends T> movimentsDto);
+  public List<Y> toModelsList(List<? extends T> movementsDto);
 }

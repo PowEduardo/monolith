@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import br.com.powtec.finance.monolith.model.movement.AssetMovementModel;
 
 @Repository("assetMovementRepository")
-public interface AssetMovimentRepository
+public interface AssetMovementRepository
         extends MovementRepository<AssetMovementModel> {
     List<AssetMovementModel> findAllByAssetId(Long id);
 }
