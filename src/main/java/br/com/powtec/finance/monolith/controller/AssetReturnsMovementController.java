@@ -33,7 +33,7 @@ import jakarta.validation.constraints.Min;
 @Validated
 public class AssetReturnsMovementController {
   @Autowired
-  @Qualifier("stockReturnsService")
+  @Qualifier("assetReturnsService")
   MovementService<AssetReturnsMovementDTO> service;
 
   @PostMapping("/returns")

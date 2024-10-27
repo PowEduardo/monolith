@@ -22,7 +22,6 @@ import br.com.powtec.finance.monolith.service.MovementService;
 public class AssetMovementServiceImpl implements MovementService<AssetMovementDTO> {
 
   @Autowired
-  @Qualifier("assetMovementRepository")
   MovementRepository<AssetMovementModel> repository;
 
   @Autowired
