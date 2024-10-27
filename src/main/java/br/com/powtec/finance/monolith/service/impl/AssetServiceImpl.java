@@ -29,6 +29,8 @@ public class AssetServiceImpl implements AssetService {
   @Autowired
   private AssetMapper mapper;
 
+  @Autowired AssetSpecification specification;
+
   @Override
   public AssetDTO create(AssetDTO body) {
     return mapper.toDtoOnlyId(repository.save(mapper.toModel(body)));
@@ -52,7 +54,7 @@ public class AssetServiceImpl implements AssetService {
 
   @Override
   public Page<AssetDTO> search(Pageable pageable, String parameters) {
-    Page<? extends AssetModel> page = repository.findAll(AssetSpecification.getQuery(parameters),
+    Page<? extends AssetModel> page = repository.findAll(specification.getQuery(parameters),
         pageable);
     List<AssetDTO> response = mapper.toDtosList(page.getContent());
     return new PageImpl<>(response, pageable, page.getTotalElements());
