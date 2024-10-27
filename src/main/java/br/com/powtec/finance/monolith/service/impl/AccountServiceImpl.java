@@ -7,9 +7,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.powtec.finance.monolith.mapper.AccountMapper;
-import br.com.powtec.finance.monolith.model.dto.AccountDTO;
-import br.com.powtec.finance.monolith.repository.AccountRepository;
+import br.com.powtec.finance.database.library.mapper.AccountMapper;
+import br.com.powtec.finance.database.library.model.dto.AccountDTO;
+import br.com.powtec.finance.database.library.repository.AccountRepository;
 import br.com.powtec.finance.monolith.service.BaseCrudService;
 
 @Service

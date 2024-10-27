@@ -5,11 +5,11 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.List;
 
-import br.com.powtec.finance.monolith.enums.AssetOperationEnum;
-import br.com.powtec.finance.monolith.model.AssetModel;
-import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
-import br.com.powtec.finance.monolith.model.movement.AssetMovementModel;
-import br.com.powtec.finance.monolith.model.movement.AssetReturnsMovementModel;
+import br.com.powtec.finance.database.library.enums.AssetOperationEnum;
+import br.com.powtec.finance.database.library.model.AssetModel;
+import br.com.powtec.finance.database.library.model.dto.AssetDetailsDTO;
+import br.com.powtec.finance.database.library.model.movement.AssetMovementModel;
+import br.com.powtec.finance.database.library.model.movement.AssetReturnsMovementModel;
 
 public class AssetDetailsCalculation {
 

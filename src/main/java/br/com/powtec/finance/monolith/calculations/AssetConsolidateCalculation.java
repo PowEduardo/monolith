@@ -4,12 +4,12 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.List;
 
-import br.com.powtec.finance.monolith.enums.AssetOperationEnum;
-import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
-import br.com.powtec.finance.monolith.model.AssetModel;
-import br.com.powtec.finance.monolith.model.dto.AssetConsolidatedDTO;
-import br.com.powtec.finance.monolith.model.movement.AssetMovementModel;
-import br.com.powtec.finance.monolith.model.movement.AssetReturnsMovementModel;
+import br.com.powtec.finance.database.library.enums.AssetOperationEnum;
+import br.com.powtec.finance.database.library.enums.AssetTypeEnum;
+import br.com.powtec.finance.database.library.model.AssetModel;
+import br.com.powtec.finance.database.library.model.dto.AssetConsolidatedDTO;
+import br.com.powtec.finance.database.library.model.movement.AssetMovementModel;
+import br.com.powtec.finance.database.library.model.movement.AssetReturnsMovementModel;
 
 //TODO: Refatorar
 public class AssetConsolidateCalculation {

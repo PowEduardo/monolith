@@ -70,6 +70,11 @@
 			<version>42.7.3</version>
 		</dependency>
 
+		<dependency>
+			<groupId>br.com.powtec.finance.database</groupId>
+			<artifactId>library</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 
 	<build>

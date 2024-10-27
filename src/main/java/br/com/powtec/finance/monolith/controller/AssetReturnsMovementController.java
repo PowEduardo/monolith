@@ -23,7 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.powtec.finance.monolith.model.dto.AssetReturnsMovementDTO;
+import br.com.powtec.finance.database.library.model.dto.AssetReturnsMovementDTO;
 import br.com.powtec.finance.monolith.service.MovementService;
 import jakarta.validation.constraints.Min;
 

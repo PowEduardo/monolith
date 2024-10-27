@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
-import br.com.powtec.finance.monolith.model.dto.AssetConsolidatedDTO;
-import br.com.powtec.finance.monolith.model.dto.AssetDTO;
-import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
+import br.com.powtec.finance.database.library.enums.AssetTypeEnum;
+import br.com.powtec.finance.database.library.model.dto.AssetConsolidatedDTO;
+import br.com.powtec.finance.database.library.model.dto.AssetDTO;
+import br.com.powtec.finance.database.library.model.dto.AssetDetailsDTO;
 import br.com.powtec.finance.monolith.service.AssetService;
 import jakarta.validation.constraints.Min;
 
