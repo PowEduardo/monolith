@@ -10,9 +10,12 @@ import br.com.powtec.finance.database.library.repository.CreditCardRepository;
 import br.com.powtec.finance.database.library.repository.specification.CreditCardSpecification;
 
 @Service("creditCardService")
-public class CreditCardServiceImpl extends BaseCrudServiceImpl<CreditCardModel, CreditCardDTO>{
+public class CreditCardServiceImpl extends BaseCrudServiceImpl<CreditCardModel, CreditCardDTO> {
 
-  CreditCardServiceImpl (@Autowired CreditCardRepository repository, @Autowired CreditCardMapper mapper, @Autowired CreditCardSpecification specification){
+  CreditCardServiceImpl(
+      @Autowired CreditCardRepository repository,
+      @Autowired CreditCardMapper mapper,
+      @Autowired CreditCardSpecification specification) {
     this.mapper = mapper;
     this.repository = repository;
     this.specification = specification;
