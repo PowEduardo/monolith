@@ -10,11 +10,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.powtec.finance.monolith.mapper.MovementMapper;
-import br.com.powtec.finance.monolith.model.AssetMovementModel;
-import br.com.powtec.finance.monolith.model.dto.AssetMovementDTO;
-import br.com.powtec.finance.monolith.repository.MovementRepository;
-import br.com.powtec.finance.monolith.repository.specification.AssetMovementSpecification;
+import br.com.powtec.finance.database.library.mapper.MovementMapper;
+import br.com.powtec.finance.database.library.model.dto.AssetMovementDTO;
+import br.com.powtec.finance.database.library.model.movement.AssetMovementModel;
+import br.com.powtec.finance.database.library.repository.MovementRepository;
+import br.com.powtec.finance.database.library.repository.specification.AssetMovementSpecification;
 import br.com.powtec.finance.monolith.service.MovementService;
 
 @Service("assetMovementService")
@@ -22,7 +22,6 @@ import br.com.powtec.finance.monolith.service.MovementService;
 public class AssetMovementServiceImpl implements MovementService<AssetMovementDTO> {
 
   @Autowired
-  @Qualifier("assetMovementRepository")
   MovementRepository<AssetMovementModel> repository;
 
   @Autowired

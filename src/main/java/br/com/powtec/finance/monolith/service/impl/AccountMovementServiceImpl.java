@@ -9,11 +9,11 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.powtec.finance.monolith.mapper.MovementMapper;
-import br.com.powtec.finance.monolith.model.MovementModel;
-import br.com.powtec.finance.monolith.model.dto.MovementDTO;
-import br.com.powtec.finance.monolith.repository.MovementRepository;
-import br.com.powtec.finance.monolith.repository.specification.MovementSpecification;
+import br.com.powtec.finance.database.library.mapper.MovementMapper;
+import br.com.powtec.finance.database.library.model.MovementModel;
+import br.com.powtec.finance.database.library.model.dto.MovementDTO;
+import br.com.powtec.finance.database.library.repository.MovementRepository;
+import br.com.powtec.finance.database.library.repository.specification.MovementSpecification;
 import br.com.powtec.finance.monolith.service.MovementService;
 
 @Service

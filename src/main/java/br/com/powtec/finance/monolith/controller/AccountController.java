@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.powtec.finance.monolith.model.dto.AccountDTO;
+import br.com.powtec.finance.database.library.model.dto.AccountDTO;
 import br.com.powtec.finance.monolith.service.impl.AccountServiceImpl;
 
 @RestController

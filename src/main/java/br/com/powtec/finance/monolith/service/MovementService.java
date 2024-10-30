@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import br.com.powtec.finance.monolith.model.dto.MovementDTO;
+import br.com.powtec.finance.database.library.model.dto.MovementDTO;
 
 public interface MovementService<T extends MovementDTO> {
 

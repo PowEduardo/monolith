@@ -5,11 +5,11 @@ import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.List;
 
-import br.com.powtec.finance.monolith.enums.AssetOperationEnum;
-import br.com.powtec.finance.monolith.model.AssetModel;
-import br.com.powtec.finance.monolith.model.AssetMovementModel;
-import br.com.powtec.finance.monolith.model.AssetReturnsMovementModel;
-import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
+import br.com.powtec.finance.database.library.enums.AssetOperationEnum;
+import br.com.powtec.finance.database.library.model.AssetModel;
+import br.com.powtec.finance.database.library.model.dto.AssetDetailsDTO;
+import br.com.powtec.finance.database.library.model.movement.AssetMovementModel;
+import br.com.powtec.finance.database.library.model.movement.AssetReturnsMovementModel;
 
 public class AssetDetailsCalculation {
 
@@ -23,13 +23,13 @@ public class AssetDetailsCalculation {
   private Double lastReturn = 0.0;
   private LocalDate lastReturnDate = LocalDate.parse("2024-01-01");
 
-  private void amountAndPaidValue(List<AssetMovementModel> moviments) {
-    for (AssetMovementModel stockMoviment : moviments) {
-      if (stockMoviment.getOperation() != AssetOperationEnum.SELL) {
-        amount += stockMoviment.getAmount() == null ? 0 : stockMoviment.getAmount();
-        paidValue += stockMoviment.getValue();
+  private void amountAndPaidValue(List<AssetMovementModel> movements) {
+    for (AssetMovementModel stockMovement : movements) {
+      if (stockMovement.getOperation() != AssetOperationEnum.SELL) {
+        amount += stockMovement.getAmount() == null ? 0 : stockMovement.getAmount();
+        paidValue += stockMovement.getValue();
       } else {
-        amount -= stockMoviment.getAmount() == null ? 0 : stockMoviment.getAmount();
+        amount -= stockMovement.getAmount() == null ? 0 : stockMovement.getAmount();
       }
     }
   }
@@ -97,14 +97,14 @@ public class AssetDetailsCalculation {
   }
 
   public AssetDetailsDTO calculate(AssetModel asset) {
-    if (asset.getMoviments().isEmpty()) {
+    if (asset.getMovements().isEmpty()) {
       return this.newAsset();
     }
-    this.amountAndPaidValue(asset.getMoviments());
+    this.amountAndPaidValue(asset.getMovements());
     this.average();
     this.difference(asset.getValue());
     if (asset.getReturns().isEmpty() || this.amount == 0) {
-      return this.assetWithoutReturns(asset, asset.getMoviments());
+      return this.assetWithoutReturns(asset, asset.getMovements());
     }
     this.returns(asset.getReturns());
     this.monthlyReturn();
@@ -140,7 +140,7 @@ public class AssetDetailsCalculation {
         .build();
   }
 
-  private AssetDetailsDTO assetWithoutReturns(AssetModel asset, List<AssetMovementModel> moviments) {
+  private AssetDetailsDTO assetWithoutReturns(AssetModel asset, List<AssetMovementModel> movements) {
 
     return AssetDetailsDTO.builder()
         .amount(formatDouble(this.amount, 8, RoundingMode.HALF_UP))

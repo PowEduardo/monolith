@@ -5,21 +5,21 @@ import org.springframework.test.context.ActiveProfiles;
 
 @SpringBootTest
 @ActiveProfiles(profiles = "test")
-public class MovimentMapperImplTest {
+public class MovementMapperImplTest {
 
   // @Autowired
-  // MovimentMapper mapper;
+  // MovementMapper mapper;
 
   // @Test
-  // public void should_returnAPageOfMovimentDto_when_toPageDtoIsCalled() {
-  // Page<MovimentModel> pageModel = mock(Page.class);
+  // public void should_returnAPageOfMovementDto_when_toPageDtoIsCalled() {
+  // Page<MovementModel> pageModel = mock(Page.class);
   // when(pageModel.map(any())).thenReturn(mock(Page.class));
   // assertNotNull(mapper.toDtosList(pageModel.getContent()));
   // }
 
   // @Test
-  // public void should_returnAMovimentDto_when_toDtoIsCalled() {
-  // MovimentModel model = mock(MovimentModel.class);
+  // public void should_returnAMovementDto_when_toDtoIsCalled() {
+  // MovementModel model = mock(MovementModel.class);
   // assertNotNull(mapper.toDto(model));
   // }
 }

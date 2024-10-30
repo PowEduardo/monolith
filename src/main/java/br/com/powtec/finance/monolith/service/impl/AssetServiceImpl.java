@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 
 import br.com.powtec.finance.monolith.calculations.AssetConsolidateCalculation;
 import br.com.powtec.finance.monolith.calculations.AssetDetailsCalculation;
-import br.com.powtec.finance.monolith.enums.AssetTypeEnum;
-import br.com.powtec.finance.monolith.mapper.AssetMapper;
-import br.com.powtec.finance.monolith.model.AssetModel;
-import br.com.powtec.finance.monolith.model.dto.AssetConsolidatedDTO;
-import br.com.powtec.finance.monolith.model.dto.AssetDTO;
-import br.com.powtec.finance.monolith.model.dto.AssetDetailsDTO;
-import br.com.powtec.finance.monolith.repository.AssetRepository;
-import br.com.powtec.finance.monolith.repository.specification.AssetSpecification;
+import br.com.powtec.finance.database.library.enums.AssetTypeEnum;
+import br.com.powtec.finance.database.library.mapper.AssetMapper;
+import br.com.powtec.finance.database.library.model.AssetModel;
+import br.com.powtec.finance.database.library.model.dto.AssetConsolidatedDTO;
+import br.com.powtec.finance.database.library.model.dto.AssetDTO;
+import br.com.powtec.finance.database.library.model.dto.AssetDetailsDTO;
+import br.com.powtec.finance.database.library.repository.AssetRepository;
+import br.com.powtec.finance.database.library.repository.specification.AssetSpecification;
 import br.com.powtec.finance.monolith.service.AssetService;
 
 @Service
@@ -28,6 +28,8 @@ public class AssetServiceImpl implements AssetService {
 
   @Autowired
   private AssetMapper mapper;
+
+  @Autowired AssetSpecification specification;
 
   @Override
   public AssetDTO create(AssetDTO body) {
@@ -52,7 +54,7 @@ public class AssetServiceImpl implements AssetService {
 
   @Override
   public Page<AssetDTO> search(Pageable pageable, String parameters) {
-    Page<? extends AssetModel> page = repository.findAll(AssetSpecification.getQuery(parameters),
+    Page<? extends AssetModel> page = repository.findAll(specification.getQuery(parameters),
         pageable);
     List<AssetDTO> response = mapper.toDtosList(page.getContent());
     return new PageImpl<>(response, pageable, page.getTotalElements());
