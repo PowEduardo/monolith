@@ -55,4 +55,9 @@ public class AccountController implements BaseCrudController<AccountDTO> {
     throw new UnsupportedOperationException("Unimplemented method 'search'");
   }
 
+  @GetMapping("/accounts/{id}/details")
+  public ResponseEntity<AccountDTO> details(@PathVariable Long id) {
+    throw new UnsupportedOperationException("Unimplemented method 'details'");
+  }
+
 }
