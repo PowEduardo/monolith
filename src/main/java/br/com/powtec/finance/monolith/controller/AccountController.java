@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.database.library.model.dto.AccountDTO;
+import br.com.powtec.finance.database.library.model.dto.AccountDetailsDTO;
 import br.com.powtec.finance.monolith.service.impl.AccountServiceImpl;
 
 @RestController
@@ -56,8 +57,8 @@ public class AccountController implements BaseCrudController<AccountDTO> {
   }
 
   @GetMapping("/accounts/{id}/details")
-  public ResponseEntity<AccountDTO> details(@PathVariable Long id) {
-    throw new UnsupportedOperationException("Unimplemented method 'details'");
+  public ResponseEntity<AccountDetailsDTO> details(@PathVariable Long id) {
+    return ResponseEntity.ok().body(service.details());
   }
 
 }
