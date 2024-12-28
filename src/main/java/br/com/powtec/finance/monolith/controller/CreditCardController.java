@@ -3,11 +3,11 @@ package br.com.powtec.finance.monolith.controller;
 import static br.com.powtec.finance.monolith.constants.ValidationMessagesConstants.MINIMUM_ELEMENTS_PER_PAGE;
 import static br.com.powtec.finance.monolith.constants.ValidationMessagesConstants.MINIMUM_PAGE_NUMBER;
 import static br.com.powtec.finance.monolith.util.PageBuilder.pageable;
+
 import java.net.URI;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.database.library.model.dto.CreditCardDTO;
-import br.com.powtec.finance.monolith.service.BaseCrudService;
+import br.com.powtec.finance.monolith.service.impl.CreditCardServiceImpl;
 import jakarta.validation.constraints.Min;
 
 @RestController
@@ -30,8 +30,7 @@ import jakarta.validation.constraints.Min;
 @Validated
 public class CreditCardController {
   @Autowired
-  @Qualifier("creditCardService")
-  BaseCrudService<CreditCardDTO> service;
+  CreditCardServiceImpl service;
 
   @PostMapping("/cards")
   public ResponseEntity<CreditCardDTO> create(@RequestBody CreditCardDTO body) {
@@ -65,5 +64,10 @@ public class CreditCardController {
       @RequestParam(value = "_sort", required = false) String sort) {
     Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
     return ResponseEntity.ok().body(service.search(pageable, parameters));
+  }
+
+  @GetMapping("/cards/{id}/details")
+  public ResponseEntity<CreditCardDTO> getByIds(@PathVariable Long id) {
+    return ResponseEntity.ok().body(service.details(id));
   }
 }
