@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.database.library.model.dto.AccountDTO;
+import br.com.powtec.finance.database.library.model.dto.AccountDetailsDTO;
 import br.com.powtec.finance.monolith.service.impl.AccountServiceImpl;
 
 @RestController
@@ -53,6 +54,11 @@ public class AccountController implements BaseCrudController<AccountDTO> {
       String sort) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'search'");
+  }
+
+  @GetMapping("/accounts/{id}/details")
+  public ResponseEntity<AccountDetailsDTO> details(@PathVariable Long id) {
+    return ResponseEntity.ok().body(service.details());
   }
 
 }

@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import br.com.powtec.finance.database.library.mapper.MovementMapper;
 import br.com.powtec.finance.database.library.model.dto.AssetMovementDTO;
 import br.com.powtec.finance.database.library.model.movement.AssetMovementModel;
+import br.com.powtec.finance.database.library.repository.AssetRepository;
 import br.com.powtec.finance.database.library.repository.MovementRepository;
 import br.com.powtec.finance.database.library.repository.specification.AssetMovementSpecification;
 import br.com.powtec.finance.monolith.service.MovementService;
@@ -25,10 +26,14 @@ public class AssetMovementServiceImpl implements MovementService<AssetMovementDT
   MovementRepository<AssetMovementModel> repository;
 
   @Autowired
+  AssetRepository assetRepository;
+
+  @Autowired
   @Qualifier("assetMovementMapper")
   MovementMapper<AssetMovementModel, AssetMovementDTO> mapper;
 
   public AssetMovementDTO create(AssetMovementDTO request, Long assetId) {
+    request.setDescription(request.getOperation().toString() + " " + assetRepository.findById(assetId).get().getTicker());
     return mapper.toDtoOnlyId(repository.save(mapper.toModel(request, assetId)));
   }
 
