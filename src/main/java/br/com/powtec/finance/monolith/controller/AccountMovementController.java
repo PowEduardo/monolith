@@ -65,7 +65,7 @@ public class AccountMovementController {
       @RequestParam(value = "_q", required = false) String parameters,
       @RequestParam(value = "_sort", required = false) String sort,
       @PathVariable Long accountId) {
-    Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
+    Pageable pageable = pageable(pageNumber, elementsPerPage, sort+",-inclusionDateTime");
     return ResponseEntity.ok().body(service.search(pageable, parameters, accountId));
   }
 

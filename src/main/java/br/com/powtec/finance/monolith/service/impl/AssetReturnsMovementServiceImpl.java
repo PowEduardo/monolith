@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import br.com.powtec.finance.database.library.mapper.MovementMapper;
 import br.com.powtec.finance.database.library.model.dto.AssetReturnsMovementDTO;
 import br.com.powtec.finance.database.library.model.movement.AssetReturnsMovementModel;
+import br.com.powtec.finance.database.library.repository.AssetRepository;
 import br.com.powtec.finance.database.library.repository.MovementRepository;
 import br.com.powtec.finance.database.library.repository.specification.AssetReturnsMovementSpecification;
 import br.com.powtec.finance.monolith.service.MovementService;
@@ -22,11 +23,17 @@ public class AssetReturnsMovementServiceImpl implements MovementService<AssetRet
   @Autowired
   @Qualifier("assetReturnsMapper")
   private MovementMapper<AssetReturnsMovementModel, AssetReturnsMovementDTO> mapper;
+
   @Autowired
   private MovementRepository<AssetReturnsMovementModel> repository;
 
+  @Autowired
+  AssetRepository assetRepository;
+
   @Override
   public AssetReturnsMovementDTO create(AssetReturnsMovementDTO request, Long assetId) {
+    request
+        .setDescription(request.getOperation().toString() + " " + assetRepository.findById(assetId).get().getTicker());
     return mapper.toDtoOnlyId(repository.save(mapper.toModel(request, assetId)));
   }
 
