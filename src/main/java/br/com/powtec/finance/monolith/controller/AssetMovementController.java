@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,7 +51,7 @@ public class AssetMovementController {
     return ResponseEntity.ok().body(service.createInBatch(body, assetId));
   }
 
-  @PostMapping("/movements/{id}")
+  @PutMapping("/movements/{id}")
   public ResponseEntity<AssetMovementDTO> update(@PathVariable Long assetId,
       @RequestBody AssetMovementDTO body,
       @PathVariable Long id) {
