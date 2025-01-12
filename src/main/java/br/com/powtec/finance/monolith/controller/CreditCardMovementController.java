@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -48,7 +49,7 @@ public class CreditCardMovementController {
     return ResponseEntity.ok().body(service.createInBatch(body, parentId));
   }
 
-  @PostMapping("/movements/{id}")
+  @PutMapping("/movements/{id}")
   public ResponseEntity<CreditCardMovementDTO> update(@PathVariable Long parentId,
       @RequestBody CreditCardMovementDTO body,
       @PathVariable Long id) {
