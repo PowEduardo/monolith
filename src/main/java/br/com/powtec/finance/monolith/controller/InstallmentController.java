@@ -24,7 +24,7 @@ import jakarta.validation.constraints.Min;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @Validated
-@RequestMapping("cards/{cardId}/statements/{statementId}")
+@RequestMapping("cards/{cardId}/")
 public class InstallmentController {
 
   @Autowired
@@ -56,10 +56,8 @@ public class InstallmentController {
       @RequestParam(value = "_limit", required = true) @Min(value = 1L, message = MINIMUM_ELEMENTS_PER_PAGE) Integer elementsPerPage,
       @RequestParam(value = "_offset", required = true) @Min(value = 0L, message = MINIMUM_PAGE_NUMBER) Integer pageNumber,
       @RequestParam(value = "_q", required = false) String parameters,
-      @RequestParam(value = "_sort", required = false) String sort,
-      @PathVariable Integer statementId) {
+      @RequestParam(value = "_sort", required = false) String sort) {
     Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
-    parameters = (parameters == null || parameters.isEmpty()) ? "statement:" +  statementId : parameters + ",statement:" +  statementId;
     return ResponseEntity.ok().body(service.search(pageable, parameters));
   }
 

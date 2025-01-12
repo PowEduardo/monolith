@@ -35,7 +35,7 @@ public class CreditCardMovementServiceImpl
   @Override
   public CreditCardMovementDTO create(CreditCardMovementDTO body, Long parentId) {
     CreditCardMovementModel model = repository.save(mapper.toModel(body, parentId));
-    installmentRepository.saveAllAndFlush(getInstallments(model));
+    installmentRepository.saveAll(getInstallments(model));
     return mapper.toDtoOnlyId(model);
   }
 
