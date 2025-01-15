@@ -87,8 +87,8 @@ public class CreditCardMovementServiceImpl
 
     // Distribui as parcelas
     for (int i = 0; i < numeroDeParcelas; i++) {
-      if (i < valorRestante) {
-        parcelas.add(valorBase + 0.01); // Adiciona 1 centavo extra às primeiras parcelas
+      if (i == 0) {
+        parcelas.add(valorBase + valorRestante); // Adiciona 1 centavo extra às primeiras parcelas
       } else {
         parcelas.add(valorBase);
       }
