@@ -17,14 +17,13 @@ public class AssetConsolidateCalculation {
   public AssetConsolidatedDTO calculate(List<AssetModel> assets) {
     Double currentValue = 0.0;
     Double paidValue = 0.0;
-    Double wantedValue = 17000.00;
+    Double wantedValue = 0.0;
     Double returnsValue = 0.0;
     Double difference = 0.0;
     for (AssetModel assetModel : assets) {
+
       if (assetModel.getType() == AssetTypeEnum.DIRECT_TREASURE) {
         wantedValue = 14400.00;
-      } else if (assetModel.getType() == AssetTypeEnum.PUBLIC_PENSION) {
-        wantedValue = 0.00;
       }
       Double amount = 0.0;
       if (assetModel.getType() == AssetTypeEnum.PUBLIC_PENSION
@@ -43,6 +42,7 @@ public class AssetConsolidateCalculation {
         }
         difference = difference(paidValue + allJAM, paidValue);
       } else {
+        wantedValue = wantedValue == 0.0 ? 17000.00 : wantedValue;
         for (AssetMovementModel movementModel : assetModel.getMovements()) {
           if (movementModel.getOperation() != AssetOperationEnum.SELL) {
             paidValue += movementModel.getValue();
