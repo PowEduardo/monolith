@@ -32,6 +32,9 @@ public class AssetReturnsMovementServiceImpl implements MovementService<AssetRet
 
   @Override
   public AssetReturnsMovementDTO create(AssetReturnsMovementDTO request, Long assetId) {
+    if (request.getValue() == null) {
+      calcReturnValue(request);
+    }
     request
         .setDescription(request.getOperation().toString() + " " + assetRepository.findById(assetId).get().getTicker());
     return mapper.toDtoOnlyId(repository.save(mapper.toModel(request, assetId)));
@@ -66,5 +69,9 @@ public class AssetReturnsMovementServiceImpl implements MovementService<AssetRet
   public void delete(Long id) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'delete'");
+  }
+
+  private void calcReturnValue(AssetReturnsMovementDTO dto) {
+    dto.setValue(dto.getUnitValue() * dto.getAmount());
   }
 }

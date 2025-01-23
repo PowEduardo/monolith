@@ -120,6 +120,7 @@ public class AssetDetailsCalculation {
         .dy(this.dy(asset.getValue()))
         .ady(this.ady())
         .targetAmount(this.targetAmount(asset.getValue()))
+        .nextDividend(this.lastReturn * this.amount)
         .build();
 
   }

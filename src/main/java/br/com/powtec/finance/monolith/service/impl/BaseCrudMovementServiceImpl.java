@@ -43,7 +43,8 @@ public class BaseCrudMovementServiceImpl<T extends MovementModel, Y extends Move
   }
 
   @Override
-  public Y update(Y body, Long id, Long parentId) {
+  public Y update(Y body,  Long parentId, Long id) {
+    body.setId(id);
     return mapper.toDtoOnlyId(repository.save(mapper.toModel(body, parentId)));
   }
 
