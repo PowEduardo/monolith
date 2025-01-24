@@ -59,7 +59,7 @@ public class AssetDetailsCalculation {
     for (AssetReturnsMovementModel assetReturn : returns) {
       this.allReturn += assetReturn.getValue();
 
-      if (assetReturn.getDate().getYear() == LocalDate.now().getYear()) {
+      if (assetReturn.getExDividendDate().getYear() == (LocalDate.now().getYear() -1)) {
         unitYearReturn += assetReturn.getUnitValue();
       }
       if (assetReturn.getExDividendDate() != null &&
