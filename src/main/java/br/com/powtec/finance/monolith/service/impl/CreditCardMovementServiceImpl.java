@@ -39,6 +39,13 @@ public class CreditCardMovementServiceImpl
     return mapper.toDtoOnlyId(model);
   }
 
+  @Override
+  public CreditCardMovementDTO update(CreditCardMovementDTO body, Long parentId, Long id) {
+    CreditCardMovementModel model = repository.save(mapper.toModel(body, parentId));
+    model.setId(id);
+    installmentRepository.saveAll(getInstallments(model));
+    return mapper.toDtoOnlyId(model);
+  }
   private List<CreditCardInstallmentModel> getInstallments(CreditCardMovementModel movement) {
     List<CreditCardInstallmentModel> installments = new ArrayList<>(movement.getInstallment());
     // Valor total e número de parcelas
