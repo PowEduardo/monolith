@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -61,6 +62,13 @@ public class CreditCardMovementController {
   @GetMapping("/movements/{id}")
   public ResponseEntity<CreditCardMovementDTO> getById(@PathVariable Long id) {
     return ResponseEntity.ok().body(service.findById(id));
+  }
+
+  @DeleteMapping("/movements/{id}")
+  public ResponseEntity<CreditCardMovementDTO> delete(@PathVariable Long id) {
+    System.out.println(id);
+    service.delete(id);
+    return ResponseEntity.ok().build();
   }
 
   @GetMapping("/movements:search")

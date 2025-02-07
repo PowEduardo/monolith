@@ -40,6 +40,11 @@ public class CreditCardMovementServiceImpl
   }
 
   @Override
+  public void delete(Long id) {
+    repository.deleteById(id);
+  }
+
+  @Override
   public CreditCardMovementDTO update(CreditCardMovementDTO body, Long parentId, Long id) {
     CreditCardMovementModel model = repository.save(mapper.toModel(body, parentId));
     model.setId(id);
