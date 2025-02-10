@@ -12,6 +12,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -40,9 +43,9 @@ public class InstallmentController {
     throw new UnsupportedOperationException("Unimplemented method 'read'");
   }
 
-  public ResponseEntity<CreditCardInstallmentDTO> update(CreditCardInstallmentDTO body, Long id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'update'");
+  @PutMapping("/installments/{id}")
+  public ResponseEntity<CreditCardInstallmentDTO> update(@RequestBody CreditCardInstallmentDTO body,@PathVariable Long id) {
+    return ResponseEntity.ok().body(this.service.update(id, body));
   }
 
   public ResponseEntity<CreditCardInstallmentDTO> delete(Long id) {

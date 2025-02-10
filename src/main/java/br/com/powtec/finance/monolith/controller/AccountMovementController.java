@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -30,7 +31,7 @@ import jakarta.validation.constraints.Min;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @Validated
-@RequestMapping("accounts/{accountId}")
+@RequestMapping("accounts/{parentId}")
 public class AccountMovementController {
 
   @Autowired
@@ -39,17 +40,19 @@ public class AccountMovementController {
 
   @PostMapping("/movements")
   public ResponseEntity<MovementDTO> create(@RequestBody MovementDTO body,
-    @PathVariable Long accountId) {
-    return ResponseEntity.created(URI.create("/accounts/" + accountId + "/movements/" + service.create(body, accountId).getId())).build();
+    @PathVariable Long parentId) {
+    return ResponseEntity.created(URI.create("/accounts/" + parentId + "/movements/" + service.create(body, parentId).getId())).build();
   }
 
-  public ResponseEntity<MovementDTO> read(Long id) {
+  @GetMapping("/movements/{id}")
+  public ResponseEntity<MovementDTO> read(@PathVariable Long id) {
     return ResponseEntity.ok().body(service.findById(id));
   }
 
-  public ResponseEntity<MovementDTO> update(MovementDTO body, Long id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'update'");
+  @PutMapping("/movements/{id}")
+  public ResponseEntity<MovementDTO> update(@RequestBody MovementDTO body, @PathVariable Long parentId, @PathVariable Long id) {
+    return ResponseEntity.ok().body(service.update(body, parentId, id));
+
   }
 
   @DeleteMapping("/movements/{id}")
@@ -64,9 +67,9 @@ public class AccountMovementController {
       @RequestParam(value = "_offset", required = true) @Min(value = 0L, message = MINIMUM_PAGE_NUMBER) Integer pageNumber,
       @RequestParam(value = "_q", required = false) String parameters,
       @RequestParam(value = "_sort", required = false) String sort,
-      @PathVariable Long accountId) {
+      @PathVariable Long parentId) {
     Pageable pageable = pageable(pageNumber, elementsPerPage, sort+",-inclusionDateTime");
-    return ResponseEntity.ok().body(service.search(pageable, parameters, accountId));
+    return ResponseEntity.ok().body(service.search(pageable, parameters, parentId));
   }
 
 }

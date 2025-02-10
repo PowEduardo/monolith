@@ -1,5 +1,7 @@
 package br.com.powtec.finance.monolith.service.impl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,12 +35,17 @@ public class AssetMovementServiceImpl implements MovementService<AssetMovementDT
   MovementMapper<AssetMovementModel, AssetMovementDTO> mapper;
 
   public AssetMovementDTO create(AssetMovementDTO request, Long assetId) {
-    request.setDescription(request.getOperation().toString() + " " + assetRepository.findById(assetId).get().getTicker());
+    updateMovementValue(request);
+    request
+        .setDescription(request.getOperation().toString() + " " + assetRepository.findById(assetId).get().getTicker());
     return mapper.toDtoOnlyId(repository.save(mapper.toModel(request, assetId)));
   }
 
   @Override
   public List<AssetMovementDTO> createInBatch(List<AssetMovementDTO> request, Long assetId) {
+    request.forEach((movement) -> {
+      updateMovementValue(movement);
+    });
     return mapper.toDtosList(repository.saveAll(mapper.toModelsList(request, assetId)));
   }
 
@@ -62,8 +69,13 @@ public class AssetMovementServiceImpl implements MovementService<AssetMovementDT
 
   @Override
   public void delete(Long id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    repository.deleteById(id);
   }
 
+  private void updateMovementValue(AssetMovementDTO movement) {
+    if (movement.getValue() == null || movement.getValue() == 0.0) {
+      movement.setValue(new BigDecimal(movement.getAmount() * movement.getUnitValue()).setScale(2, RoundingMode.HALF_UP)
+          .doubleValue());
+    }
+  }
 }
