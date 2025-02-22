@@ -27,10 +27,12 @@ public class CreditCardServiceImpl extends BaseCrudServiceImpl<CreditCardModel, 
     CreditCardRepository repository = (CreditCardRepository) this.repository;
     Double currentStatementValue = repository.getCurrentStatementValue();
     Double lastStatementValue = repository.getLastStatementValue();
+    Double nextStatementValue = repository.getNextStatementValue();
     CreditCardDetailsDTO dto = new CreditCardDetailsDTO();
     dto.setCreateDate(model.getCreateDate());
     dto.setCurrentStatementValue(currentStatementValue);
     dto.setLastStatementValue(lastStatementValue);
+    dto.setNextStatementValue(nextStatementValue);
     dto.setName(model.getName());
     dto.setStatementDay(model.getStatementDay());
     return dto;
