@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.database.library.enums.AssetTypeEnum;
+import br.com.powtec.finance.database.library.model.asset.IRInterfaceModel;
 import br.com.powtec.finance.database.library.model.dto.AssetConsolidatedDTO;
 import br.com.powtec.finance.database.library.model.dto.AssetDTO;
 import br.com.powtec.finance.database.library.model.dto.AssetDetailsDTO;
@@ -77,5 +78,10 @@ public class AssetController {
   @GetMapping("/assets/consolidate")
   public ResponseEntity<AssetConsolidatedDTO> getConsolidated(@RequestParam AssetTypeEnum type) {
     return ResponseEntity.ok().body(service.getConsolidated(type));
+  }
+
+  @GetMapping("/assets/{id}/irpf")
+  public ResponseEntity<IRInterfaceModel> getIr(@PathVariable Long id, @RequestParam("year") Integer year) {
+    return ResponseEntity.ok().body(service.getIr(id, year));
   }
 }

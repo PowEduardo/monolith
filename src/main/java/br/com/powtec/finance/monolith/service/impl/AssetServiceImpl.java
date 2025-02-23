@@ -13,6 +13,7 @@ import br.com.powtec.finance.monolith.calculations.AssetDetailsCalculation;
 import br.com.powtec.finance.database.library.enums.AssetTypeEnum;
 import br.com.powtec.finance.database.library.mapper.AssetMapper;
 import br.com.powtec.finance.database.library.model.AssetModel;
+import br.com.powtec.finance.database.library.model.asset.IRInterfaceModel;
 import br.com.powtec.finance.database.library.model.dto.AssetConsolidatedDTO;
 import br.com.powtec.finance.database.library.model.dto.AssetDTO;
 import br.com.powtec.finance.database.library.model.dto.AssetDetailsDTO;
@@ -29,7 +30,8 @@ public class AssetServiceImpl implements AssetService {
   @Autowired
   private AssetMapper mapper;
 
-  @Autowired AssetSpecification specification;
+  @Autowired
+  AssetSpecification specification;
 
   @Override
   public AssetDTO create(AssetDTO body) {
@@ -71,6 +73,29 @@ public class AssetServiceImpl implements AssetService {
   public AssetConsolidatedDTO getConsolidated(AssetTypeEnum type) {
     AssetConsolidateCalculation consolidate = new AssetConsolidateCalculation();
     return consolidate.calculate(repository.findAllByType(type));
+  }
+
+  @Override
+  public IRInterfaceModel getIr(Long id, Integer year) {
+    Double averagePrice = repository.calcAveragePrice(id, year);
+    Double currentAmount = repository.calcCurrentAmount(id, year);
+    Double averagePriceLastYear = repository.calcAveragePriceYearBefore(id, year);
+    Double currentAmountLastYear = repository.calcCurrentAmountYearBefore(id, year);
+    if (averagePrice == null) {
+      averagePrice = 0.0;
+      currentAmount = 0.0;
+      averagePriceLastYear = 0.0;
+      currentAmountLastYear = 0.0;
+    } else if (averagePriceLastYear == null) {
+      averagePriceLastYear = 0.0;
+      currentAmountLastYear = 0.0;
+    }
+    return IRInterfaceModel.builder()
+        .averagePrice(averagePrice)
+        .totalValue(averagePrice * currentAmount)
+        .totalAmount(currentAmount)
+        .totalValueLastYear(averagePriceLastYear * currentAmountLastYear)
+        .build();
   }
 
 }
