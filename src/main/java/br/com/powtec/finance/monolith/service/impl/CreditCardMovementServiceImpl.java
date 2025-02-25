@@ -27,9 +27,7 @@ public class CreditCardMovementServiceImpl
       @Autowired MovementRepository<CreditCardMovementModel> repository,
       @Autowired MovementMapper<CreditCardMovementModel, CreditCardMovementDTO> mapper,
       @Autowired BaseCrudMovementSpecification<CreditCardMovementModel> specification) {
-    this.mapper = mapper;
-    this.repository = repository;
-    this.specification = specification;
+        super(repository, mapper, specification);
   }
 
   @Override

@@ -14,6 +14,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -71,5 +72,11 @@ public class AssetReturnsMovementController {
       @PathVariable Long assetId) {
     Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
     return ResponseEntity.ok().body(service.search(pageable, parameters, assetId));
+  }
+
+  @DeleteMapping("/returns/{id}")
+  public ResponseEntity<AssetReturnsMovementDTO> deleteById(@PathVariable Long id) {
+    service.delete(id);
+    return ResponseEntity.ok().build();
   }
 }

@@ -15,8 +15,6 @@ public class AccountMovementServiceImpl extends BaseCrudMovementServiceImpl<Move
   AccountMovementServiceImpl(@Autowired MovementRepository<MovementModel> repository,
       @Autowired MovementMapper<MovementModel, MovementDTO> mapper,
       @Autowired BaseCrudMovementSpecification<MovementModel> specification) {
-    this.mapper = mapper;
-    this.repository = repository;
-    this.specification = specification;
+        super(repository, mapper, specification);
   }
 }
