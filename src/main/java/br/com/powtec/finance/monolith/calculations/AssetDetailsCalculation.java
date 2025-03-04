@@ -56,12 +56,13 @@ public class AssetDetailsCalculation {
   }
 
   private void returns(List<AssetReturnsMovementModel> returns) {
+    Double count = 0.0;
     for (AssetReturnsMovementModel assetReturn : returns) {
       this.allReturn += assetReturn.getValue();
-
       if (assetReturn.getExDividendDate() != null &&
           assetReturn.getExDividendDate().getYear() == (LocalDate.now().getYear() -1)) {
         unitYearReturn += assetReturn.getUnitValue();
+        count = count +1;
       }
       if (assetReturn.getExDividendDate() != null &&
           assetReturn.getExDividendDate().isAfter(lastReturnDate) &&
@@ -70,6 +71,7 @@ public class AssetDetailsCalculation {
         this.lastReturn = assetReturn.getUnitValue();
       }
     }
+    this.unitYearReturn = unitYearReturn / count;
   }
 
   private void monthlyReturn() {
