@@ -66,7 +66,6 @@ public class CreditCardMovementController {
 
   @DeleteMapping("/movements/{id}")
   public ResponseEntity<CreditCardMovementDTO> delete(@PathVariable Long id) {
-    System.out.println(id);
     service.delete(id);
     return ResponseEntity.ok().build();
   }

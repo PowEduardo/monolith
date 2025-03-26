@@ -84,6 +84,8 @@ public class AssetServiceImpl implements AssetService {
     Double totalJCP = repository.calcJCP(id, year);
     Double totalDividend = repository.calcDividend(id, year);
     Double totalSellValue = repository.calcSellValue(id, year);
+    Double totalFutureJCP = repository.calcFutureJCP(id, year);
+    Double totalFutureDividend = repository.calcFutureDividend(id, year);
     if (averagePrice == null) {
       averagePrice = 0.0;
       currentAmount = 0.0;
@@ -99,6 +101,12 @@ public class AssetServiceImpl implements AssetService {
     if (totalDividend == null) {
       totalDividend = 0.0;
     }
+    if (totalFutureDividend == null) {
+      totalFutureDividend = 0.0;
+    }
+    if (totalFutureJCP == null) {
+      totalFutureJCP = 0.0;
+    }
     return IRInterfaceModel.builder()
         .averagePrice(averagePrice)
         .totalValue(averagePrice * currentAmount)
@@ -107,6 +115,8 @@ public class AssetServiceImpl implements AssetService {
         .totalJCP(totalJCP)
         .totalDividend(totalDividend)
         .totalSellValue(totalSellValue)
+        .totalFutureDividend(totalFutureDividend)
+        .totalFutureJCP(totalFutureJCP)  
         .build();
   }
 

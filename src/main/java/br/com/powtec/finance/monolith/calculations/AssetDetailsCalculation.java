@@ -79,7 +79,7 @@ public class AssetDetailsCalculation {
   }
 
   private Double dy(Double assetValue) {
-    return BigDecimal.valueOf((this.monthlyReturn * 12) * 100 / assetValue).setScale(2, RoundingMode.HALF_UP)
+    return BigDecimal.valueOf(this.monthlyReturn * 100 / assetValue).setScale(2, RoundingMode.HALF_UP)
         .doubleValue();
   }
 
@@ -87,7 +87,7 @@ public class AssetDetailsCalculation {
     if (this.average == 0) {
       return 0.0;
     }
-    return BigDecimal.valueOf((this.monthlyReturn * 12) * 100 / this.average).setScale(2, RoundingMode.HALF_UP)
+    return BigDecimal.valueOf(this.monthlyReturn * 100 / this.average).setScale(2, RoundingMode.HALF_UP)
         .doubleValue();
   }
 

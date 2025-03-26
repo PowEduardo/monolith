@@ -93,12 +93,12 @@ public class CreditCardMovementServiceImpl
 
     // Calcula o valor restante que precisará ser distribuído como centavos extras
     double somaParcelasBase = valorBase * numeroDeParcelas;
-    double valorRestante = Math.round((valor - somaParcelasBase) * 100);
+    double valorRestante = (valor - somaParcelasBase);
 
     // Distribui as parcelas
     for (int i = 0; i < numeroDeParcelas; i++) {
       if (i == 0) {
-        parcelas.add(valorBase + valorRestante); // Adiciona 1 centavo extra às primeiras parcelas
+        parcelas.add(valorBase + valorRestante); // Adiciona valor restante a primeira parcela
       } else {
         parcelas.add(valorBase);
       }
