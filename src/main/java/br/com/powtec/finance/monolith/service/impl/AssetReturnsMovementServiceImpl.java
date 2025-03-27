@@ -2,6 +2,7 @@ package br.com.powtec.finance.monolith.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import br.com.powtec.finance.database.library.mapper.MovementMapper;
@@ -12,20 +13,15 @@ import br.com.powtec.finance.database.library.repository.MovementRepository;
 import br.com.powtec.finance.database.library.repository.specification.BaseCrudMovementSpecification;
 
 @Service("assetReturnsService")
-public class AssetReturnsMovementServiceImpl extends BaseCrudMovementServiceImpl<AssetReturnsMovementModel, AssetReturnsMovementDTO> {
+public class AssetReturnsMovementServiceImpl
+    extends BaseCrudMovementServiceImpl<AssetReturnsMovementModel, AssetReturnsMovementDTO> {
 
-  AssetReturnsMovementServiceImpl(MovementRepository<AssetReturnsMovementModel> repository,
-        MovementMapper<AssetReturnsMovementModel, AssetReturnsMovementDTO> mapper,
-        BaseCrudMovementSpecification<AssetReturnsMovementModel> specification) {
-      super(repository, mapper, specification);
-    }
-  
-    @Autowired
-  @Qualifier("assetReturnsMapper")
-  private MovementMapper<AssetReturnsMovementModel, AssetReturnsMovementDTO> mapper;
-
-  @Autowired
-  private MovementRepository<AssetReturnsMovementModel> repository;
+  AssetReturnsMovementServiceImpl(@Autowired MovementRepository<AssetReturnsMovementModel> repository,
+      @Autowired MovementMapper<AssetReturnsMovementModel, AssetReturnsMovementDTO> mapper,
+      @Autowired @Qualifier("assetReturnsMovementSpecification") BaseCrudMovementSpecification<AssetReturnsMovementModel> specification) {
+    super(repository, mapper, specification);
+    this.repository.findAll(Sort.by(Sort.Direction.DESC, "exDividendDate"));
+  }
 
   @Autowired
   AssetRepository assetRepository;

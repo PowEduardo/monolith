@@ -28,6 +28,7 @@ public class CreditCardMovementServiceImpl
       @Autowired MovementMapper<CreditCardMovementModel, CreditCardMovementDTO> mapper,
       @Autowired BaseCrudMovementSpecification<CreditCardMovementModel> specification) {
         super(repository, mapper, specification);
+
   }
 
   @Override
@@ -35,11 +36,6 @@ public class CreditCardMovementServiceImpl
     CreditCardMovementModel model = repository.save(mapper.toModel(body, parentId));
     installmentRepository.saveAll(getInstallments(model));
     return mapper.toDtoOnlyId(model);
-  }
-
-  @Override
-  public void delete(Long id) {
-    repository.deleteById(id);
   }
 
   @Override

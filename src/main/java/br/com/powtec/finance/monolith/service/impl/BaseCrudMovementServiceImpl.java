@@ -2,7 +2,6 @@ package br.com.powtec.finance.monolith.service.impl;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -20,9 +19,9 @@ public class BaseCrudMovementServiceImpl<T extends MovementModel, Y extends Move
   protected MovementMapper<T, Y> mapper;
   protected BaseCrudMovementSpecification<T> specification;
 
-  BaseCrudMovementServiceImpl(@Autowired MovementRepository<T> repository,
-      @Autowired MovementMapper<T, Y> mapper,
-      @Autowired BaseCrudMovementSpecification<T> specification) {
+  BaseCrudMovementServiceImpl(MovementRepository<T> repository,
+      MovementMapper<T, Y> mapper,
+      BaseCrudMovementSpecification<T> specification) {
         this.repository = repository;
         this.mapper = mapper;
         this.specification = specification;
