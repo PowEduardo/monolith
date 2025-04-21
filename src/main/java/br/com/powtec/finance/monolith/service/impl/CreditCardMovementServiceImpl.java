@@ -15,6 +15,7 @@ import br.com.powtec.finance.database.library.model.movement.CreditCardMovementM
 import br.com.powtec.finance.database.library.repository.CreditCardInstallmentRepository;
 import br.com.powtec.finance.database.library.repository.MovementRepository;
 import br.com.powtec.finance.database.library.repository.specification.BaseCrudMovementSpecification;
+import jakarta.transaction.Transactional;
 
 @Service("creditCardMovementService")
 public class CreditCardMovementServiceImpl
@@ -103,4 +104,11 @@ public class CreditCardMovementServiceImpl
     return parcelas;
   }
 
+  @Override
+  @Transactional
+  public void delete(Long id) {
+    CreditCardMovementModel model = repository.findById(id).orElseThrow();
+    installmentRepository.deleteAll(model.getInstallments());
+    repository.delete(model);
+  }
 }

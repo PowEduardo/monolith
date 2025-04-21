@@ -92,7 +92,7 @@ public class CreditCardStatementServiceImpl
     if (model.getMovement() == null) {
       return MovementModel.builder()
           .account(AccountModel.builder().id(1L).build())
-          .category(CategoryTypeEnum.CARD.toString())
+          .category(CategoryTypeEnum.CARD)
           .date(LocalDate.parse(model.getReferenceMonth() + "-09"))
           .description("Cartão")
           .paid(false)

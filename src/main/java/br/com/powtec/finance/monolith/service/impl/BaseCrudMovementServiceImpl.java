@@ -12,6 +12,7 @@ import br.com.powtec.finance.database.library.model.dto.MovementDTO;
 import br.com.powtec.finance.database.library.repository.MovementRepository;
 import br.com.powtec.finance.database.library.repository.specification.BaseCrudMovementSpecification;
 import br.com.powtec.finance.monolith.service.MovementService;
+import jakarta.transaction.Transactional;
 
 public class BaseCrudMovementServiceImpl<T extends MovementModel, Y extends MovementDTO> implements MovementService<Y> {
 
@@ -57,7 +58,9 @@ public class BaseCrudMovementServiceImpl<T extends MovementModel, Y extends Move
   }
 
   @Override
+  @Transactional
   public void delete(Long id) {
-    repository.deleteById(id);
+    var a = repository.findById(id);
+    repository.delete(a.get());
   }
 }
