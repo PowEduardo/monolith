@@ -45,4 +45,9 @@ public class BaseCrudServiceImpl<T, Y> implements BaseCrudService<Y> {
     return mapper.toDtoOnlyId(repository.save(mapper.toModel(body)));
   }
 
+  @Override
+  public void delete(Long id) {
+    repository.deleteById(id);
+  }
+
 }

@@ -8,8 +8,6 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import br.com.powtec.finance.monolith.calculations.AssetConsolidateCalculation;
-import br.com.powtec.finance.monolith.calculations.AssetDetailsCalculation;
 import br.com.powtec.finance.database.library.enums.AssetTypeEnum;
 import br.com.powtec.finance.database.library.mapper.AssetMapper;
 import br.com.powtec.finance.database.library.model.AssetModel;
@@ -19,6 +17,8 @@ import br.com.powtec.finance.database.library.model.dto.AssetDTO;
 import br.com.powtec.finance.database.library.model.dto.AssetDetailsDTO;
 import br.com.powtec.finance.database.library.repository.AssetRepository;
 import br.com.powtec.finance.database.library.repository.specification.AssetSpecification;
+import br.com.powtec.finance.monolith.calculations.AssetConsolidateCalculation;
+import br.com.powtec.finance.monolith.calculations.AssetDetailsCalculation;
 import br.com.powtec.finance.monolith.service.AssetService;
 
 @Service
@@ -118,6 +118,12 @@ public class AssetServiceImpl implements AssetService {
         .totalFutureDividend(totalFutureDividend)
         .totalFutureJCP(totalFutureJCP)  
         .build();
+  }
+
+  @Override
+  public void delete(Long id) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'delete'");
   }
 
 }

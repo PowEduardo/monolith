@@ -17,4 +17,6 @@ public interface BaseCrudService<T> {
 
   public T update(Long id, T body);
 
+  public void delete(Long id);
+
 }
