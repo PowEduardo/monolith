@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-import br.com.powtec.finance.database.library.enums.BaseCrudRepository;
+import br.com.powtec.finance.database.library.base.BaseCrudRepository;
 import br.com.powtec.finance.database.library.mapper.BaseCrudMapper;
 import br.com.powtec.finance.database.library.repository.specification.BaseCrudSpecification;
 import br.com.powtec.finance.monolith.service.BaseCrudService;
