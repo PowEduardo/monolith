@@ -32,6 +32,7 @@ public class VehicleController extends BaseCrudControllerImpl<VehicleDTO> {
     @PutMapping("/vehicles/{id}")
     @Override
     public ResponseEntity<VehicleDTO> update(@RequestBody VehicleDTO body, @PathVariable Long id) {
+        body.setId(id);
         return super.update(body, id);
     }
 
