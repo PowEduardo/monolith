@@ -36,7 +36,8 @@ public class BaseCrudControllerImpl<T> implements BaseCrudController<T> {
     }
 
     @Override
-    public ResponseEntity<Page<T>> search(Integer elementsPerPage, Integer pageNumber, String parameters, String sort) {
+    public ResponseEntity<Page<T>> search(Integer elementsPerPage,
+            Integer pageNumber, String parameters, String sort) {
         Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
         return ResponseEntity.ok().body(service.search(pageable, parameters));
     }
