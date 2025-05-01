@@ -21,7 +21,7 @@ public class AssetDetailsCalculation {
   private Double unitYearReturn = 0.0;
   private Double monthlyReturn = 0.0;
   private Double lastReturn = 0.0;
-  private LocalDate lastReturnDate = LocalDate.parse("2024-01-01");
+  private LocalDate lastReturnDate = LocalDate.parse("2025-01-01");
 
   private void amountAndPaidValue(List<AssetMovementModel> movements) {
     for (AssetMovementModel stockMovement : movements) {

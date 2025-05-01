@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-import br.com.powtec.finance.database.library.enums.BaseCrudRepository;
+import br.com.powtec.finance.database.library.base.BaseCrudRepository;
 import br.com.powtec.finance.database.library.mapper.BaseCrudMapper;
 import br.com.powtec.finance.database.library.repository.specification.BaseCrudSpecification;
 import br.com.powtec.finance.monolith.service.BaseCrudService;
@@ -43,6 +43,11 @@ public class BaseCrudServiceImpl<T, Y> implements BaseCrudService<Y> {
   @Override
   public Y update(Long id, Y body) {
     return mapper.toDtoOnlyId(repository.save(mapper.toModel(body)));
+  }
+
+  @Override
+  public void delete(Long id) {
+    repository.deleteById(id);
   }
 
 }

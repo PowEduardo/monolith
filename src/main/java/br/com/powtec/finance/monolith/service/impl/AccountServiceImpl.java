@@ -15,7 +15,7 @@ import br.com.powtec.finance.database.library.repository.AccountRepository;
 import br.com.powtec.finance.monolith.service.BaseCrudService;
 
 @Service
-public class AccountServiceImpl implements BaseCrudService<AccountDTO>{
+public class AccountServiceImpl implements BaseCrudService<AccountDTO> {
 
   @Autowired
   private AccountMapper mapper;
@@ -62,6 +62,12 @@ public class AccountServiceImpl implements BaseCrudService<AccountDTO>{
     dto.setPrimary(model.getPrimary());
     dto.setBalance(repository.sumMovementsByAccount(model.getId()));
     return dto;
+  }
+
+  @Override
+  public void delete(Long id) {
+    // TODO Auto-generated method stub
+    throw new UnsupportedOperationException("Unimplemented method 'delete'");
   }
 
 }
