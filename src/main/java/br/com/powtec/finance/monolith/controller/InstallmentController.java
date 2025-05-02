@@ -11,6 +11,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -33,14 +34,15 @@ public class InstallmentController {
   @Qualifier("creditCardInstallmentService")
   private BaseCrudService<CreditCardInstallmentDTO> service;
 
+
   public ResponseEntity<CreditCardInstallmentDTO> create(CreditCardInstallmentDTO body) {
     // TODO Auto-generated method stub
     throw new UnsupportedOperationException("Unimplemented method 'create'");
   }
 
-  public ResponseEntity<CreditCardInstallmentDTO> read(Long id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'read'");
+  @GetMapping("/installments/{id}")
+  public ResponseEntity<CreditCardInstallmentDTO> read(@PathVariable Long id) {
+    return ResponseEntity.ok().body(this.service.findById(id));
   }
 
   @PutMapping("/installments/{id}")
@@ -48,9 +50,10 @@ public class InstallmentController {
     return ResponseEntity.ok().body(this.service.update(id, body));
   }
 
+  @DeleteMapping("/installments/{id}")
   public ResponseEntity<CreditCardInstallmentDTO> delete(Long id) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'delete'");
+    this.service.delete(id);
+    return ResponseEntity.ok().build();
   }
 
   @GetMapping("/installments:search")
