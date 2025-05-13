@@ -7,16 +7,16 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
-import br.com.powtec.finance.monolith.service.BaseCrudService;
+import br.com.powtec.finance.monolith.service.BaseChildCrudService;
 
 public class BaseChildCrudControllerImpl<T> implements BaseChildCrudController<T> {
 
     @Autowired
-    private BaseCrudService<T> service;
+    private BaseChildCrudService<T> service;
 
     @Override
     public ResponseEntity<T> create(Long parentId, T body) {
-        return ResponseEntity.ok().body(service.create(body));
+        return ResponseEntity.ok().body(service.create(body, parentId));
     }
 
     @Override
@@ -26,7 +26,7 @@ public class BaseChildCrudControllerImpl<T> implements BaseChildCrudController<T
 
     @Override
     public ResponseEntity<T> update(Long parentId, T body, Long id) {
-        return ResponseEntity.ok().body(service.update(id, body));
+        return ResponseEntity.ok().body(service.update(body, parentId, id));
     }
 
     @Override
@@ -41,7 +41,7 @@ public class BaseChildCrudControllerImpl<T> implements BaseChildCrudController<T
             Integer elementsPerPage,
             Integer pageNumber, String parameters, String sort) {
         Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
-        return ResponseEntity.ok().body(service.search(pageable, parameters));
+        return ResponseEntity.ok().body(service.search(pageable, parameters, parentId));
     }
 
 }
