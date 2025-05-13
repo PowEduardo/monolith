@@ -13,15 +13,15 @@ import br.com.powtec.finance.database.library.model.movement.AssetReturnsMovemen
 import br.com.powtec.finance.database.library.repository.AssetRepository;
 import br.com.powtec.finance.database.library.repository.AssetReturnsMovementRepository;
 import br.com.powtec.finance.database.library.repository.MovementRepository;
-import br.com.powtec.finance.database.library.repository.specification.BaseCrudMovementSpecification;
+import br.com.powtec.finance.database.library.repository.specification.BaseCrudChildSpecification;
 
 @Service("assetReturnsService")
 public class AssetReturnsMovementServiceImpl
-    extends BaseCrudMovementServiceImpl<AssetReturnsMovementModel, AssetReturnsMovementDTO> {
+    extends BaseCrudChildServiceImpl<AssetReturnsMovementModel, AssetReturnsMovementDTO> {
 
   AssetReturnsMovementServiceImpl(@Autowired MovementRepository<AssetReturnsMovementModel> repository,
       @Autowired MovementMapper<AssetReturnsMovementModel, AssetReturnsMovementDTO> mapper,
-      @Autowired @Qualifier("assetReturnsMovementSpecification") BaseCrudMovementSpecification<AssetReturnsMovementModel> specification) {
+      @Autowired @Qualifier("assetReturnsMovementSpecification") BaseCrudChildSpecification<AssetReturnsMovementModel> specification) {
     super(repository, mapper, specification);
   }
 

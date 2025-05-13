@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.database.library.model.dto.AssetMovementDTO;
-import br.com.powtec.finance.monolith.service.MovementService;
+import br.com.powtec.finance.monolith.service.BaseChildCrudService;
 import jakarta.validation.constraints.Min;
 
 @RestController
@@ -36,7 +36,7 @@ public class AssetMovementController {
 
   @Autowired
   @Qualifier("assetMovementService")
-  MovementService<AssetMovementDTO> service;
+  BaseChildCrudService<AssetMovementDTO> service;
 
   @PostMapping("/movements")
   public ResponseEntity<AssetMovementDTO> create(@PathVariable Long assetId, @RequestBody AssetMovementDTO body) {

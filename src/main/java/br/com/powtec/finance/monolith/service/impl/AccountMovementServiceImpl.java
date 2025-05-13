@@ -7,14 +7,14 @@ import br.com.powtec.finance.database.library.mapper.MovementMapper;
 import br.com.powtec.finance.database.library.model.MovementModel;
 import br.com.powtec.finance.database.library.model.dto.MovementDTO;
 import br.com.powtec.finance.database.library.repository.MovementRepository;
-import br.com.powtec.finance.database.library.repository.specification.BaseCrudMovementSpecification;
+import br.com.powtec.finance.database.library.repository.specification.BaseCrudChildSpecification;
 
 @Service
-public class AccountMovementServiceImpl extends BaseCrudMovementServiceImpl<MovementModel, MovementDTO> {
+public class AccountMovementServiceImpl extends BaseCrudChildServiceImpl<MovementModel, MovementDTO> {
 
   AccountMovementServiceImpl(@Autowired MovementRepository<MovementModel> repository,
       @Autowired MovementMapper<MovementModel, MovementDTO> mapper,
-      @Autowired BaseCrudMovementSpecification<MovementModel> specification) {
+      @Autowired BaseCrudChildSpecification<MovementModel> specification) {
         super(repository, mapper, specification);
   }
 }

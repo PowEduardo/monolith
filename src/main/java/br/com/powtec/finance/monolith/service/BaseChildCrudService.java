@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import br.com.powtec.finance.database.library.model.dto.MovementDTO;
-
-public interface MovementService<T extends MovementDTO> {
+public interface BaseChildCrudService<T> {
 
   public T create(T request, Long parentId);
 
