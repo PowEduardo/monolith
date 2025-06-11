@@ -14,12 +14,12 @@ import br.com.powtec.finance.database.library.model.dto.CreditCardMovementDTO;
 import br.com.powtec.finance.database.library.model.movement.CreditCardMovementModel;
 import br.com.powtec.finance.database.library.repository.CreditCardInstallmentRepository;
 import br.com.powtec.finance.database.library.repository.MovementRepository;
-import br.com.powtec.finance.database.library.repository.specification.BaseCrudMovementSpecification;
+import br.com.powtec.finance.database.library.repository.specification.BaseCrudChildSpecification;
 import jakarta.transaction.Transactional;
 
 @Service("creditCardMovementService")
 public class CreditCardMovementServiceImpl
-    extends BaseCrudMovementServiceImpl<CreditCardMovementModel, CreditCardMovementDTO> {
+    extends BaseCrudChildServiceImpl<CreditCardMovementModel, CreditCardMovementDTO> {
 
   @Autowired
   private CreditCardInstallmentRepository installmentRepository;
@@ -27,7 +27,7 @@ public class CreditCardMovementServiceImpl
   CreditCardMovementServiceImpl(
       @Autowired MovementRepository<CreditCardMovementModel> repository,
       @Autowired MovementMapper<CreditCardMovementModel, CreditCardMovementDTO> mapper,
-      @Autowired BaseCrudMovementSpecification<CreditCardMovementModel> specification) {
+      @Autowired BaseCrudChildSpecification<CreditCardMovementModel> specification) {
         super(repository, mapper, specification);
 
   }

@@ -18,11 +18,11 @@ import br.com.powtec.finance.database.library.model.movement.AssetMovementModel;
 import br.com.powtec.finance.database.library.repository.AssetRepository;
 import br.com.powtec.finance.database.library.repository.MovementRepository;
 import br.com.powtec.finance.database.library.repository.specification.AssetMovementSpecification;
-import br.com.powtec.finance.monolith.service.MovementService;
+import br.com.powtec.finance.monolith.service.BaseChildCrudService;
 
 @Service("assetMovementService")
 @Transactional
-public class AssetMovementServiceImpl implements MovementService<AssetMovementDTO> {
+public class AssetMovementServiceImpl implements BaseChildCrudService<AssetMovementDTO> {
 
   @Autowired
   MovementRepository<AssetMovementModel> repository;

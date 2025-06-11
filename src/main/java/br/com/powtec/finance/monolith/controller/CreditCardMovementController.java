@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.database.library.model.dto.CreditCardMovementDTO;
-import br.com.powtec.finance.monolith.service.MovementService;
+import br.com.powtec.finance.monolith.service.BaseChildCrudService;
 import jakarta.validation.constraints.Min;
 
 @RestController
@@ -35,7 +35,7 @@ import jakarta.validation.constraints.Min;
 public class CreditCardMovementController {
   @Autowired
   @Qualifier("creditCardMovementService")
-  MovementService<CreditCardMovementDTO> service;
+  BaseChildCrudService<CreditCardMovementDTO> service;
 
   @PostMapping("/movements")
   public ResponseEntity<CreditCardMovementDTO> create(@PathVariable Long parentId, @RequestBody CreditCardMovementDTO body) {

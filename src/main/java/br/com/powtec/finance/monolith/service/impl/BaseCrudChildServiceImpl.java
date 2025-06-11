@@ -6,23 +6,20 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 
-import br.com.powtec.finance.database.library.mapper.MovementMapper;
-import br.com.powtec.finance.database.library.model.MovementModel;
-import br.com.powtec.finance.database.library.model.dto.MovementDTO;
-import br.com.powtec.finance.database.library.repository.MovementRepository;
-import br.com.powtec.finance.database.library.repository.specification.BaseCrudMovementSpecification;
-import br.com.powtec.finance.monolith.service.MovementService;
-import jakarta.transaction.Transactional;
+import br.com.powtec.finance.database.library.base.BaseCrudRepository;
+import br.com.powtec.finance.database.library.mapper.BaseChildCrudMapper;
+import br.com.powtec.finance.database.library.repository.specification.BaseCrudChildSpecification;
+import br.com.powtec.finance.monolith.service.BaseChildCrudService;
 
-public class BaseCrudMovementServiceImpl<T extends MovementModel, Y extends MovementDTO> implements MovementService<Y> {
+public class BaseCrudChildServiceImpl<T, Y> implements BaseChildCrudService<Y> {
 
-  protected MovementRepository<T> repository;
-  protected MovementMapper<T, Y> mapper;
-  protected BaseCrudMovementSpecification<T> specification;
+  protected BaseCrudRepository<T> repository;
+  protected BaseChildCrudMapper<T, Y> mapper;
+  protected BaseCrudChildSpecification<T> specification;
 
-  BaseCrudMovementServiceImpl(MovementRepository<T> repository,
-      MovementMapper<T, Y> mapper,
-      BaseCrudMovementSpecification<T> specification) {
+  BaseCrudChildServiceImpl(BaseCrudRepository<T> repository,
+      BaseChildCrudMapper<T, Y> mapper,
+      BaseCrudChildSpecification<T> specification) {
         this.repository = repository;
         this.mapper = mapper;
         this.specification = specification;
@@ -53,14 +50,11 @@ public class BaseCrudMovementServiceImpl<T extends MovementModel, Y extends Move
 
   @Override
   public Y update(Y body,  Long parentId, Long id) {
-    body.setId(id);
     return mapper.toDtoOnlyId(repository.save(mapper.toModel(body, parentId)));
   }
 
   @Override
-  @Transactional
   public void delete(Long id) {
-    var a = repository.findById(id);
-    repository.delete(a.get());
+    repository.deleteById(id);
   }
 }

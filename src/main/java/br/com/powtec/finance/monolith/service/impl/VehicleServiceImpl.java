@@ -5,8 +5,8 @@ import org.springframework.stereotype.Service;
 
 import br.com.powtec.finance.database.library.base.BaseCrudRepository;
 import br.com.powtec.finance.database.library.mapper.BaseCrudMapper;
-import br.com.powtec.finance.database.library.model.VehicleModel;
 import br.com.powtec.finance.database.library.model.dto.VehicleDTO;
+import br.com.powtec.finance.database.library.model.vehicle.VehicleModel;
 import br.com.powtec.finance.database.library.repository.specification.BaseCrudSpecification;
 
 @Service
