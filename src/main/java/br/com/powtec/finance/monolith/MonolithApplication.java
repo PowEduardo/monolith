@@ -7,7 +7,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan(basePackages = {"br.com.powtec.finance"})
+@ComponentScan(basePackages = {"br.com.powtec.finance", "br.com.powtec.finance.database.library.mapper"})
 @EnableJpaRepositories(
     basePackages = "br.com.powtec.finance.database.library.repository"
 )
