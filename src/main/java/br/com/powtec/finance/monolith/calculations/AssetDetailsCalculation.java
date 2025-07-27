@@ -72,6 +72,9 @@ public class AssetDetailsCalculation {
       }
     }
     this.unitYearReturn = unitYearReturn / count;
+    if (this.unitYearReturn.isNaN()) {
+      this.unitYearReturn = 0.0;
+    }
   }
 
   private void monthlyReturn() {
@@ -79,6 +82,9 @@ public class AssetDetailsCalculation {
   }
 
   private Double dy(Double assetValue) {
+    if (assetValue == 0 || this.monthlyReturn == 0) {
+      return 0.0;
+    }
     return BigDecimal.valueOf(this.monthlyReturn * 100 / assetValue).setScale(2, RoundingMode.HALF_UP)
         .doubleValue();
   }
