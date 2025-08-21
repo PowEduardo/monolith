@@ -1,6 +1,4 @@
 spring:
-  profiles:
-    active: prd
   jpa:
     show-sql: true
     generate-ddl: true

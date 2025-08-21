@@ -1,0 +1,3 @@
+docker run --name postgres --network finance-network -p 5432:5432 -v pgdata:/var/lib/postgresql/data -e POSTGRES_PASSWORD=123456 -e POSTGRES_USER=finance_user -e POSTGRES_DB=finance -d postgres 
+docker run --name my-pgadmin -e PGADMIN_DEFAULT_EMAIL=admin@admin.com -e PGADMIN_DEFAULT_PASSWORD=admin -p 8080:80 -d dpage/pgadmin4
+docker run --name monolith --network finance-network -p 9000:8080 monolith
