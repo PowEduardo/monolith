@@ -12,3 +12,8 @@ server:
     encoding:
       charset: UTF-8
     context-path: /
+logging:
+  file:
+    name: logs/monolith.log
+  level:
+    root: INFO

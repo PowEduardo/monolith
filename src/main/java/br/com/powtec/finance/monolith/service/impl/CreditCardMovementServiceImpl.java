@@ -10,9 +10,12 @@ import org.springframework.stereotype.Service;
 import br.com.powtec.finance.database.library.enums.EntryTypeEnum;
 import br.com.powtec.finance.database.library.mapper.MovementMapper;
 import br.com.powtec.finance.database.library.model.CreditCardInstallmentModel;
+import br.com.powtec.finance.database.library.model.CreditCardModel;
+import br.com.powtec.finance.database.library.model.CreditCardStatementModel;
 import br.com.powtec.finance.database.library.model.dto.CreditCardMovementDTO;
 import br.com.powtec.finance.database.library.model.movement.CreditCardMovementModel;
 import br.com.powtec.finance.database.library.repository.CreditCardInstallmentRepository;
+import br.com.powtec.finance.database.library.repository.CreditCardStatementRepository;
 import br.com.powtec.finance.database.library.repository.MovementRepository;
 import br.com.powtec.finance.database.library.repository.specification.BaseCrudChildSpecification;
 import jakarta.transaction.Transactional;
@@ -23,13 +26,14 @@ public class CreditCardMovementServiceImpl
 
   @Autowired
   private CreditCardInstallmentRepository installmentRepository;
+  @Autowired
+  private CreditCardStatementRepository statementRepository;
 
   CreditCardMovementServiceImpl(
       @Autowired MovementRepository<CreditCardMovementModel> repository,
       @Autowired MovementMapper<CreditCardMovementModel, CreditCardMovementDTO> mapper,
       @Autowired BaseCrudChildSpecification<CreditCardMovementModel> specification) {
-        super(repository, mapper, specification);
-
+    super(repository, mapper, specification);
   }
 
   @Override
@@ -46,6 +50,7 @@ public class CreditCardMovementServiceImpl
     installmentRepository.saveAll(getInstallments(model));
     return mapper.toDtoOnlyId(model);
   }
+
   private List<CreditCardInstallmentModel> getInstallments(CreditCardMovementModel movement) {
     List<CreditCardInstallmentModel> installments = new ArrayList<>(movement.getInstallment());
     // Valor total e número de parcelas
@@ -73,6 +78,7 @@ public class CreditCardMovementServiceImpl
           .movement(movement)
           .referenceMonth(referenceMonth)
           .value(valoresParcelas.get(i))
+          .statement(getStatement(referenceMonth))
           .build());
       yearMonth = yearMonth.plusMonths(1);
       referenceMonth = yearMonth.toString();
@@ -102,6 +108,19 @@ public class CreditCardMovementServiceImpl
     }
 
     return parcelas;
+  }
+
+  private CreditCardStatementModel getStatement(String referenceMonth) {
+    var a = statementRepository.getByReferenceMonth(referenceMonth);
+    if (a.isEmpty()) {
+      return statementRepository.save(CreditCardStatementModel.builder()
+          .referenceMonth(referenceMonth)
+          .value(0.0)
+          .discounts(0.0)
+          .card(CreditCardModel.builder().id(1L).build())
+          .build());
+    }
+    return a.get();
   }
 
   @Override

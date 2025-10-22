@@ -1,9 +1,12 @@
 package br.com.powtec.finance.monolith.controller;
 
+import static br.com.powtec.finance.monolith.util.PageBuilder.pageable;
+
 import java.net.URI;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,12 +15,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.database.library.model.dto.CreditCardStatementDTO;
 import br.com.powtec.finance.monolith.service.BaseCrudService;
-
-
 
 @RestController
 @Validated
@@ -42,7 +44,8 @@ public class CreditCardStatementController implements BaseCrudController<CreditC
 
   @PutMapping("/statements/{id}")
   @Override
-  public ResponseEntity<CreditCardStatementDTO> update(@RequestBody CreditCardStatementDTO body, @PathVariable Long id) {
+  public ResponseEntity<CreditCardStatementDTO> update(@RequestBody CreditCardStatementDTO body,
+      @PathVariable Long id) {
     body.setId(id);
     CreditCardStatementDTO response = service.update(id, body);
     return ResponseEntity.ok().body(response);
@@ -54,11 +57,15 @@ public class CreditCardStatementController implements BaseCrudController<CreditC
     throw new UnsupportedOperationException("Unimplemented method 'delete'");
   }
 
+  @GetMapping("/statements:search")
   @Override
-  public ResponseEntity<Page<CreditCardStatementDTO>> search(Integer elementsPerPage, Integer pageNumber,
-      String parameters, String sort) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'search'");
+  public ResponseEntity<Page<CreditCardStatementDTO>> search(
+      @RequestParam(value = "_limit", required = true) Integer elementsPerPage,
+      @RequestParam(value = "_offset", required = true) Integer pageNumber,
+      @RequestParam(value = "_q", required = false) String parameters,
+      @RequestParam(value = "_sort", required = false) String sort) {
+    Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
+    return ResponseEntity.ok().body(service.search(pageable, parameters));
   }
 
 }

@@ -20,18 +20,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.database.library.model.dto.CreditCardInstallmentDTO;
+import br.com.powtec.finance.database.library.model.dto.CreditCardStatementDTO;
 import br.com.powtec.finance.monolith.service.BaseCrudService;
 import jakarta.validation.constraints.Min;
+import lombok.extern.log4j.Log4j2;
 
 @RestController
 @Validated
-@RequestMapping("cards/{cardId}/")
+@RequestMapping("cards/{cardId}/statements/{statementId}")
+@Log4j2
 public class InstallmentController {
 
   @Autowired
   @Qualifier("creditCardInstallmentService")
   private BaseCrudService<CreditCardInstallmentDTO> service;
-
 
   public ResponseEntity<CreditCardInstallmentDTO> create(CreditCardInstallmentDTO body) {
     // TODO Auto-generated method stub
@@ -40,26 +42,37 @@ public class InstallmentController {
 
   @GetMapping("/installments/{id}")
   public ResponseEntity<CreditCardInstallmentDTO> read(@PathVariable Long id) {
+    log.info("Reading installment with id: {}", id);
     return ResponseEntity.ok().body(this.service.findById(id));
   }
 
   @PutMapping("/installments/{id}")
-  public ResponseEntity<CreditCardInstallmentDTO> update(@RequestBody CreditCardInstallmentDTO body,@PathVariable Long id) {
+  public ResponseEntity<CreditCardInstallmentDTO> update(@RequestBody CreditCardInstallmentDTO body,
+      @PathVariable Long id,
+      @PathVariable Long statementId) {
+        log.info("Updating installment with id: {} for statement id: {}", id, statementId);
+        body.setStatement(CreditCardStatementDTO.builder().id(statementId).build());
     return ResponseEntity.ok().body(this.service.update(id, body));
   }
 
   @DeleteMapping("/installments/{id}")
-  public ResponseEntity<CreditCardInstallmentDTO> delete(Long id) {
+  public ResponseEntity<CreditCardInstallmentDTO> delete(@PathVariable Long id) {
+    log.info("Deleting installment with id: {}", id);
     this.service.delete(id);
     return ResponseEntity.ok().build();
   }
 
   @GetMapping("/installments:search")
   public ResponseEntity<Page<CreditCardInstallmentDTO>> search(
+      @PathVariable Long statementId,
       @RequestParam(value = "_limit", required = true) @Min(value = 1L, message = MINIMUM_ELEMENTS_PER_PAGE) Integer elementsPerPage,
       @RequestParam(value = "_offset", required = true) @Min(value = 0L, message = MINIMUM_PAGE_NUMBER) Integer pageNumber,
       @RequestParam(value = "_q", required = false) String parameters,
       @RequestParam(value = "_sort", required = false) String sort) {
+    String statementParameter = "statement:" + statementId;
+    parameters = (parameters == null) ? statementParameter : parameters + "," + statementParameter;
+    log.info("Searching installments with parameters: {}, pageNumber: {}, elementsPerPage: {}, sort: {}",
+        parameters, pageNumber, elementsPerPage, sort);
     Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
     return ResponseEntity.ok().body(service.search(pageable, parameters));
   }

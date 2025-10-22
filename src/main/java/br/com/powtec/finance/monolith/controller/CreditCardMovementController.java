@@ -26,9 +26,11 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.powtec.finance.database.library.model.dto.CreditCardMovementDTO;
 import br.com.powtec.finance.monolith.service.BaseChildCrudService;
 import jakarta.validation.constraints.Min;
+import lombok.extern.log4j.Log4j2;
 
 @RestController
 @Validated
+@Log4j2
 @RequestMapping("/cards/{parentId}")
 public class CreditCardMovementController {
   @Autowired
@@ -37,6 +39,7 @@ public class CreditCardMovementController {
 
   @PostMapping("/movements")
   public ResponseEntity<CreditCardMovementDTO> create(@PathVariable Long parentId, @RequestBody CreditCardMovementDTO body) {
+    log.info("Creating movement for card with id: {}", parentId);
     return ResponseEntity.created(URI.create("/cards/" + parentId + "/movements/" + service.create(body, parentId).getId())).body(null);
   }
 
@@ -45,6 +48,7 @@ public class CreditCardMovementController {
       @RequestBody List<CreditCardMovementDTO> body,
       @PathVariable Long parentId) {
 
+    log.info("Creating movements in batch for card with id: {}", parentId);
     return ResponseEntity.ok().body(service.createInBatch(body, parentId));
   }
 
@@ -52,6 +56,7 @@ public class CreditCardMovementController {
   public ResponseEntity<CreditCardMovementDTO> update(@PathVariable Long parentId,
       @RequestBody CreditCardMovementDTO body,
       @PathVariable Long id) {
+    log.info("Updating movement with id: {} for card with id: {}", id, parentId);
     body.setId(id);
     CreditCardMovementDTO response = service.update(body, parentId, id);
     return ResponseEntity.ok().body(response);
@@ -59,11 +64,13 @@ public class CreditCardMovementController {
 
   @GetMapping("/movements/{id}")
   public ResponseEntity<CreditCardMovementDTO> getById(@PathVariable Long id) {
+    log.info("Getting movement with id: {}", id);
     return ResponseEntity.ok().body(service.findById(id));
   }
 
   @DeleteMapping("/movements/{id}")
   public ResponseEntity<CreditCardMovementDTO> delete(@PathVariable Long id) {
+    log.info("Deleting movement with id: {}", id);
     service.delete(id);
     return ResponseEntity.ok().build();
   }
@@ -75,6 +82,8 @@ public class CreditCardMovementController {
       @RequestParam(value = "_q", required = false) String parameters,
       @RequestParam(value = "_sort", required = false) String sort,
       @PathVariable Long parentId) {
+    log.info("Searching movements with parameters: {}, pageNumber: {}, elementsPerPage: {}, sort: {}, for card id: {}",
+        parameters, pageNumber, elementsPerPage, sort, parentId);
     Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
     return ResponseEntity.ok().body(service.search(pageable, parameters, parentId));
   }
