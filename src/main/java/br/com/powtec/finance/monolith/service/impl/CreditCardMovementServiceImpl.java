@@ -3,6 +3,7 @@ package br.com.powtec.finance.monolith.service.impl;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -111,8 +112,8 @@ public class CreditCardMovementServiceImpl
   }
 
   private CreditCardStatementModel getStatement(String referenceMonth) {
-    var a = statementRepository.getByReferenceMonth(referenceMonth);
-    if (a.isEmpty()) {
+    Optional<CreditCardStatementModel> statement = statementRepository.getByReferenceMonth(referenceMonth);
+    if (statement.isEmpty()) {
       return statementRepository.save(CreditCardStatementModel.builder()
           .referenceMonth(referenceMonth)
           .value(0.0)
@@ -120,7 +121,7 @@ public class CreditCardMovementServiceImpl
           .card(CreditCardModel.builder().id(1L).build())
           .build());
     }
-    return a.get();
+    return statement.get();
   }
 
   @Override
