@@ -79,7 +79,7 @@ public class CreditCardMovementServiceImpl
           .movement(movement)
           .referenceMonth(referenceMonth)
           .value(valoresParcelas.get(i))
-          .statement(getStatement(referenceMonth))
+          .statement(getStatement(referenceMonth, valoresParcelas.get(i)))
           .build());
       yearMonth = yearMonth.plusMonths(1);
       referenceMonth = yearMonth.toString();
@@ -97,7 +97,7 @@ public class CreditCardMovementServiceImpl
 
     // Calcula o valor restante que precisará ser distribuído como centavos extras
     double somaParcelasBase = valorBase * numeroDeParcelas;
-    double valorRestante = (valor - somaParcelasBase);
+    double valorRestante = (valor - somaParcelasBase) < 0.01 ? 0.0 : (valor - somaParcelasBase);
 
     // Distribui as parcelas
     for (int i = 0; i < numeroDeParcelas; i++) {
@@ -111,16 +111,18 @@ public class CreditCardMovementServiceImpl
     return parcelas;
   }
 
-  private CreditCardStatementModel getStatement(String referenceMonth) {
+  private CreditCardStatementModel getStatement(String referenceMonth, Double value) {
     Optional<CreditCardStatementModel> statement = statementRepository.getByReferenceMonth(referenceMonth);
     if (statement.isEmpty()) {
       return statementRepository.save(CreditCardStatementModel.builder()
           .referenceMonth(referenceMonth)
-          .value(0.0)
+          .value(value)
           .discounts(0.0)
           .card(CreditCardModel.builder().id(1L).build())
           .build());
     }
+    statement.get().setValue(statement.get().getValue() + value);
+    statementRepository.save(statement.get());
     return statement.get();
   }
 
