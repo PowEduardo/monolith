@@ -27,7 +27,7 @@ import lombok.extern.log4j.Log4j2;
 
 @RestController
 @Validated
-@RequestMapping("cards/{cardId}/statements/{statementId}")
+@RequestMapping("cards/{cardId}/statements/{statementId}/installments")
 @Log4j2
 public class InstallmentController {
 
@@ -40,13 +40,25 @@ public class InstallmentController {
     throw new UnsupportedOperationException("Unimplemented method 'create'");
   }
 
-  @GetMapping("/installments/{id}")
+  @GetMapping("")
+  public ResponseEntity<Page<CreditCardInstallmentDTO>> getInstallments(
+      @PathVariable Long statementId,
+      @RequestParam(value = "_limit", required = true) @Min(value = 1L, message = MINIMUM_ELEMENTS_PER_PAGE) Integer elementsPerPage,
+      @RequestParam(value = "_offset", required = true) @Min(value = 0L, message = MINIMUM_PAGE_NUMBER) Integer pageNumber,
+      @RequestParam(value = "_sort", required = false) String sort) {
+    log.info("Getting installments for statement id: {}", statementId);
+    String parameters = "statement:" + statementId;
+    Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
+    return ResponseEntity.ok().body(service.search(pageable, parameters));
+  }
+
+  @GetMapping("{id}")
   public ResponseEntity<CreditCardInstallmentDTO> read(@PathVariable Long id) {
     log.info("Reading installment with id: {}", id);
     return ResponseEntity.ok().body(this.service.findById(id));
   }
 
-  @PutMapping("/installments/{id}")
+  @PutMapping("{id}")
   public ResponseEntity<CreditCardInstallmentDTO> update(@RequestBody CreditCardInstallmentDTO body,
       @PathVariable Long id,
       @PathVariable Long statementId) {
@@ -55,14 +67,14 @@ public class InstallmentController {
     return ResponseEntity.ok().body(this.service.update(id, body));
   }
 
-  @DeleteMapping("/installments/{id}")
+  @DeleteMapping("{id}")
   public ResponseEntity<CreditCardInstallmentDTO> delete(@PathVariable Long id) {
     log.info("Deleting installment with id: {}", id);
     this.service.delete(id);
     return ResponseEntity.ok().build();
   }
 
-  @GetMapping("/installments:search")
+  @GetMapping("search")
   public ResponseEntity<Page<CreditCardInstallmentDTO>> search(
       @PathVariable Long statementId,
       @RequestParam(value = "_limit", required = true) @Min(value = 1L, message = MINIMUM_ELEMENTS_PER_PAGE) Integer elementsPerPage,

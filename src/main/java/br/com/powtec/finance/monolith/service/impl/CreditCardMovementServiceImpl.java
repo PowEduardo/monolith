@@ -1,6 +1,7 @@
 package br.com.powtec.finance.monolith.service.impl;
 
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -111,26 +112,27 @@ public class CreditCardMovementServiceImpl
     return parcelas;
   }
 
-  private CreditCardStatementModel getStatement(String referenceMonth, Double value) {
-    Optional<CreditCardStatementModel> statement = statementRepository.getByReferenceMonth(referenceMonth);
-    if (statement.isEmpty()) {
-      return statementRepository.save(CreditCardStatementModel.builder()
-          .referenceMonth(referenceMonth)
-          .value(value)
-          .discounts(0.0)
-          .card(CreditCardModel.builder().id(1L).build())
-          .build());
-    }
-    statement.get().setValue(statement.get().getValue() + value);
-    statementRepository.save(statement.get());
-    return statement.get();
-  }
-
   @Override
   @Transactional
   public void delete(Long id) {
     CreditCardMovementModel model = repository.findById(id).orElseThrow();
     installmentRepository.deleteAll(model.getInstallments());
     repository.delete(model);
+  }
+
+  private CreditCardStatementModel getStatement(String referenceMonthStr, Double value) {
+    YearMonth referenceMonth = YearMonth.parse(referenceMonthStr, DateTimeFormatter.ofPattern("yyyy-MM"));
+    Optional<CreditCardStatementModel> statement = statementRepository.getByReferenceMonth(referenceMonth);
+    if (statement.isEmpty()) {
+      return statementRepository.save(CreditCardStatementModel.builder()
+          .referenceMonth(referenceMonth)
+          .value( + value)
+          .discounts(0.0)
+          .card(CreditCardModel.builder().id(1L).build())
+          .build());
+    }
+    statement.get().setValue(statementRepository.sumStatementValue(statement.get().getId()) + value);
+    statementRepository.save(statement.get());
+    return statement.get();
   }
 }
