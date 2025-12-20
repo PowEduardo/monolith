@@ -1,7 +1,7 @@
 spring:
   jpa:
     database: POSTGRESQL
-    show-sql: true
+    show-sql: false
     generate-ddl: true
     hibernate:
       ddl-auto: update
@@ -10,4 +10,4 @@ spring:
     url: jdbc:postgresql://localhost:5432/finance_dev
     username: finance_user
     password: 123456
-    driverClassName: org.postgresql.Driver
+  driverClassName: org.postgresql.Driver
