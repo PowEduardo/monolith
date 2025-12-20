@@ -98,7 +98,16 @@ public class CreditCardMovementServiceImpl
 
     // Calcula o valor restante que precisará ser distribuído como centavos extras
     double somaParcelasBase = valorBase * numeroDeParcelas;
-    double valorRestante = (valor - somaParcelasBase) < 0.01 ? 0.0 : (valor - somaParcelasBase);
+    double valorRestante = (valor - somaParcelasBase);
+    if (valorRestante < 0.01 && valorRestante > 0.005) {
+      valorRestante = 0.01;
+    } else if (valorRestante < 0.01 && valorRestante < 0.005) {
+      valorRestante = 0.0;
+    } else if (valorRestante < 0.02 && valorRestante > 0.015) {
+      valorRestante = 0.02;
+    } else if (valorRestante < 0.015) {
+      valorRestante = 0.01;
+    }
 
     // Distribui as parcelas
     for (int i = 0; i < numeroDeParcelas; i++) {
@@ -126,7 +135,7 @@ public class CreditCardMovementServiceImpl
     if (statement.isEmpty()) {
       return statementRepository.save(CreditCardStatementModel.builder()
           .referenceMonth(referenceMonth)
-          .value( + value)
+          .value(+value)
           .discounts(0.0)
           .card(CreditCardModel.builder().id(1L).build())
           .build());
