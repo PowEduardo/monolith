@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.database.library.model.dto.CreditCardStatementDTO;
 import br.com.powtec.finance.monolith.service.BaseCrudService;
+import br.com.powtec.finance.monolith.service.impl.CreditCardStatementServiceImpl;
 import lombok.extern.log4j.Log4j2;
 
 @RestController
@@ -76,6 +77,14 @@ public class CreditCardStatementController implements BaseCrudController<CreditC
     CreditCardStatementDTO statement = service.findById(id);
     statement.setPaid(true);
     CreditCardStatementDTO response = service.update(id, statement);
+    return ResponseEntity.ok().body(response);
+  }
+
+  @PostMapping("{id}/close")
+  public ResponseEntity<CreditCardStatementDTO> close(@PathVariable Long id) {
+    log.info("Closing statement with id: {} as paid", id);
+    CreditCardStatementServiceImpl serviceImpl = (CreditCardStatementServiceImpl) service;
+    CreditCardStatementDTO response = serviceImpl.close(id);
     return ResponseEntity.ok().body(response);
   }
 

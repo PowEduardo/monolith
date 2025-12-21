@@ -70,6 +70,28 @@ public class CreditCardStatementServiceImpl
     return mapper.toDto(repository.save(model));
   }
 
+  @Transactional
+  public CreditCardStatementDTO close(Long id) {
+    CreditCardStatementModel model = repository.getReferenceById(id);
+    int dayOfMonth = (model.getCard().getStatementDay() + 7);
+    String statementDay = "00";
+    if (dayOfMonth < 10) {
+      statementDay = "0" + dayOfMonth;
+    } else {
+      statementDay = String.valueOf(dayOfMonth);
+    }
+    model.setMovement(MovementModel.builder()
+    .date(LocalDate.parse(model.getReferenceMonth().toString() + "-" + statementDay))
+    .value(model.getValue())
+    .description("Cartão " + model.getCard().getName())
+    .account(AccountModel.builder().id(1L).build())
+    .type(MovementTypeEnum.DEBIT)
+    .category(CategoryTypeEnum.CARD)
+    .paid(false)
+    .build());
+    return mapper.toDto(repository.save(model));
+  }
+
   private Double sumInstallmentValue(List<CreditCardInstallmentModel> installments) {
     Double totalValue = 0.0;
     for (CreditCardInstallmentModel installment : installments) {
