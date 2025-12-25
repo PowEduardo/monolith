@@ -1,8 +1,10 @@
 package br.com.powtec.finance.monolith.service.impl;
 
 import java.time.YearMonth;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,9 +12,12 @@ import org.springframework.stereotype.Service;
 import br.com.powtec.finance.database.library.enums.EntryTypeEnum;
 import br.com.powtec.finance.database.library.mapper.MovementMapper;
 import br.com.powtec.finance.database.library.model.CreditCardInstallmentModel;
+import br.com.powtec.finance.database.library.model.CreditCardModel;
+import br.com.powtec.finance.database.library.model.CreditCardStatementModel;
 import br.com.powtec.finance.database.library.model.dto.CreditCardMovementDTO;
 import br.com.powtec.finance.database.library.model.movement.CreditCardMovementModel;
 import br.com.powtec.finance.database.library.repository.CreditCardInstallmentRepository;
+import br.com.powtec.finance.database.library.repository.CreditCardStatementRepository;
 import br.com.powtec.finance.database.library.repository.MovementRepository;
 import br.com.powtec.finance.database.library.repository.specification.BaseCrudChildSpecification;
 import jakarta.transaction.Transactional;
@@ -23,13 +28,14 @@ public class CreditCardMovementServiceImpl
 
   @Autowired
   private CreditCardInstallmentRepository installmentRepository;
+  @Autowired
+  private CreditCardStatementRepository statementRepository;
 
   CreditCardMovementServiceImpl(
       @Autowired MovementRepository<CreditCardMovementModel> repository,
       @Autowired MovementMapper<CreditCardMovementModel, CreditCardMovementDTO> mapper,
       @Autowired BaseCrudChildSpecification<CreditCardMovementModel> specification) {
-        super(repository, mapper, specification);
-
+    super(repository, mapper, specification);
   }
 
   @Override
@@ -46,6 +52,7 @@ public class CreditCardMovementServiceImpl
     installmentRepository.saveAll(getInstallments(model));
     return mapper.toDtoOnlyId(model);
   }
+
   private List<CreditCardInstallmentModel> getInstallments(CreditCardMovementModel movement) {
     List<CreditCardInstallmentModel> installments = new ArrayList<>(movement.getInstallment());
     // Valor total e número de parcelas
@@ -73,6 +80,7 @@ public class CreditCardMovementServiceImpl
           .movement(movement)
           .referenceMonth(referenceMonth)
           .value(valoresParcelas.get(i))
+          .statement(getStatement(referenceMonth, valoresParcelas.get(i)))
           .build());
       yearMonth = yearMonth.plusMonths(1);
       referenceMonth = yearMonth.toString();
@@ -91,6 +99,15 @@ public class CreditCardMovementServiceImpl
     // Calcula o valor restante que precisará ser distribuído como centavos extras
     double somaParcelasBase = valorBase * numeroDeParcelas;
     double valorRestante = (valor - somaParcelasBase);
+    if (valorRestante < 0.01 && valorRestante > 0.005) {
+      valorRestante = 0.01;
+    } else if (valorRestante < 0.01 && valorRestante < 0.005) {
+      valorRestante = 0.0;
+    } else if (valorRestante < 0.02 && valorRestante > 0.015) {
+      valorRestante = 0.02;
+    } else if (valorRestante < 0.015) {
+      valorRestante = 0.01;
+    }
 
     // Distribui as parcelas
     for (int i = 0; i < numeroDeParcelas; i++) {
@@ -110,5 +127,22 @@ public class CreditCardMovementServiceImpl
     CreditCardMovementModel model = repository.findById(id).orElseThrow();
     installmentRepository.deleteAll(model.getInstallments());
     repository.delete(model);
+  }
+
+  private CreditCardStatementModel getStatement(String referenceMonthStr, Double value) {
+    YearMonth referenceMonth = YearMonth.parse(referenceMonthStr, DateTimeFormatter.ofPattern("yyyy-MM"));
+    Optional<CreditCardStatementModel> statement = statementRepository.getByReferenceMonth(referenceMonth);
+    if (statement.isEmpty()) {
+      return statementRepository.save(CreditCardStatementModel.builder()
+          .referenceMonth(referenceMonth)
+          .value(+value)
+          .discounts(0.0)
+          .card(CreditCardModel.builder().id(1L).build())
+          .paid(false)
+          .build());
+    }
+    statement.get().setValue(statementRepository.sumStatementValue(statement.get().getId()) + value);
+    statementRepository.save(statement.get());
+    return statement.get();
   }
 }

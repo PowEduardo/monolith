@@ -3,7 +3,6 @@ package br.com.powtec.finance.monolith.controller;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.database.library.model.dto.VehiclePartDTO;
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path = "/vehicles/{parentId}")
 @Validated
 public class VehiclePartController extends BaseChildCrudControllerImpl<VehiclePartDTO> {
