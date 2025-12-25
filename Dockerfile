@@ -31,7 +31,7 @@ WORKDIR /build
 
 COPY ./target target/
 
-RUN mv target/monolith-0.0.1-SNAPSHOT.jar target/app.jar
+RUN mv target/*.jar target/app.jar
 
 ################################################################################
 
