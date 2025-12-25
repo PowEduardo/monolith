@@ -138,6 +138,7 @@ public class CreditCardMovementServiceImpl
           .value(+value)
           .discounts(0.0)
           .card(CreditCardModel.builder().id(1L).build())
+          .paid(false)
           .build());
     }
     statement.get().setValue(statementRepository.sumStatementValue(statement.get().getId()) + value);
