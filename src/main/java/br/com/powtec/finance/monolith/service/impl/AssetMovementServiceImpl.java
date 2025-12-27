@@ -73,9 +73,8 @@ public class AssetMovementServiceImpl implements BaseChildCrudService<AssetMovem
   }
 
   private void updateMovementValue(AssetMovementDTO movement) {
-    if (movement.getValue() == null || movement.getValue() == 0.0) {
-      movement.setValue(new BigDecimal(movement.getAmount() * movement.getUnitValue()).setScale(2, RoundingMode.HALF_UP)
-          .doubleValue());
+    if (movement.getValue() == null || movement.getValue().compareTo(BigDecimal.ZERO) == 0) {
+      movement.setValue(movement.getAmount().multiply(movement.getUnitValue()).setScale(2, RoundingMode.HALF_UP));
     }
   }
 }

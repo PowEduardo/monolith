@@ -17,4 +17,10 @@ public class AccountMovementServiceImpl extends BaseCrudChildServiceImpl<Movemen
       @Autowired BaseCrudChildSpecification<MovementModel> specification) {
         super(repository, mapper, specification);
   }
+
+  public MovementDTO markAsPaid(Long id) {
+    MovementModel movement = repository.findById(id).orElseThrow();
+    movement.setPaid(true);
+    return mapper.toDto(repository.save(movement));
+  }
 }

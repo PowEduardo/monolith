@@ -1,5 +1,8 @@
 package br.com.powtec.finance.monolith.service.impl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,15 +34,15 @@ public class VehicleFuelServiceImpl extends BaseCrudChildServiceImpl<VehicleFuel
         VehicleFuelRepository repository = (VehicleFuelRepository) this.repository;
         VehicleFuelModel lastFuel = repository.findLastByDateAndVehicleId(body.getDate(), vehicle.getId());
         VehicleFuelModel nextFuel = repository.findNextByDateAndVehicleId(body.getDate(), vehicle.getId());
-        body.setValue(body.getPrice() * body.getLiters());
+        body.setValue(body.getPrice().multiply(body.getLiters()));
         body.setIsFulfilled(false);
-        double consumption = (body.getMilage() != null && lastFuel != null)
-                ? (body.getMilage() - lastFuel.getMilage()) / body.getLiters()
-                : 0.0;
-        body.setConsumption(Math.round(consumption * 100.0) / 100.0);
+        BigDecimal consumption = (body.getMilage() != null && lastFuel != null)
+                ? new BigDecimal(body.getMilage() - lastFuel.getMilage()).divide(body.getLiters(), 2, RoundingMode.HALF_UP)
+                : BigDecimal.ZERO;
+        body.setConsumption(consumption);
         if (nextFuel != null && nextFuel.getMilage() != null) {
-            double nextConsumption = (nextFuel.getMilage() - body.getMilage()) / nextFuel.getLiters();
-            nextFuel.setConsumption(Math.round(nextConsumption * 100.0) / 100.0);
+            BigDecimal nextConsumption = new BigDecimal(nextFuel.getMilage() - body.getMilage()).divide(nextFuel.getLiters(), 2, RoundingMode.HALF_UP);
+            nextFuel.setConsumption(nextConsumption);
             repository.save(nextFuel);
         }
         if (body.getMilage() != null && vehicle.getMilage() != null && vehicle.getMilage() < body.getMilage()) {
@@ -54,14 +57,14 @@ public class VehicleFuelServiceImpl extends BaseCrudChildServiceImpl<VehicleFuel
         VehicleFuelRepository repository = (VehicleFuelRepository) this.repository;
         VehicleFuelModel lastFuel = repository.findLastByDateAndVehicleId(body.getDate(), parentId);
         VehicleFuelModel nextFuel = repository.findNextByDateAndVehicleId(body.getDate(), parentId);
-        body.setValue(Math.round(body.getPrice() * body.getLiters())*1.0);
-        double consumption = (body.getMilage() != null && lastFuel != null)
-                ? (body.getMilage() - lastFuel.getMilage()) / body.getLiters()
-                : 0.0;
-        body.setConsumption(Math.round(consumption * 100.0) / 100.0);
+        body.setValue(body.getPrice().multiply(body.getLiters()));
+        BigDecimal consumption = (body.getMilage() != null && lastFuel != null)
+                ? new BigDecimal(body.getMilage() - lastFuel.getMilage()).divide(body.getLiters(), 2, RoundingMode.HALF_UP)
+                : BigDecimal.ZERO;
+        body.setConsumption(consumption);
         if (nextFuel != null && nextFuel.getMilage() != null) {
-            double nextConsumption = (nextFuel.getMilage() - body.getMilage()) / nextFuel.getLiters();
-            nextFuel.setConsumption(Math.round(nextConsumption * 100.0) / 100.0);
+            BigDecimal nextConsumption = new BigDecimal(nextFuel.getMilage() - body.getMilage()).divide(nextFuel.getLiters(), 2, RoundingMode.HALF_UP);
+            nextFuel.setConsumption(nextConsumption);
             repository.save(nextFuel);
         }
         return super.update(body, parentId, id);

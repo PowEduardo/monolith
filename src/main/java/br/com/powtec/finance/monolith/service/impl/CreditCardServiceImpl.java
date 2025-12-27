@@ -1,5 +1,8 @@
 package br.com.powtec.finance.monolith.service.impl;
 
+import java.math.BigDecimal;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -8,12 +11,10 @@ import org.springframework.stereotype.Service;
 import br.com.powtec.finance.database.library.mapper.CreditCardMapper;
 import br.com.powtec.finance.database.library.model.CreditCardModel;
 import br.com.powtec.finance.database.library.model.dto.CreditCardDTO;
-import br.com.powtec.finance.database.library.service.ICardService;
 import br.com.powtec.finance.database.library.repository.CreditCardRepository;
 import br.com.powtec.finance.database.library.repository.CreditCardStatementRepository;
 import br.com.powtec.finance.database.library.repository.specification.CreditCardSpecification;
-
-import java.util.List;
+import br.com.powtec.finance.database.library.service.ICardService;
 
 /**
  * Service implementation for credit card operations.
@@ -67,10 +68,10 @@ public class CreditCardServiceImpl extends BaseCrudServiceImpl<CreditCardModel, 
   public CreditCardDTO getDetails(Long id) {
     CreditCardModel model = cardRepository.findById(id)
         .orElseThrow(() -> new RuntimeException("Credit card not found with ID: " + id));
-    Double balance = statementRepository.sumStatementValueFromCard(model.getId());
+    BigDecimal balance = statementRepository.sumStatementValueFromCard(model.getId());
     CreditCardDTO response = mapper.toDto(model);
     response.setBalance(balance);
-    response.setCreditLimit(response.getCreditLimit() - balance);
+    response.setCreditLimit(response.getCreditLimit().subtract(balance));
     // Return full DTO with all relationships
     return response;
   }

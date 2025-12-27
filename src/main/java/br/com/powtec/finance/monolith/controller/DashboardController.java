@@ -1,13 +1,16 @@
 package br.com.powtec.finance.monolith.controller;
 
+import java.time.YearMonth;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.powtec.finance.database.library.model.dto.DashboardDTO;
+import br.com.powtec.finance.database.library.model.dto.dashboard.DashboardDTO;
 import br.com.powtec.finance.monolith.service.DashboardService;
 import lombok.extern.log4j.Log4j2;
 
@@ -47,4 +50,15 @@ public class DashboardController {
     return ResponseEntity.ok().body(dashboard);
   }
 
+  /**
+   * GET /api/v1/dashboard/accounts/{id}
+   * Get dashboard data for a specific account
+   * Returns aggregated income/expense by month
+   */
+  @GetMapping("accounts/{id}")
+  public ResponseEntity<DashboardDTO> getAccountDashboard(@PathVariable Long id, @RequestParam(required = true) YearMonth startRange,
+      @RequestParam(required = true) YearMonth endRange) {
+    DashboardDTO dashboard = dashboardService.getAccountDashboardData(id, startRange, endRange);
+    return ResponseEntity.ok().body(dashboard);
+  }
 }

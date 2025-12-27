@@ -1,5 +1,6 @@
 package br.com.powtec.finance.monolith.service.impl;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +37,8 @@ public class AssetReturnsMovementServiceImpl
     if (request.getValue() == null) {
       calcReturnValue(request);
       if (request.getIrFee() == null && request.getOperation() == AssetReturnsOperationEnum.JCP) {
-        request.setValue(request.getUnitValue() * request.getAmount() * 0.85);
-        request.setIrFee(request.getUnitValue() * request.getAmount() * 0.15);
+        request.setValue(request.getUnitValue().multiply(new BigDecimal(request.getAmount())).multiply(BigDecimal.valueOf(0.85)));
+        request.setIrFee(request.getUnitValue().multiply(new BigDecimal(request.getAmount())).multiply(BigDecimal.valueOf(0.15)));
       }
     }
     request
@@ -46,7 +47,7 @@ public class AssetReturnsMovementServiceImpl
   }
 
   private void calcReturnValue(AssetReturnsMovementDTO dto) {
-    dto.setValue(dto.getUnitValue() * dto.getAmount());
+    dto.setValue(dto.getUnitValue().multiply(new BigDecimal(dto.getAmount())));
   }
 
   private Integer getAmount(Long assetId, LocalDate date) {

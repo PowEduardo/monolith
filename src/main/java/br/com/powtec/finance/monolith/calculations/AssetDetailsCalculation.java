@@ -13,56 +13,57 @@ import br.com.powtec.finance.database.library.model.movement.AssetReturnsMovemen
 
 public class AssetDetailsCalculation {
 
-  private Double amount = 0.0;
-  private Double average = 0.0;
-  private Double difference = 0.0;
-  private Double paidValue = 0.0;
-  private Double allReturn = 0.0;
-  private Double unitYearReturn = 0.0;
-  private Double monthlyReturn = 0.0;
-  private Double lastReturn = 0.0;
+  private BigDecimal amount = BigDecimal.ZERO;
+  private BigDecimal average = BigDecimal.ZERO;
+  private BigDecimal difference = BigDecimal.ZERO;
+  private BigDecimal paidValue = BigDecimal.ZERO;
+  private BigDecimal allReturn = BigDecimal.ZERO;
+  private BigDecimal unitYearReturn = BigDecimal.ZERO;
+  private BigDecimal monthlyReturn = BigDecimal.ZERO;
+  private BigDecimal lastReturn = BigDecimal.ZERO;
   private LocalDate lastReturnDate = LocalDate.parse("2025-01-01");
 
   private void amountAndPaidValue(List<AssetMovementModel> movements) {
     for (AssetMovementModel stockMovement : movements) {
       if (stockMovement.getOperation() != AssetOperationEnum.SELL) {
-        amount += stockMovement.getAmount() == null ? 0 : stockMovement.getAmount();
-        paidValue += stockMovement.getValue();
+        amount = amount.add(stockMovement.getAmount() == null ? BigDecimal.ZERO : stockMovement.getAmount());
+        paidValue = paidValue.add(stockMovement.getValue());
       } else {
-        amount -= stockMovement.getAmount() == null ? 0 : stockMovement.getAmount();
+        amount = amount.subtract(stockMovement.getAmount() == null ? BigDecimal.ZERO : stockMovement.getAmount());
       }
     }
   }
 
-  private Double currentValue(Double value) {
-    return formatDouble(amount * value, 2, RoundingMode.HALF_UP);
+  private BigDecimal currentValue(BigDecimal value) {
+    return formatDouble(amount.multiply(value), 2, RoundingMode.HALF_UP);
   }
 
-  private void difference(Double value) {
-    if (this.average == 0) {
-      this.difference = 0.0;
+  private void difference(BigDecimal value) {
+    if (this.average == BigDecimal.ZERO) {
+      this.difference = BigDecimal.ZERO;
     } else {
-      this.difference = formatDouble(value * 100 / this.average - 100, 2, RoundingMode.DOWN);
+      this.difference = formatDouble(value.multiply(BigDecimal.valueOf(100)).divide(this.average, 2, RoundingMode.DOWN)
+          .subtract(BigDecimal.valueOf(100)), 2, RoundingMode.DOWN);
     }
   }
 
   private void average() {
-    if (amount == 0) {
-      this.average = 0.0;
+    if (amount.compareTo(BigDecimal.ZERO) == 0) {
+      this.average = BigDecimal.ZERO;
     } else {
-      Double average = paidValue / amount;
-      this.average = BigDecimal.valueOf(average).setScale(2, RoundingMode.HALF_UP).doubleValue();
+      BigDecimal average = paidValue.divide(amount, 2, RoundingMode.HALF_UP);
+      this.average = average;
     }
   }
 
   private void returns(List<AssetReturnsMovementModel> returns) {
-    Double count = 0.0;
+    BigDecimal count = BigDecimal.ZERO;
     for (AssetReturnsMovementModel assetReturn : returns) {
-      this.allReturn += assetReturn.getValue();
+      this.allReturn = this.allReturn.add(assetReturn.getValue());
       if (assetReturn.getExDividendDate() != null &&
-          assetReturn.getExDividendDate().getYear() == (LocalDate.now().getYear() -1)) {
-        unitYearReturn += assetReturn.getUnitValue();
-        count = count +1;
+          assetReturn.getExDividendDate().getYear() == (LocalDate.now().getYear() - 1)) {
+        unitYearReturn = unitYearReturn.add(assetReturn.getUnitValue());
+        count = count.add(BigDecimal.ONE);
       }
       if (assetReturn.getExDividendDate() != null &&
           assetReturn.getExDividendDate().isAfter(lastReturnDate) &&
@@ -71,38 +72,37 @@ public class AssetDetailsCalculation {
         this.lastReturn = assetReturn.getUnitValue();
       }
     }
-    this.unitYearReturn = unitYearReturn / count;
-    if (this.unitYearReturn.isNaN()) {
-      this.unitYearReturn = 0.0;
+    if (count.compareTo(BigDecimal.ZERO) == 0) {
+      unitYearReturn = BigDecimal.ZERO;
+    } else {
+      this.unitYearReturn = unitYearReturn.divide(count, 2, RoundingMode.HALF_UP);
     }
   }
 
   private void monthlyReturn() {
-    this.monthlyReturn += unitYearReturn / lastReturnDate.getMonthValue();
+    this.monthlyReturn = unitYearReturn.divide(BigDecimal.valueOf(lastReturnDate.getMonthValue()), 2,
+        RoundingMode.HALF_UP);
   }
 
-  private Double dy(Double assetValue) {
-    if (assetValue == 0 || this.monthlyReturn == 0) {
-      return 0.0;
+  private BigDecimal dy(BigDecimal assetValue) {
+    if (assetValue.compareTo(BigDecimal.ZERO) == 0 || this.monthlyReturn.compareTo(BigDecimal.ZERO) == 0) {
+      return BigDecimal.ZERO;
     }
-    return BigDecimal.valueOf(this.monthlyReturn * 100 / assetValue).setScale(2, RoundingMode.HALF_UP)
-        .doubleValue();
+    return this.monthlyReturn.multiply(BigDecimal.valueOf(100)).divide(assetValue, 2, RoundingMode.HALF_UP);
   }
 
-  private Double ady() {
-    if (this.average == 0) {
-      return 0.0;
+  private BigDecimal ady() {
+    if (this.average.compareTo(BigDecimal.ZERO) == 0) {
+      return BigDecimal.ZERO;
     }
-    return BigDecimal.valueOf(this.monthlyReturn * 100 / this.average).setScale(2, RoundingMode.HALF_UP)
-        .doubleValue();
+    return this.monthlyReturn.multiply(BigDecimal.valueOf(100)).divide(this.average, 2, RoundingMode.HALF_UP);
   }
 
-  private Integer targetAmount(Double assetValue) {
-    if (monthlyReturn == 0) {
+  private Integer targetAmount(BigDecimal assetValue) {
+    if (monthlyReturn.compareTo(BigDecimal.ZERO) == 0) {
       return 0;
     }
-    return BigDecimal.valueOf(assetValue / monthlyReturn).setScale(0, RoundingMode.UP)
-        .intValue();
+    return assetValue.divide(monthlyReturn, 0, RoundingMode.UP).intValue();
   }
 
   public AssetDetailsDTO calculate(AssetModel asset) {
@@ -112,7 +112,7 @@ public class AssetDetailsCalculation {
     this.amountAndPaidValue(asset.getMovements());
     this.average();
     this.difference(asset.getValue());
-    if (asset.getReturns().isEmpty() || this.amount == 0) {
+    if (asset.getReturns().isEmpty() || this.amount.compareTo(BigDecimal.ZERO) == 0) {
       return this.assetWithoutReturns(asset, asset.getMovements());
     }
     this.returns(asset.getReturns());
@@ -129,7 +129,7 @@ public class AssetDetailsCalculation {
         .dy(this.dy(asset.getValue()))
         .ady(this.ady())
         .targetAmount(this.targetAmount(asset.getValue()))
-        .nextDividend(this.lastReturn * this.amount)
+        .nextDividend(this.lastReturn.multiply(this.amount))
         .build();
 
   }
@@ -144,8 +144,8 @@ public class AssetDetailsCalculation {
         .returns(this.allReturn)
         .monthlyReturn(this.monthlyReturn)
         .lastReturn(this.lastReturn)
-        .dy(0.0)
-        .ady(0.0)
+        .dy(BigDecimal.ZERO)
+        .ady(BigDecimal.ZERO)
         .targetAmount(0)
         .build();
   }
@@ -158,16 +158,16 @@ public class AssetDetailsCalculation {
         .currentValue(this.currentValue(asset.getValue()))
         .difference(this.difference)
         .paidValue(formatDouble(this.paidValue, 2, RoundingMode.DOWN))
-        .returns(0.0)
-        .monthlyReturn(0.0)
+        .returns(BigDecimal.ZERO)
+        .monthlyReturn(BigDecimal.ZERO)
         .lastReturn(this.lastReturn)
-        .dy(0.0)
-        .ady(0.0)
+        .dy(BigDecimal.ZERO)
+        .ady(BigDecimal.ZERO)
         .targetAmount(0)
         .build();
   }
 
-  private Double formatDouble(Double value, Integer scale, RoundingMode mode) {
-    return BigDecimal.valueOf(value).setScale(scale, mode).doubleValue();
+  private BigDecimal formatDouble(BigDecimal value, Integer scale, RoundingMode mode) {
+    return value.setScale(scale, mode);
   }
 }

@@ -1,5 +1,6 @@
 package br.com.powtec.finance.monolith.service.impl;
 
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -92,19 +93,19 @@ public class CreditCardStatementServiceImpl
     return mapper.toDto(repository.save(model));
   }
 
-  private Double sumInstallmentValue(List<CreditCardInstallmentModel> installments) {
-    Double totalValue = 0.0;
+  private BigDecimal sumInstallmentValue(List<CreditCardInstallmentModel> installments) {
+    BigDecimal totalValue = BigDecimal.ZERO;
     for (CreditCardInstallmentModel installment : installments) {
-      totalValue += installment.getValue();
+      totalValue = totalValue.add(installment.getValue());
     }
     return totalValue;
   }
 
-  private Double sumDiscountValue(List<CreditCardInstallmentModel> installments) {
-    Double totalValue = 0.0;
+  private BigDecimal sumDiscountValue(List<CreditCardInstallmentModel> installments) {
+    BigDecimal totalValue = BigDecimal.ZERO;
     for (CreditCardInstallmentModel installment : installments) {
       if (installment.getEntryType().equals(EntryTypeEnum.DISCOUNT)) {
-        totalValue += installment.getValue();
+        totalValue = totalValue.add(installment.getValue());
       }
     }
     return totalValue;
