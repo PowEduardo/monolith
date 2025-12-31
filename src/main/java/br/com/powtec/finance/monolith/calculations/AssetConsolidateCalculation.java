@@ -15,48 +15,48 @@ import br.com.powtec.finance.database.library.model.movement.AssetReturnsMovemen
 public class AssetConsolidateCalculation {
 
   public AssetConsolidatedDTO calculate(List<AssetModel> assets) {
-    Double currentValue = 0.0;
-    Double paidValue = 0.0;
-    Double wantedValue = 0.0;
-    Double returnsValue = 0.0;
-    Double difference = 0.0;
+    BigDecimal currentValue = BigDecimal.ZERO;
+    BigDecimal paidValue = BigDecimal.ZERO;
+    BigDecimal wantedValue = BigDecimal.ZERO;
+    BigDecimal returnsValue = BigDecimal.ZERO;
+    BigDecimal difference = BigDecimal.ZERO;
     for (AssetModel assetModel : assets) {
 
       if (assetModel.getType() == AssetTypeEnum.DIRECT_TREASURE) {
-        wantedValue = 14400.00;
+        wantedValue = BigDecimal.valueOf(14400.00);
       }
-      Double amount = 0.0;
+      BigDecimal amount = BigDecimal.ZERO;
       if (assetModel.getType() == AssetTypeEnum.PUBLIC_PENSION
           || assetModel.getType() == AssetTypeEnum.FIXED_INCOME) {
-        Double allJAM = 0.0;
+        BigDecimal allJAM = BigDecimal.ZERO;
         for (AssetMovementModel movementModel : assetModel.getMovements()) {
           if (movementModel.getOperation() == AssetOperationEnum.DEPOSIT) {
-            paidValue += movementModel.getValue();
-            currentValue += movementModel.getValue();
+            paidValue = paidValue.add(movementModel.getValue());
+            currentValue = currentValue.add(movementModel.getValue());
           } else if (movementModel.getOperation() == AssetOperationEnum.JAM) {
-            currentValue += movementModel.getValue();
-            allJAM += movementModel.getValue();
+            currentValue = currentValue.add(movementModel.getValue());
+            allJAM = allJAM.add(movementModel.getValue());
           } else {
-            currentValue -= movementModel.getValue();
+            currentValue = currentValue.subtract(movementModel.getValue());
           }
         }
-        difference = difference(paidValue + allJAM, paidValue);
+        difference = difference(paidValue.add(allJAM), paidValue);
       } else {
-        wantedValue = wantedValue == 0.0 ? 17000.00 : wantedValue;
+        wantedValue = wantedValue == BigDecimal.ZERO ? BigDecimal.valueOf(17000.00) : wantedValue;
         for (AssetMovementModel movementModel : assetModel.getMovements()) {
           if (movementModel.getOperation() != AssetOperationEnum.SELL) {
-            paidValue += movementModel.getValue();
-            amount += movementModel.getAmount();
+            paidValue = paidValue.add(movementModel.getValue());
+            amount = amount.add(movementModel.getAmount());
           } else {
-            paidValue -= movementModel.getValue();
-            amount -= movementModel.getAmount();
+            paidValue = paidValue.subtract(movementModel.getValue());
+            amount = amount.subtract(movementModel.getAmount());
           }
         }
 
         for (AssetReturnsMovementModel returnsModel : assetModel.getReturns()) {
-          returnsValue += returnsModel.getValue();
+          returnsValue = returnsValue.add(returnsModel.getValue());
         }
-        currentValue += amount * assetModel.getValue();
+        currentValue = currentValue.add(amount.multiply(assetModel.getValue()));
         difference = difference(currentValue, paidValue);
 
       }
@@ -71,14 +71,14 @@ public class AssetConsolidateCalculation {
         .build();
   }
 
-  private Double difference(Double currentValue, Double paidValue) {
-    if (paidValue == 0.0) {
-      return 0.0;
+  private BigDecimal difference(BigDecimal currentValue, BigDecimal paidValue) {
+    if (paidValue.compareTo(BigDecimal.ZERO) == 0) {
+      return BigDecimal.ZERO;
     }
-    return formatDouble(currentValue * 100 / paidValue - 100);
+    return formatDouble(currentValue.multiply(BigDecimal.valueOf(100)).divide(paidValue, 2, RoundingMode.DOWN).subtract(BigDecimal.valueOf(100)));
   }
 
-  private Double formatDouble(Double value) {
-    return BigDecimal.valueOf(value).setScale(2, RoundingMode.DOWN).doubleValue();
+  private BigDecimal formatDouble(BigDecimal value) {
+    return value.setScale(2, RoundingMode.DOWN);
   }
 }

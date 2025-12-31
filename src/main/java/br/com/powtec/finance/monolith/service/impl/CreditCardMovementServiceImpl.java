@@ -1,5 +1,7 @@
 package br.com.powtec.finance.monolith.service.impl;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -56,11 +58,11 @@ public class CreditCardMovementServiceImpl
   private List<CreditCardInstallmentModel> getInstallments(CreditCardMovementModel movement) {
     List<CreditCardInstallmentModel> installments = new ArrayList<>(movement.getInstallment());
     // Valor total e número de parcelas
-    double valorTotal = movement.getValue();
+    BigDecimal valorTotal = movement.getValue();
     int numeroDeParcelas = movement.getInstallment();
 
     // Divide o valor em parcelas com centavos distribuídos
-    List<Double> valoresParcelas = dividirEmParcelas(valorTotal, numeroDeParcelas);
+    List<BigDecimal> valoresParcelas = dividirEmParcelas(valorTotal, numeroDeParcelas);
     YearMonth yearMonth;
     String referenceMonth;
     if (movement.getDate().getDayOfMonth() == 1) {
@@ -90,29 +92,28 @@ public class CreditCardMovementServiceImpl
 
   // Método para dividir o valor em parcelas com centavos distribuídos nas
   // primeiras parcelas
-  private List<Double> dividirEmParcelas(double valor, int numeroDeParcelas) {
-    List<Double> parcelas = new ArrayList<>();
+  private List<BigDecimal> dividirEmParcelas(BigDecimal valor, int numeroDeParcelas) {
+    List<BigDecimal> parcelas = new ArrayList<>();
 
     // Calcula o valor base de cada parcela
-    double valorBase = Math.floor(valor / numeroDeParcelas * 100) / 100.0;
-
+    BigDecimal valorBase = valor.divide(BigDecimal.valueOf(numeroDeParcelas), 2, RoundingMode.HALF_UP);
     // Calcula o valor restante que precisará ser distribuído como centavos extras
-    double somaParcelasBase = valorBase * numeroDeParcelas;
-    double valorRestante = (valor - somaParcelasBase);
-    if (valorRestante < 0.01 && valorRestante > 0.005) {
-      valorRestante = 0.01;
-    } else if (valorRestante < 0.01 && valorRestante < 0.005) {
-      valorRestante = 0.0;
-    } else if (valorRestante < 0.02 && valorRestante > 0.015) {
-      valorRestante = 0.02;
-    } else if (valorRestante < 0.015) {
-      valorRestante = 0.01;
+    BigDecimal somaParcelasBase = valorBase.multiply(BigDecimal.valueOf(numeroDeParcelas));
+    BigDecimal valorRestante = (valor.subtract(somaParcelasBase));
+    if (valorRestante.compareTo(BigDecimal.valueOf(0.01)) < 0 && valorRestante.compareTo(BigDecimal.valueOf(0.005)) > 0) {
+      valorRestante = BigDecimal.valueOf(0.01);
+    } else if (valorRestante.compareTo(BigDecimal.valueOf(0.01)) < 0 && valorRestante.compareTo(BigDecimal.valueOf(0.005)) < 0) {
+      valorRestante = BigDecimal.ZERO;
+    } else if (valorRestante.compareTo(BigDecimal.valueOf(0.02)) < 0 && valorRestante.compareTo(BigDecimal.valueOf(0.015)) > 0) {
+      valorRestante = BigDecimal.valueOf(0.02);
+    } else if (valorRestante.compareTo(BigDecimal.valueOf(0.015)) < 0) {
+      valorRestante = BigDecimal.valueOf(0.01);
     }
 
     // Distribui as parcelas
     for (int i = 0; i < numeroDeParcelas; i++) {
       if (i == 0) {
-        parcelas.add(valorBase + valorRestante); // Adiciona valor restante a primeira parcela
+        parcelas.add(valorBase.add(valorRestante)); // Adiciona valor restante a primeira parcela
       } else {
         parcelas.add(valorBase);
       }
@@ -129,19 +130,19 @@ public class CreditCardMovementServiceImpl
     repository.delete(model);
   }
 
-  private CreditCardStatementModel getStatement(String referenceMonthStr, Double value) {
+  private CreditCardStatementModel getStatement(String referenceMonthStr, BigDecimal value) {
     YearMonth referenceMonth = YearMonth.parse(referenceMonthStr, DateTimeFormatter.ofPattern("yyyy-MM"));
     Optional<CreditCardStatementModel> statement = statementRepository.getByReferenceMonth(referenceMonth);
     if (statement.isEmpty()) {
       return statementRepository.save(CreditCardStatementModel.builder()
           .referenceMonth(referenceMonth)
-          .value(+value)
-          .discounts(0.0)
+          .value(value)
+          .discounts(BigDecimal.ZERO)
           .card(CreditCardModel.builder().id(1L).build())
           .paid(false)
           .build());
     }
-    statement.get().setValue(statementRepository.sumStatementValue(statement.get().getId()) + value);
+    statement.get().setValue(statementRepository.sumStatementValue(statement.get().getId()).add(value));
     statementRepository.save(statement.get());
     return statement.get();
   }

@@ -1,5 +1,6 @@
 package br.com.powtec.finance.monolith.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,41 +78,41 @@ public class AssetServiceImpl implements AssetService {
 
   @Override
   public IRInterfaceModel getIr(Long id, Integer year) {
-    Double averagePrice = repository.calcAveragePrice(id, year);
-    Double currentAmount = repository.calcCurrentAmount(id, year);
-    Double averagePriceLastYear = repository.calcAveragePriceYearBefore(id, year);
-    Double currentAmountLastYear = repository.calcCurrentAmountYearBefore(id, year);
-    Double totalJCP = repository.calcJCP(id, year);
-    Double totalDividend = repository.calcDividend(id, year);
-    Double totalSellValue = repository.calcSellValue(id, year);
-    Double totalFutureJCP = repository.calcFutureJCP(id, year);
-    Double totalFutureDividend = repository.calcFutureDividend(id, year);
+    BigDecimal averagePrice = repository.calcAveragePrice(id, year);
+    BigDecimal currentAmount = repository.calcCurrentAmount(id, year);
+    BigDecimal averagePriceLastYear = repository.calcAveragePriceYearBefore(id, year);
+    BigDecimal currentAmountLastYear = repository.calcCurrentAmountYearBefore(id, year);
+    BigDecimal totalJCP = repository.calcJCP(id, year);
+    BigDecimal totalDividend = repository.calcDividend(id, year);
+    BigDecimal totalSellValue = repository.calcSellValue(id, year);
+    BigDecimal totalFutureJCP = repository.calcFutureJCP(id, year);
+    BigDecimal totalFutureDividend = repository.calcFutureDividend(id, year);
     if (averagePrice == null) {
-      averagePrice = 0.0;
-      currentAmount = 0.0;
-      averagePriceLastYear = 0.0;
-      currentAmountLastYear = 0.0;
+      averagePrice = BigDecimal.ZERO;
+      currentAmount = BigDecimal.ZERO;
+      averagePriceLastYear = BigDecimal.ZERO;
+      currentAmountLastYear = BigDecimal.ZERO;
     } else if (averagePriceLastYear == null) {
-      averagePriceLastYear = 0.0;
-      currentAmountLastYear = 0.0;
+      averagePriceLastYear = BigDecimal.ZERO;
+      currentAmountLastYear = BigDecimal.ZERO;
     }
     if (totalJCP == null) {
-      totalJCP = 0.0;
+      totalJCP = BigDecimal.ZERO;
     }
     if (totalDividend == null) {
-      totalDividend = 0.0;
+      totalDividend = BigDecimal.ZERO;
     }
     if (totalFutureDividend == null) {
-      totalFutureDividend = 0.0;
+      totalFutureDividend = BigDecimal.ZERO;
     }
     if (totalFutureJCP == null) {
-      totalFutureJCP = 0.0;
+      totalFutureJCP = BigDecimal.ZERO;
     }
     return IRInterfaceModel.builder()
         .averagePrice(averagePrice)
-        .totalValue(averagePrice * currentAmount)
+        .totalValue(averagePrice.multiply(currentAmount))
         .totalAmount(currentAmount)
-        .totalValueLastYear(averagePriceLastYear * currentAmountLastYear)
+        .totalValueLastYear(averagePriceLastYear.multiply(currentAmountLastYear))
         .totalJCP(totalJCP)
         .totalDividend(totalDividend)
         .totalSellValue(totalSellValue)
