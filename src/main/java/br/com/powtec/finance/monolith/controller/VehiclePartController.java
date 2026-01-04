@@ -15,36 +15,36 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.database.library.model.dto.VehiclePartDTO;
 @RestController
-@RequestMapping(path = "/vehicles/{parentId}")
+@RequestMapping(path = "/vehicles/{parentId}/parts")
 @Validated
 public class VehiclePartController extends BaseChildCrudControllerImpl<VehiclePartDTO> {
 
-    @PostMapping("/parts")
+    @PostMapping
     @Override
     public ResponseEntity<VehiclePartDTO> create(@PathVariable Long parentId, @RequestBody VehiclePartDTO body) {
         return super.create(parentId, body);
     }
 
-    @GetMapping("/parts/{id}")
+    @GetMapping("{id}")
     @Override
     public ResponseEntity<VehiclePartDTO> read(@PathVariable Long parentId, @PathVariable Long id) {
         return super.read(parentId, id);
     }
 
-    @PutMapping("/parts/{id}")
+    @PutMapping("{id}")
     @Override
     public ResponseEntity<VehiclePartDTO> update(@PathVariable Long parentId, @RequestBody VehiclePartDTO body, @PathVariable Long id) {
         body.setId(id);
         return super.update(parentId, body, id);
     }
 
-    @DeleteMapping("/parts/{id}")
+    @DeleteMapping("{id}")
     @Override
     public ResponseEntity<VehiclePartDTO> delete(@PathVariable Long parentId, @PathVariable Long id) {
         return super.delete(parentId, id);
     }
 
-    @GetMapping("/parts:search")
+    @GetMapping("search")
     @Override
     public ResponseEntity<Page<VehiclePartDTO>> search(
             @PathVariable Long parentId, 

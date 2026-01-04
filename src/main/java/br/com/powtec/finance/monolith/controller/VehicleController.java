@@ -9,41 +9,43 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.powtec.finance.database.library.model.dto.VehicleDTO;
 
 @RestController
+@RequestMapping("/vehicles")
 @Validated
 public class VehicleController extends BaseCrudControllerImpl<VehicleDTO> {
 
-    @PostMapping("/vehicles")
+    @PostMapping
     @Override
     public ResponseEntity<VehicleDTO> create(@RequestBody VehicleDTO body) {
         return super.create(body);
     }
 
-    @GetMapping("/vehicles/{id}")
+    @GetMapping("{id}")
     @Override
     public ResponseEntity<VehicleDTO> read(@PathVariable Long id) {
         return super.read(id);
     }
 
-    @PutMapping("/vehicles/{id}")
+    @PutMapping("{id}")
     @Override
     public ResponseEntity<VehicleDTO> update(@RequestBody VehicleDTO body, @PathVariable Long id) {
         body.setId(id);
         return super.update(body, id);
     }
 
-    @DeleteMapping("/vehicles/{id}")
+    @DeleteMapping("{id}")
     @Override
     public ResponseEntity<VehicleDTO> delete(@PathVariable Long id) {
         return super.delete(id);
     }
 
-    @GetMapping("/vehicles:search")
+    @GetMapping("search")
     @Override
     public ResponseEntity<Page<VehicleDTO>> search(
             @RequestParam(value = "_limit", required = true) Integer elementsPerPage,

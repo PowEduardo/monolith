@@ -16,23 +16,23 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.powtec.finance.database.library.model.dto.VehicleFuelDTO;
 
 @RestController
-@RequestMapping(path = "/vehicles/{parentId}")
+@RequestMapping(path = "/vehicles/{parentId}/fuel")
 @Validated
 public class VehicleFuelController extends BaseChildCrudControllerImpl<VehicleFuelDTO> {
 
-    @PostMapping("/fuel")
+    @PostMapping()
     @Override
     public ResponseEntity<VehicleFuelDTO> create(@PathVariable Long parentId, @RequestBody VehicleFuelDTO body) {
         return super.create(parentId, body);
     }
 
-    @GetMapping("/fuel/{id}")
+    @GetMapping("{id}")
     @Override
     public ResponseEntity<VehicleFuelDTO> read(@PathVariable Long parentId, @PathVariable Long id) {
         return super.read(parentId, id);
     }
 
-    @PutMapping("/fuel/{id}")
+    @PutMapping("{id}")
     @Override
     public ResponseEntity<VehicleFuelDTO> update(@PathVariable Long parentId, @RequestBody VehicleFuelDTO body,
             @PathVariable Long id) {
@@ -40,13 +40,13 @@ public class VehicleFuelController extends BaseChildCrudControllerImpl<VehicleFu
         return super.update(parentId, body, id);
     }
 
-    @DeleteMapping("/fuel/{id}")
+    @DeleteMapping("{id}")
     @Override
     public ResponseEntity<VehicleFuelDTO> delete(@PathVariable Long parentId, @PathVariable Long id) {
         return super.delete(parentId, id);
     }
 
-    @GetMapping("/fuel:search")
+    @GetMapping("search")
     @Override
     public ResponseEntity<Page<VehicleFuelDTO>> search(
             @PathVariable Long parentId,
