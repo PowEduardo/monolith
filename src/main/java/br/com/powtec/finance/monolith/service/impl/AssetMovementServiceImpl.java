@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.powtec.finance.database.library.base.BaseCrudRepository;
+import br.com.powtec.finance.database.library.enums.AssetTypeEnum;
 import br.com.powtec.finance.database.library.mapper.BaseChildCrudMapper;
+import br.com.powtec.finance.database.library.model.AssetModel;
 import br.com.powtec.finance.database.library.model.dto.AssetMovementDTO;
 import br.com.powtec.finance.database.library.model.movement.AssetMovementModel;
 import br.com.powtec.finance.database.library.repository.AssetRepository;
@@ -19,6 +21,7 @@ import br.com.powtec.finance.database.library.repository.specification.BaseCrudC
 public class AssetMovementServiceImpl extends BaseCrudChildServiceImpl<AssetMovementModel, AssetMovementDTO> {
   @Autowired
   AssetRepository assetRepository;
+
   AssetMovementServiceImpl(BaseCrudRepository<AssetMovementModel> repository,
       BaseChildCrudMapper<AssetMovementModel, AssetMovementDTO> mapper,
       BaseCrudChildSpecification<AssetMovementModel> specification) {
@@ -27,8 +30,12 @@ public class AssetMovementServiceImpl extends BaseCrudChildServiceImpl<AssetMove
 
   public AssetMovementDTO create(AssetMovementDTO request, Long assetId) {
     updateMovementValue(request);
+    AssetModel asset = assetRepository.findById(assetId).get();
+    if (asset.getType().compareTo(AssetTypeEnum.PUBLIC_PENSION) == 0) {
+      request.setAccount(null);
+    }
     request
-        .setDescription(request.getOperation().toString() + " " + assetRepository.findById(assetId).get().getTicker());
+        .setDescription(request.getOperation().toString() + " " + asset.getTicker());
     return mapper.toDtoOnlyId(repository.save(mapper.toModel(request, assetId)));
   }
 
