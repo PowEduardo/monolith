@@ -30,7 +30,7 @@ public class AssetConsolidateCalculation {
           || assetModel.getType() == AssetTypeEnum.FIXED_INCOME) {
         BigDecimal allJAM = BigDecimal.ZERO;
         for (AssetMovementModel movementModel : assetModel.getMovements()) {
-          if (movementModel.getOperation() == AssetOperationEnum.DEPOSIT) {
+          if (movementModel.getOperation() == AssetOperationEnum.DEPOSIT || movementModel.getOperation() == AssetOperationEnum.BUY) {
             paidValue = paidValue.add(movementModel.getValue());
             currentValue = currentValue.add(movementModel.getValue());
           } else if (movementModel.getOperation() == AssetOperationEnum.JAM) {
