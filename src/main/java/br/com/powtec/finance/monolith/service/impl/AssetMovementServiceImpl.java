@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import br.com.powtec.finance.database.library.base.BaseCrudRepository;
+import br.com.powtec.finance.database.library.enums.AssetOperationEnum;
 import br.com.powtec.finance.database.library.enums.AssetTypeEnum;
+import br.com.powtec.finance.database.library.enums.MovementTypeEnum;
 import br.com.powtec.finance.database.library.mapper.BaseChildCrudMapper;
 import br.com.powtec.finance.database.library.model.AssetModel;
 import br.com.powtec.finance.database.library.model.dto.AssetMovementDTO;
@@ -34,9 +36,20 @@ public class AssetMovementServiceImpl extends BaseCrudChildServiceImpl<AssetMove
     if (asset.getType().compareTo(AssetTypeEnum.PUBLIC_PENSION) == 0) {
       request.setAccount(null);
     }
+    request.setType(getType(request));
     request
         .setDescription(request.getOperation().toString() + " " + asset.getTicker());
     return mapper.toDtoOnlyId(repository.save(mapper.toModel(request, assetId)));
+  }
+
+  private MovementTypeEnum getType(AssetMovementDTO request) {
+    if (request.getOperation().compareTo(AssetOperationEnum.BUY) == 0
+        || request.getOperation().compareTo(AssetOperationEnum.CONTRIBUTION) == 0
+        || request.getOperation().compareTo(AssetOperationEnum.DEPOSIT) == 0) {
+      return MovementTypeEnum.DEBIT;
+    } else {
+      return MovementTypeEnum.CREDIT;
+    }
   }
 
   private void updateMovementValue(AssetMovementDTO movement) {
