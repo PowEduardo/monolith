@@ -2,6 +2,7 @@ package br.com.powtec.finance.monolith.service.impl;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.time.LocalDate;
 import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -69,16 +70,7 @@ public class CreditCardMovementServiceImpl
 
     // Divide o valor em parcelas com centavos distribuídos
     List<BigDecimal> valoresParcelas = dividirEmParcelas(valorTotal, numeroDeParcelas);
-    YearMonth yearMonth;
-    String referenceMonth;
-    if (movement.getDate().getDayOfMonth() == 1) {
-      yearMonth = YearMonth.from(movement.getDate());
-      referenceMonth = yearMonth.toString();
-    } else {
-      yearMonth = YearMonth.from(movement.getDate().plusMonths(1));
-
-      referenceMonth = yearMonth.toString();
-    }
+    String referenceMonth = getReferenceMonth(movement.getDate());
     // YearMonth firstReferenceDate =
     // Cria as parcelas com os valores calculados
     for (int i = 0; i < numeroDeParcelas; i++) {
@@ -90,8 +82,7 @@ public class CreditCardMovementServiceImpl
           .value(valoresParcelas.get(i))
           .statement(getStatement(referenceMonth, valoresParcelas.get(i)))
           .build());
-      yearMonth = yearMonth.plusMonths(1);
-      referenceMonth = yearMonth.toString();
+      referenceMonth = YearMonth.parse(referenceMonth).plusMonths(1).toString();
     }
     return installments;
   }
@@ -106,11 +97,14 @@ public class CreditCardMovementServiceImpl
     // Calcula o valor restante que precisará ser distribuído como centavos extras
     BigDecimal somaParcelasBase = valorBase.multiply(BigDecimal.valueOf(numeroDeParcelas));
     BigDecimal valorRestante = (valor.subtract(somaParcelasBase));
-    if (valorRestante.compareTo(BigDecimal.valueOf(0.01)) < 0 && valorRestante.compareTo(BigDecimal.valueOf(0.005)) > 0) {
+    if (valorRestante.compareTo(BigDecimal.valueOf(0.01)) < 0
+        && valorRestante.compareTo(BigDecimal.valueOf(0.005)) > 0) {
       valorRestante = BigDecimal.valueOf(0.01);
-    } else if (valorRestante.compareTo(BigDecimal.valueOf(0.01)) < 0 && valorRestante.compareTo(BigDecimal.valueOf(0.005)) < 0) {
+    } else if (valorRestante.compareTo(BigDecimal.valueOf(0.01)) < 0
+        && valorRestante.compareTo(BigDecimal.valueOf(0.005)) < 0) {
       valorRestante = BigDecimal.ZERO;
-    } else if (valorRestante.compareTo(BigDecimal.valueOf(0.02)) < 0 && valorRestante.compareTo(BigDecimal.valueOf(0.015)) > 0) {
+    } else if (valorRestante.compareTo(BigDecimal.valueOf(0.02)) < 0
+        && valorRestante.compareTo(BigDecimal.valueOf(0.015)) > 0) {
       valorRestante = BigDecimal.valueOf(0.02);
     } else if (valorRestante.compareTo(BigDecimal.valueOf(0.015)) < 0) {
       valorRestante = BigDecimal.valueOf(0.01);
@@ -124,7 +118,6 @@ public class CreditCardMovementServiceImpl
         parcelas.add(valorBase);
       }
     }
-
     return parcelas;
   }
 
@@ -154,8 +147,17 @@ public class CreditCardMovementServiceImpl
   }
 
   private boolean isStatementClosed(CreditCardMovementDTO movement) {
-    CreditCardStatementModel statement = getStatement(
-        YearMonth.from(movement.getDate()).toString(), BigDecimal.ZERO);
+    CreditCardStatementModel statement = getStatement(getReferenceMonth(movement.getDate()), BigDecimal.ZERO);
     return statement.getClosed().booleanValue();
+  }
+
+  private String getReferenceMonth(LocalDate date) {
+    String referenceMonth;
+    if (date.getDayOfMonth() == 1) {
+      referenceMonth = YearMonth.from(date).toString();
+    } else {
+      referenceMonth = YearMonth.from(date.plusMonths(1)).toString();
+    }
+    return referenceMonth;
   }
 }

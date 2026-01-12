@@ -81,16 +81,31 @@ public class CreditCardStatementServiceImpl
     } else {
       statementDay = String.valueOf(dayOfMonth);
     }
-    model.setMovement(MovementModel.builder()
-    .date(LocalDate.parse(model.getReferenceMonth().toString() + "-" + statementDay))
-    .value(model.getValue())
-    .description("Cartão " + model.getCard().getName())
-    .account(AccountModel.builder().id(1L).build())
-    .type(MovementTypeEnum.DEBIT)
-    .category(CategoryTypeEnum.CARD)
-    .paid(false)
-    .build());
-    return mapper.toDto(repository.save(model));
+    if (model.getMovement() == null) {
+      model.setMovement(MovementModel.builder()
+          .date(LocalDate.parse(model.getReferenceMonth().toString() + "-" + statementDay))
+          .value(model.getValue())
+          .description("Cartão " + model.getCard().getName())
+          .account(AccountModel.builder().id(1L).build())
+          .type(MovementTypeEnum.DEBIT)
+          .category(CategoryTypeEnum.CARD)
+          .paid(false)
+          .build());
+      model.setClosed(Boolean.TRUE);
+      return mapper.toDto(repository.save(model));
+    } else {
+      if (model.getMovement().getPaid().booleanValue()) {
+        model.setClosed(Boolean.TRUE);
+        return mapper.toDtoOnlyId(repository.save(model));
+      } else if (model.getMovement().getValue() == model.getValue()) {
+        return null;
+      } else {
+        model.getMovement().setValue(model.getValue());
+        model.setClosed(Boolean.TRUE);
+        movementRepository.save(model.getMovement());
+        return mapper.toDtoOnlyId(repository.save(model));
+      }
+    }
   }
 
   private BigDecimal sumInstallmentValue(List<CreditCardInstallmentModel> installments) {

@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>br.com.powtec.finance</groupId>
 	<artifactId>monolith</artifactId>
-	<version>0.2.5-SNAPSHOT</version>
+	<version>0.2.6-SNAPSHOT</version>
 	<name>monolith</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
