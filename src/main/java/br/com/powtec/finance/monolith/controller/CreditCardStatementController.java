@@ -75,7 +75,7 @@ public class CreditCardStatementController implements BaseCrudController<CreditC
   public ResponseEntity<CreditCardStatementDTO> markAsPaid(@PathVariable Long id) {
     log.info("Marking statement with id: {} as paid", id);
     CreditCardStatementDTO statement = service.findById(id);
-    statement.setPaid(true);
+    statement.setClosed(true);
     CreditCardStatementDTO response = service.update(id, statement);
     return ResponseEntity.ok().body(response);
   }

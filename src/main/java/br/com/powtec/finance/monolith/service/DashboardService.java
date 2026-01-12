@@ -58,7 +58,7 @@ public class DashboardService {
       BigDecimal totalUnpaid = BigDecimal.ZERO;
 
       for (CreditCardStatementModel statement : allStatements) {
-        if (statement.getPaid() != null && statement.getPaid()) {
+        if (statement.getClosed() != null && statement.getClosed()) {
           totalPaid = totalPaid.add(statement.getValue() != null ? statement.getValue() : BigDecimal.ZERO);
         } else {
           totalUnpaid = totalUnpaid.add(statement.getValue() != null ? statement.getValue() : BigDecimal.ZERO);
@@ -113,7 +113,7 @@ public class DashboardService {
       for (CreditCardStatementModel statement : allStatements) {
         // Check if statement belongs to this card
         if (statement.getCard() != null && statement.getCard().getId().equals(cardId)) {
-          if (statement.getPaid() != null && statement.getPaid()) {
+          if (statement.getClosed() != null && statement.getClosed()) {
             totalPaid = totalPaid.add(statement.getValue() != null ? statement.getValue() : BigDecimal.ZERO);
           }
         }

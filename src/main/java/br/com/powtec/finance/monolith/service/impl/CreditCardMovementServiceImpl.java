@@ -42,6 +42,9 @@ public class CreditCardMovementServiceImpl
 
   @Override
   public CreditCardMovementDTO create(CreditCardMovementDTO body, Long parentId) {
+    if (isStatementClosed(body)) {
+      throw new IllegalStateException("Cannot add movement to a closed statement.");
+    }
     CreditCardMovementModel model = repository.save(mapper.toModel(body, parentId));
     installmentRepository.saveAll(getInstallments(model));
     return mapper.toDtoOnlyId(model);
@@ -49,6 +52,9 @@ public class CreditCardMovementServiceImpl
 
   @Override
   public CreditCardMovementDTO update(CreditCardMovementDTO body, Long parentId, Long id) {
+    if (isStatementClosed(body)) {
+      throw new IllegalStateException("Cannot update movement to a closed statement.");
+    }
     CreditCardMovementModel model = repository.save(mapper.toModel(body, parentId));
     model.setId(id);
     installmentRepository.saveAll(getInstallments(model));
@@ -139,11 +145,17 @@ public class CreditCardMovementServiceImpl
           .value(value)
           .discounts(BigDecimal.ZERO)
           .card(CreditCardModel.builder().id(1L).build())
-          .paid(false)
+          .closed(false)
           .build());
     }
     statement.get().setValue(statementRepository.sumStatementValue(statement.get().getId()).add(value));
     statementRepository.save(statement.get());
     return statement.get();
+  }
+
+  private boolean isStatementClosed(CreditCardMovementDTO movement) {
+    CreditCardStatementModel statement = getStatement(
+        YearMonth.from(movement.getDate()).toString(), BigDecimal.ZERO);
+    return statement.getClosed().booleanValue();
   }
 }
