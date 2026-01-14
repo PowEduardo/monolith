@@ -40,14 +40,14 @@ public class CreditCardMovementController {
   @PostMapping()
   public ResponseEntity<CreditCardMovementDTO> create(@PathVariable Long parentId, @RequestBody CreditCardMovementDTO body) {
     log.info("Creating movement for card with id: {}", parentId);
-    return ResponseEntity.created(URI.create("/cards/" + parentId + "/movements/" + service.create(body, parentId).getId())).body(null);
+    CreditCardMovementDTO response = service.create(body, parentId);
+    return ResponseEntity.created(URI.create("/cards/" + parentId + "/movements/" + response.getId())).body(response);
   }
 
   @PostMapping("batch")
   public ResponseEntity<List<CreditCardMovementDTO>> createInBatch(
       @RequestBody List<CreditCardMovementDTO> body,
       @PathVariable Long parentId) {
-
     log.info("Creating movements in batch for card with id: {}", parentId);
     return ResponseEntity.ok().body(service.createInBatch(body, parentId));
   }
@@ -81,31 +81,11 @@ public class CreditCardMovementController {
       @RequestParam(value = "_offset", required = true) @Min(value = 0L, message = MINIMUM_PAGE_NUMBER) Integer pageNumber,
       @RequestParam(value = "_q", required = false) String parameters,
       @RequestParam(value = "_sort", required = false) String sort,
+      @RequestParam(value = "mapType", required = false) String mapType,
       @PathVariable Long parentId) {
     log.info("Searching movements with parameters: {}, pageNumber: {}, elementsPerPage: {}, sort: {}, for card id: {}",
         parameters, pageNumber, elementsPerPage, sort, parentId);
     Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
     return ResponseEntity.ok().body(service.search(pageable, parameters, parentId));
-  }
-
-  @GetMapping("unpaid")
-  public ResponseEntity<Page<CreditCardMovementDTO>> getUnpaidMovements(
-      @RequestParam(value = "_limit", required = true) @Min(value = 1L, message = MINIMUM_ELEMENTS_PER_PAGE) Integer elementsPerPage,
-      @RequestParam(value = "_offset", required = true) @Min(value = 0L, message = MINIMUM_PAGE_NUMBER) Integer pageNumber,
-      @RequestParam(value = "_sort", required = false) String sort,
-      @PathVariable Long parentId) {
-    log.info("Getting unpaid movements for card id: {}", parentId);
-    String parameters = "paid:false";
-    Pageable pageable = pageable(pageNumber, elementsPerPage, sort);
-    return ResponseEntity.ok().body(service.search(pageable, parameters, parentId));
-  }
-
-  @PostMapping("{id}/mark-as-paid")
-  public ResponseEntity<CreditCardMovementDTO> markAsPaid(@PathVariable Long id) {
-    log.info("Marking movement with id: {} as paid", id);
-    CreditCardMovementDTO movement = service.findById(id);
-    movement.setPaid(true);
-    CreditCardMovementDTO response = service.update(movement, 0L, id);
-    return ResponseEntity.ok().body(response);
   }
 }
