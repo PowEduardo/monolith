@@ -44,6 +44,18 @@ public class CreditCardStatementServiceImpl
     this.specification = specification;
   }
 
+  /**
+   * Find statement by ID with installments eagerly loaded
+   */
+  @Transactional
+  @Override
+  public CreditCardStatementDTO findById(Long id) {
+    CreditCardStatementModel statement = repository.findById(id).orElseThrow();
+    // Eagerly load installments within the transaction
+    statement.getInstallments().size();
+    return mapper.toDto(statement);
+  }
+
   @Transactional
   @Override
   public CreditCardStatementDTO create(CreditCardStatementDTO dto) {

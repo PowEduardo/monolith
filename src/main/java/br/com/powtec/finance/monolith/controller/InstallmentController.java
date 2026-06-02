@@ -4,6 +4,8 @@ import static br.com.powtec.finance.monolith.constants.ValidationMessagesConstan
 import static br.com.powtec.finance.monolith.constants.ValidationMessagesConstants.MINIMUM_PAGE_NUMBER;
 import static br.com.powtec.finance.monolith.util.PageBuilder.pageable;
 
+import java.net.URI;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -13,6 +15,7 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,9 +38,15 @@ public class InstallmentController {
   @Qualifier("creditCardInstallmentService")
   private BaseCrudService<CreditCardInstallmentDTO> service;
 
-  public ResponseEntity<CreditCardInstallmentDTO> create(CreditCardInstallmentDTO body) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'create'");
+  @PostMapping("")
+  public ResponseEntity<CreditCardInstallmentDTO> create(@RequestBody CreditCardInstallmentDTO body,
+      @PathVariable Long statementId) {
+    log.info("Creating installment for statement id: {}", statementId);
+    body.setStatement(CreditCardStatementDTO.builder().id(statementId).build());
+    CreditCardInstallmentDTO created = service.create(body);
+    return ResponseEntity
+        .created(URI.create("/cards/1/statements/" + statementId + "/installments/" + created.getId()))
+        .body(created);
   }
 
   @GetMapping("")
